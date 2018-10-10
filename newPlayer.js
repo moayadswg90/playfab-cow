@@ -1,6 +1,3 @@
-const factor = 173.7178;
-const offset = 1500;
-
 handlers.newPlayer = function (args, context) 
 {
   	var currentPlayerID = context.playerProfile.PlayerId;

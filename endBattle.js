@@ -18,8 +18,9 @@ handlers.endBattle = function (args, context)
     var newCounters = updatePlayerCounter(args.isWon, args.fields, args.troops, args.cards, args.isDuel, currentPlayerId, playerReadOnlyData);	  	
   	firstGame = checkFirstGame(playerReadOnlyData, currentPlayerId);
   	firstWin = checkFirstWin(playerReadOnlyData, currentPlayerId);
+  	
   	glickoResult = calculateGlicko(currentPlayerId, isWon);
-  	glickoItems = [{Rating: glickoResult.ratingResult}, {RD: glickoResult.rdResult}, Vol: glickoResult.volResult}];
+  	glickoItems = [{Rating: glickoResult.ratingResult}, {RD: glickoResult.rdResult}, {Vol: glickoResult.volResult}];
   	var glickoItems = JSON.stringify(glickoItems);
   	newRating = parseInt(glickoResult.ratingResult);
   

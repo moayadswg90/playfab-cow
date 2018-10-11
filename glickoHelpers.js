@@ -10,7 +10,7 @@ function calculateGlicko(currentPlayerId, isWon)
 	};
 	var glicko = new glicko2.Glicko2(settings);
 	
-	var firstPlayerGlickoData = getGlickoData(currentPlayerId)
+	var firstPlayerGlickoData = getGlickoData(currentPlayerId);
   	var p1RD = firstPlayerGlickoData.RD;
 	var p1Rating = firstPlayerGlickoData.Rating;
 	var p1Rating = firstPlayerGlickoData.Vol;

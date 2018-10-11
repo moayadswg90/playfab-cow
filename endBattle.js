@@ -158,5 +158,5 @@ handlers.endBattle = function (args, context)
         VirtualCurrency: "GL",
         Amount: totalGoldEarned
     }); 	
-  return {pointsEarned: pointsEarned, goldEarnedFromWin: goldEarnedFromWin, goldEarnedFromPlay: goldEarnedFromPlay, stats: newCounters, rating: glickoResult.ratingResult};
+  return {pointsEarned: pointsEarned, goldEarnedFromWin: goldEarnedFromWin, goldEarnedFromPlay: goldEarnedFromPlay, stats: newCounters, rating: glickoResult.ratingResult, rd: glickoResult.rdResult, vol: glickoResult.volResult };
 }

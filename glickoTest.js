@@ -12,7 +12,7 @@ handlers.glickoTest = function (args, context)
     var p1 = glicko.makePlayer(1400, 30, 0.06);
     var p2 = glicko.makePlayer(1550, 100, 0.06);
 	var matches = [];
-	matches.push([Ryan, Bob, 1]);
+	matches.push([p1, p2, 1]);
 	glicko.updateRatings(matches);
 	
 	var rating = (Math.abs(Ryan.getRating() - 1464) < 0.1).should.be.true;

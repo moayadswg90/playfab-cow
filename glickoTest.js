@@ -15,7 +15,7 @@ handlers.glickoTest = function (args, context)
 	matches.push([p1, p2, 1]);
 	glicko.updateRatings(matches);
 	
-	var rating = (Math.abs(p1.getRating() - 1464) < 0.1);
+	var rating = (Math.abs(p1.getRating() - 1464));
 	var rd = Math.abs(p1.getRd() - 151.52);
 	var vol = Math.abs(p1.getVol() - 0.05999);
 	

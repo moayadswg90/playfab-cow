@@ -13,9 +13,9 @@ function calculateGlicko(currentPlayerId, isWon)
 	var firstPlayerGlickoData = getGlickoData(currentPlayerId);
   	var p1RD = firstPlayerGlickoData.RD;
 	var p1Rating = firstPlayerGlickoData.Rating;
-	var p1Rating = firstPlayerGlickoData.Vol;
+	var p1Vol = firstPlayerGlickoData.Vol;
 	
-    var p1 = glicko.makePlayer(p1Rating, p1RD, 0.06);
+    var p1 = glicko.makePlayer(p1Rating, p1RD, p1Vol);
     var p2 = glicko.makePlayer(1550, 100, 0.06);
 	var matches = [];
 	matches.push([p1, p2, isWon]);

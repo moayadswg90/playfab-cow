@@ -1,4 +1,4 @@
-handlers.endBattle = function (args, context) 
+handlers.glickoTest = function (args, context) 
 {
 	var settings = 
 	{

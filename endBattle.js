@@ -19,7 +19,7 @@ handlers.endBattle = function (args, context)
   	firstGame = checkFirstGame(playerReadOnlyData, currentPlayerId);
   	firstWin = checkFirstWin(playerReadOnlyData, currentPlayerId);
   	glickoResult = calculateGlicko(currentPlayerId, isWon);
-  	glickoItems = [{Rating: glickoResult.ratingResult}, {RD: glickoResult.rdResult}];
+  	glickoItems = [{Rating: glickoResult.ratingResult}, {RD: glickoResult.rdResult}, Vol: glickoResult.volResult}];
   	var glickoItems = JSON.stringify(glickoItems);
   	newRating = parseInt(glickoResult.ratingResult);
   
@@ -240,19 +240,33 @@ function updatePlayerCounter(winsIncrement, fieldsIncrement, troopsIncrement, ca
 
 function calculateGlicko(currentPlayerId, isWon)
 {
-  	//read first player glicko data
-  	var firstPlayerGlickoData = getGlickoData(currentPlayerId)
+  	var settings = 
+	{
+        tau : 0.5,
+        rpd : 604800,
+        rating : 1500,
+        rd : 200,
+        vol : 0.06
+	};
+	var glicko = new glicko2.Glicko2(settings);
+	
+	var firstPlayerGlickoData = getGlickoData(currentPlayerId)
   	var p1RD = firstPlayerGlickoData.RD;
 	var p1Rating = firstPlayerGlickoData.Rating;
-    
-  	//read second player glicko data
-	var p2RD = 81;
-	var p2Rating = 1215;
-
-	var newRatingResult = newRating(p1RD, p1Rating, p2RD, p2Rating, isWon);
-	var newRDResult = newRD(p1RD, p1Rating, p2RD, p2Rating, isWon);
-  	//update new glicko
-  	return {ratingResult: newRatingResult, rdResult: newRDResult};
+	var p1Rating = firstPlayerGlickoData.Vol;
+	
+    var p1 = glicko.makePlayer(p1Rating, p1RD, 0.06);
+    var p2 = glicko.makePlayer(1550, 100, 0.06);
+	var matches = [];
+	matches.push([p1, p2, isWon]);
+	glicko.updateRatings(matches);
+	
+	var rating = (Math.abs(p1.getRating()));
+	var rd = Math.abs(p1.getRd());
+	var vol = Math.abs(p1.getVol());
+	
+  
+  	return {ratingResult: rating, rdResult: rd, volResult: vol};
 }
 function getGlickoData(currentPlayerId)
 {
@@ -267,11 +281,12 @@ function getGlickoData(currentPlayerId)
 
   var glickoRating = glickoData[0].Rating;
   var glickoRD = glickoData[1].RD;
-  return {Rating: glickoRating,RD: glickoRD}; 
+  var glickoVol = glickoData[2].Vol;
+  return {Rating: glickoRating,RD: glickoRD, Vol: glickoVol}; 
 }
-function updateGlickoData(currentPlayerId, rd, rating)
+function updateGlickoData(currentPlayerId, rd, rating, vol)
 {
-  	glickoItems = [{Rating: rating}, {RD: rd}];
+  	glickoItems = [{Rating: rating}, {RD: rd}, {Vol: vol} ];
   	var glickoItems = JSON.stringify(glickoItems);
 	var updateGlickoData = server.UpdateUserReadOnlyData
   (
@@ -283,55 +298,4 @@ function updateGlickoData(currentPlayerId, rd, rating)
         }
       }
    );
-}
-
-//============================================
-//Glicko 2 Rating Calculation
-function newRD(rd, rating, oppRD, oppRating, outcome)
-{		
-	return rdFactor(rd, rating, oppRD, oppRating, outcome) * factor;
-}
-function newRating(rd, rating, oppRD, oppRating, outcome)
-{
-	return (ratingFactor(rd, rating, oppRD, oppRating, outcome) * factor) + offset;
-}
-function rdFactor(rd, rating, oppRD, oppRating, outcome)
-{
-	return 1/Math.sqrt((1/(Math.pow(phi(rd),2)+ Math.pow(vol,2))) + 1/ nu(oppRD, oppRating, rating))
-}
-function ratingFactor(rd, rating, oppRD, oppRating, outcome)
-{
-	return mu(rating) + (Math.pow(rdFactor(rd, rating, oppRD, oppRating, outcome),2) * gse(oppRD, oppRating, outcome, rating));
-}
-function gse(oppRD, oppRating, outcome, rating)
-{
-	return g(oppRD) * (outcome - e(oppRD, oppRating, rating));
-}
-
-function gsqe(oppRD, oppRating, rating)
-{
-	return Math.pow(g(oppRD), 2) * e(oppRD, oppRating, rating) * (1-e(oppRD, oppRating, rating));
-}
-
-function g(rd)
-{
-	return Math.pow((1 + 3 * phi(rd)* phi(rd)* Math.pow(Math.PI,-2)), -0.5);
-}
-
-function e(oppRD, oppRating, rating)
-{
-	return Math.pow(1 + Math.exp(g(oppRD) * (mu(oppRating)- mu(rating))), -1)	
-}
-function phi(rd)
-{
-	return rd/factor;
-}
-
-function mu(rating)
-{
-	return ((rating - offset)/factor);
-}
-function nu(oppRD, oppRating, rating)
-{
-	return 1/gsqe(oppRD, oppRating, rating)
 }

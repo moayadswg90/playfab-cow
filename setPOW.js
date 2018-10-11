@@ -1,4 +1,3 @@
-
 handlers.setPOTW = function (args, context) 
 {
   var newPOTW = context.playerProfile.PlayerId;

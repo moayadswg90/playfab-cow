@@ -1,7 +1,7 @@
 handlers.newPlayer = function (args, context) 
 {
   	var currentPlayerID = context.playerProfile.PlayerId;
-  	glickoItems = [{Rating: offset}, {RD: factor}];
+  	glickoItems = [{Rating: offset}, {RD: factor}, {Vol: vol}];
   	var glickoItems = JSON.stringify(glickoItems);
   	var updatePlayerData = server.UpdateUserReadOnlyData
 	(

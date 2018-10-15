@@ -28,13 +28,11 @@ handlers.inviteFriend = function (args, context)
 	        PlayFabId: args.friend,
 	        VirtualCurrency: "DM",
 	        Amount: shareReward
-	    }); 
+	    });
+	    return true; 
   	}
   	catch(e)
   	{
-	  	//let error = e.apiErrorInfo.apiError.error;
-	  	//let errorCode = e.apiErrorInfo.apiError.errorCode;
-	  	//return {code: e.apiErrorInfo.apiError.errorCode, error: e.apiErrorInfo.apiError.error};
-	  	log.error(e);
+	  	return {code: e.apiErrorInfo.apiError.errorCode, error: e.apiErrorInfo.apiError.error};
   	}   	
  }

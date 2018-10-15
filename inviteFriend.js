@@ -2,21 +2,29 @@ handlers.inviteFriend = function (args, context)
 {
 	var friendPlayFabID = args.friend
 	
-  	
-	var addFriend = server.AddFriend
-    (
-          {
-              PlayFabId: currentPlayerId,
-              FriendPlayFabId: args.friend
-          }
-    );
-    var addPlayerToFriend = server.AddFriend
-    (
-          {
-              PlayFabId: args.friend,
-              FriendPlayFabId: currentPlayerId
-          }
-    );
+  	try
+  	{
+		  var addFriend = server.AddFriend
+		  (
+	          {
+	              PlayFabId: currentPlayerId,
+	              FriendPlayFabId: args.friend
+	          }
+		  );
+	    var addPlayerToFriend = server.AddFriend
+	    (
+	          {
+	              PlayFabId: args.friend,
+	              FriendPlayFabId: currentPlayerId
+	          }
+	    );	
+  	}
+  	catch(e)
+  	{
+	  	var msg = "Error: " + JSON.stringify(e);
+	  	log.info(msg);
+  	}
+	
     var sendNotification = server.SendPushNotification
 	    ({
 	        Recipient: args.friend,

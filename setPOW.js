@@ -20,4 +20,5 @@ handlers.setPOTW = function (args, context)
         PlayFabId: playerID,
         Message: "Congratulations! you are Player Of the Week "
     });
+    log.debug(context);
 }

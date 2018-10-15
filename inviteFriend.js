@@ -17,15 +17,8 @@ handlers.inviteFriend = function (args, context)
 	              PlayFabId: args.friend,
 	              FriendPlayFabId: currentPlayerId
 	          }
-	    );	
-  	}
-  	catch(e)
-  	{
-	  	var msg = "Error: " + JSON.stringify(e);
-	  	log.info(msg);
-  	}
-	
-    var sendNotification = server.SendPushNotification
+	    );
+	     var sendNotification = server.SendPushNotification
 	    ({
 	        Recipient: args.friend,
 	        Message: "Your friend has joined the game"
@@ -36,5 +29,13 @@ handlers.inviteFriend = function (args, context)
         VirtualCurrency: "DM",
         Amount: shareReward
     }); 
+  	}
+  	catch(e)
+  	{
+	  	var msg = "Error: " + JSON.stringify(e);
+	  	log.info(msg);
+  	}
+	
+   
       	
  }

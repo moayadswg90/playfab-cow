@@ -2,6 +2,8 @@ handlers.setPOTW = function (args, context)
 {
   var playerID = context.playerProfile.PlayerId;
   var rank = context.playStreamEvent.TriggeringEventData.Rank;
+  log.debug(context.playStreamEvent.TriggeringEventData);
+  return true;
   if (rank == 1)
   {
 		var setPOTWData = server.SetTitleData
@@ -39,5 +41,5 @@ handlers.setPOTW = function (args, context)
 	    });
 	}
 	  
-	    log.debug(context);
+	    
 }

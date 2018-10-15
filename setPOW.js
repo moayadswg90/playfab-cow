@@ -1,7 +1,8 @@
 handlers.setPOTW = function (args, context) 
 {
   var playerID = context.playerProfile.PlayerId;
-  var rank = context.playStreamEvent.TriggeringEventData.Rank;
+  //var rank = context.playStreamEvent.TriggeringEventData.Rank;
+  var rank = 1;
   log.debug(context.playStreamEvent.TriggeringEventData);
   return true;
   if (rank == 1)

@@ -10,7 +10,8 @@ handlers.newPlayer = function (args, context)
 		  	Data: 
 		  	{
                 glicko : glickoItems,
-                tutorial: 0
+                tutorial: 0,
+                lastShare: "2018-01-15T11:30:29.527Z"
 	        }
 	     }
 	); 

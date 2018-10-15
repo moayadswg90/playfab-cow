@@ -15,3 +15,5 @@ const tau = 0.5;
 const potwReward = 350;
 const weeklyReward = 250;
 const dailyReward = 150;
+
+const shareReward = 100;

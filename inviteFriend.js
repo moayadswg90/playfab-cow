@@ -24,18 +24,14 @@ handlers.inviteFriend = function (args, context)
 	        Message: "Your friend has joined the game"
 	    });
 	    var rewardFriend = server.AddUserVirtualCurrency
-    ({
-        PlayFabId: args.friend,
-        VirtualCurrency: "DM",
-        Amount: shareReward
-    }); 
+	    ({
+	        PlayFabId: args.friend,
+	        VirtualCurrency: "DM",
+	        Amount: shareReward
+	    }); 
   	}
   	catch(e)
   	{
-	  	var msg = "Error: " + JSON.stringify(e);
-	  	log.info(msg);
-  	}
-	
-   
-      	
+	  	return {code: e.code, error: e.error, errorCode: e.errorCode, errorMessage:e.errorMessage};
+  	}   	
  }

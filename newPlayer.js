@@ -18,7 +18,7 @@ handlers.newPlayer = function (args, context)
   	(
    		{
   			PlayFabId: currentPlayerId,
-  			Annotation: "Rerolled box",
+  			Annotation: "Starter Cards",
   			ItemIds: 
           	[
     			"StarterBundle"

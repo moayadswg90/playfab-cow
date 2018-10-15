@@ -17,7 +17,7 @@ handlers.setPOTW = function (args, context)
     });
     var sendNotification = server.SendPushNotification
     ({
-        PlayFabId: playerID,
+        Recipient: playerID,
         Message: "Congratulations! you are Player Of the Week "
     });
     log.debug(context);

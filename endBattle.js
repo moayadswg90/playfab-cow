@@ -11,7 +11,7 @@ handlers.endBattle = function (args, context)
 	var playerReadOnlyData = server.GetUserReadOnlyData
     (
           {
-              PlayFabId: currentPlayerId,
+              PlayFabId: currentPlayerId
           }
     );
     

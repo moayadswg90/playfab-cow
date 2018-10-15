@@ -30,12 +30,13 @@ handlers.shareGame = function (args, context)
  function checkSharedToday(playerReadOnlyData, currentPlayerId)
 {
   var sharedToday = false;
+  var today = new Date();
   if (playerReadOnlyData.Data.lastShare)
     {
   		var lastShare = playerReadOnlyData.Data.lastShare.Value;
   		var lastShareDate = new Date(lastShare);
-  		var differenceInDaysFirstGame = Math.floor((Date.UTC(lastShareDate.getFullYear(), lastShareDate.getMonth(), lastShareDate.getDate()) - Date.UTC(today.getFullYear(), today.getMonth(), today.getDate()) ) /(1000 * 60 * 60 * 24));
-  		if (differenceInDaysFirstGame != 0)
+  		var differenceInDaysLastShare = Math.floor((Date.UTC(lastShareDate.getFullYear(), lastShareDate.getMonth(), lastShareDate.getDate()) - Date.UTC(today.getFullYear(), today.getMonth(), today.getDate()) ) /(1000 * 60 * 60 * 24));
+  		if (differenceInDaysLastShare != 0)
         {
       		sharedToday =  true;
         }

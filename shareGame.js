@@ -20,11 +20,11 @@ handlers.shareGame = function (args, context)
 			VirtualCurrency: "DM",
 			Amount: shareReward
     	}); 
-    	return true;
+    	return {Reward:shareReward} ;
   	
   	}
   	else
-  		return false;
+  		return {Reward:0} ;
   	
  }
  function checkSharedToday(playerReadOnlyData, currentPlayerId)

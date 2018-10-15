@@ -9,7 +9,8 @@ handlers.newPlayer = function (args, context)
 			PlayFabId: currentPlayerId,
 		  	Data: 
 		  	{
-                glicko : glickoItems
+                glicko : glickoItems,
+                tutorial: 0
 	        }
 	     }
 	); 

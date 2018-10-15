@@ -32,6 +32,6 @@ handlers.inviteFriend = function (args, context)
   	}
   	catch(e)
   	{
-	  	return {code: e.apiErrorInfo.apiError.errorCode, e.apiErrorInfo.apiError.error;};
+	  	return {code: e.apiErrorInfo.apiError.errorCode, error: e.apiErrorInfo.apiError.error;};
   	}   	
  }

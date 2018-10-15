@@ -32,6 +32,6 @@ handlers.inviteFriend = function (args, context)
   	}
   	catch(e)
   	{
-	  	return {code: e.code, error: e.error, errorCode: e.errorCode, errorMessage:e.errorMessage};
+	  	return e;
   	}   	
  }

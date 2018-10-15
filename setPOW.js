@@ -1,11 +1,23 @@
 handlers.setPOTW = function (args, context) 
 {
-  var newPOTW = context.playerProfile.PlayerId;
+  var playerID = context.playerProfile.PlayerId;
   var setPOTWData = server.SetTitleData
   (
    		{
   			Key: "potw",
-          	Value: newPOTW
+          	Value: playerID
 		}
-  ); 
+  );
+  
+  var grantReward = server.AddUserVirtualCurrency
+    ({
+        PlayFabId: playerID,
+        VirtualCurrency: "DM",
+        Amount: potwReward
+    });
+    var sendNotification = server.SendPushNotification
+    ({
+        PlayFabId: playerID,
+        Message: "Congratulations! you are Player Of the Week "
+    });
 }

@@ -22,5 +22,11 @@ handlers.inviteFriend = function (args, context)
 	        Recipient: args.friend,
 	        Message: "Your friend has joined the game"
 	    });
+	    var rewardFriend = server.AddUserVirtualCurrency
+    ({
+        PlayFabId: args.friend,
+        VirtualCurrency: "DM",
+        Amount: shareReward
+    }); 
       	
  }

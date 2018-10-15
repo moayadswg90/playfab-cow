@@ -20,6 +20,16 @@ handlers.shareGame = function (args, context)
 			VirtualCurrency: "DM",
 			Amount: shareReward
     	}); 
+    	var updatePlayerData = server.UpdateUserReadOnlyData
+		  	(
+		  		{
+		  			PlayFabId: currentPlayerId,
+		  			Data: 
+		  			{
+	                  lastShare : today
+	        		}
+	      		}
+		  	);
     	return {Reward:shareReward} ;
   	
   	}

@@ -21,6 +21,7 @@ handlers.endBattle = function (args, context)
     }
     catch (e)
     {
+	    log.debug(e);
 	    return {code: e.errorCode, error: e.error};
     }
     	  	

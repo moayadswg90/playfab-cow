@@ -76,7 +76,7 @@ function updatePlayerCounter(winsIncrement, fieldsIncrement, troopsIncrement, ca
 		throw error;	
   	}
 }
-handlers.checkDoubleGold = function(args, context) 
+handlers.doubleGold = function(args, context) 
 {
 	//var doubleGold = false;
 	//return {doubleGold:"true" };

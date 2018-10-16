@@ -79,12 +79,14 @@ function updatePlayerCounter(winsIncrement, fieldsIncrement, troopsIncrement, ca
 handlers.checkDoubleGold = function (args, context) 
 {
 	var doubleGold = false;
+/*
   	var inventory = server.GetUserInventory
 	(
 		{
 			PlayFabId: currentPlayerId
 		}
 	);
+*/
 /*
 	var inventoryItems = inventory.Inventory;
 	for(i = 0; i < inventoryItems.length; i++)

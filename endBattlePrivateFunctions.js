@@ -79,5 +79,6 @@ function updatePlayerCounter(winsIncrement, fieldsIncrement, troopsIncrement, ca
 handlers.checkDoubleGold = function(args, context) 
 {
 	var doubleGold = false;
-	return doubleGold;
+	return {doubleGold:doubleGold };
+	//return doubleGold;
 }

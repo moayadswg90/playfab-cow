@@ -41,7 +41,13 @@ function checkFirstWin(firstGameAndWin, currentPlayerId)
 }
 function updatePlayerCounter(winsIncrement, fieldsIncrement, troopsIncrement, cardsIncrement, duelsIncrement, currentPlayerId, playerReadOnlyData)
 {
-
+	if (winsIncrement == null || fieldsIncrement == null || troopsIncrement == null || cardsIncrement == null || duelsIncrement == null)
+	{
+		var error = new Error("missing parameters");
+		error.code = 500;
+		throw error;
+	}
+		 
   var previousWins = 0;
   var previousFields = 0;
   var previousTroops = 0;

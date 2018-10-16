@@ -15,7 +15,15 @@ handlers.endBattle = function (args, context)
           }
     );
     
-    var newCounters = updatePlayerCounter(args.isWon, args.fields, args.troops, args.cards, args.isDuel, currentPlayerId, playerReadOnlyData);	  	
+    try
+    {
+	    var newCounters = updatePlayerCounter(args.isWon, args.fields, args.troops, args.cards, args.isDuel, currentPlayerId, playerReadOnlyData);
+    }
+    catch (e)
+    {
+	    return {code: e.errorCode, error: e.error};
+    }
+    	  	
   	firstGame = checkFirstGame(playerReadOnlyData, currentPlayerId);
   	firstWin = checkFirstWin(playerReadOnlyData, currentPlayerId);
   	

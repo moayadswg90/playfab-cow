@@ -76,6 +76,7 @@ function updatePlayerCounter(winsIncrement, fieldsIncrement, troopsIncrement, ca
 		throw error;	
   	}
 }
+/*
 function checkDoubleGold(currentPlayerId)
 {
 	var doubleGold = false;
@@ -97,3 +98,4 @@ function checkDoubleGold(currentPlayerId)
 	}
 	return doubleGold;
 }
+*/

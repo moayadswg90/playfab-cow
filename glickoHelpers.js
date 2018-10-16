@@ -1,4 +1,4 @@
-function calculateGlicko(currentPlayerId, isWon)
+function calculateGlicko(playerReadOnlyData, isWon)
 {
   	var settings = 
 	{
@@ -10,7 +10,7 @@ function calculateGlicko(currentPlayerId, isWon)
 	};
 	var glicko = new glicko2.Glicko2(settings);
 	
-	var firstPlayerGlickoData = getGlickoData(currentPlayerId);
+	var firstPlayerGlickoData = getGlickoData(playerReadOnlyData);
   	var p1RD = firstPlayerGlickoData.RD;
 	var p1Rating = firstPlayerGlickoData.Rating;
 	var p1Vol = firstPlayerGlickoData.Vol;
@@ -28,34 +28,12 @@ function calculateGlicko(currentPlayerId, isWon)
   
   	return {ratingResult: rating, rdResult: rd, volResult: vol};
 }
-function getGlickoData(currentPlayerId)
-{
-  // read previous counters to increment
-   var glickoData = server.GetUserReadOnlyData
-  (
-   		{
-  			PlayFabId: currentPlayerId,
-		}
-  );
-  var glickoData = JSON.parse(glickoData.Data.glicko.Value);
 
+function getGlickoData(playerReadOnlyData)
+{
+  var glickoData = JSON.parse(playerReadOnlyData.Data.glicko.Value);
   var glickoRating = glickoData[0].Rating;
   var glickoRD = glickoData[1].RD;
   var glickoVol = glickoData[2].Vol;
   return {Rating: glickoRating,RD: glickoRD, Vol: glickoVol}; 
-}
-function updateGlickoData(currentPlayerId, rd, rating, vol)
-{
-  	glickoItems = [{Rating: rating}, {RD: rd}, {Vol: vol} ];
-  	var glickoItems = JSON.stringify(glickoItems);
-	var updateGlickoData = server.UpdateUserReadOnlyData
-  (
-      {
-        PlayFabId: currentPlayerId,
-        Data: 
-        {
-                  glicko : glickoItems
-        }
-      }
-   );
 }

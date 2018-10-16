@@ -2,8 +2,7 @@ handlers.endBattle = function (args, context)
 {
 	goldEarnedFromPlay = gameReward;
 	pointsEarned = 0;
-  	goldEarnedFromWin = 0;
-  	isWon = args.isWon; 	
+  	goldEarnedFromWin = 0;	
   	today = new Date();
   	firstGame = false;
   	firstWin = false;
@@ -17,23 +16,22 @@ handlers.endBattle = function (args, context)
     
     try
     {
-	    var newCounters = updatePlayerCounter(args.isWon, args.fields, args.troops, args.cards, args.isDuel, currentPlayerId, playerReadOnlyData);
+	    var newCounters = updatePlayerCounter(args.isWon, args.fields, args.troops, args.cards, args.isDuel, playerReadOnlyData);
     }
     catch (e)
     {
-	    log.error(e);
 	    return {code: e.errorCode, error: e.error};
     }
     	  	
-  	firstGame = checkFirstGame(playerReadOnlyData, currentPlayerId);
-  	firstWin = checkFirstWin(playerReadOnlyData, currentPlayerId);
+  	firstGame = checkFirstGame(playerReadOnlyData);
+  	firstWin = checkFirstWin(playerReadOnlyData);
   	
-  	glickoResult = calculateGlicko(currentPlayerId, isWon);
+  	glickoResult = calculateGlicko(playerReadOnlyData, args.isWon);
   	glickoItems = [{Rating: glickoResult.ratingResult}, {RD: glickoResult.rdResult}, {Vol: glickoResult.volResult}];
-  	var glickoItems = JSON.stringify(glickoItems);
-  	newRating = parseInt(glickoResult.ratingResult);
+  	glickoItems = JSON.stringify(glickoItems);
+  	
   
-  	if (isWon == 1)
+  	if (args.isWon == 1)
   	{ 	
 	  	pointsEarned = pointsReward;
 		goldEarnedFromWin = winReward;
@@ -89,7 +87,7 @@ handlers.endBattle = function (args, context)
 		  	);	
 	  	} 	
   	}
-  	else if (isWon == 0)
+  	else if (args.isWon == 0)
   	{
 	  	if (firstGame)
 	  	{
@@ -155,7 +153,7 @@ handlers.endBattle = function (args, context)
         	},
           	{
 	            "StatisticName": "ranks",
-	            "Value": newRating
+	            "Value": parseInt(glickoResult.ratingResult)
         	}
         ]
     });

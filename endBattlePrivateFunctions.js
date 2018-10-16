@@ -43,8 +43,9 @@ function updatePlayerCounter(winsIncrement, fieldsIncrement, troopsIncrement, ca
 {
 	if (winsIncrement == null || fieldsIncrement == null || troopsIncrement == null || cardsIncrement == null || duelsIncrement == null)
 	{
-		var error = new Error("missing parameters");
-		error.code = 500;
+		var error = new Error("MissingParamaters");
+		error.errorCode = 500;
+		error.error = "missing paramaters";
 		throw error;
 	}
 		 

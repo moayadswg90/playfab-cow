@@ -30,8 +30,8 @@ handlers.unlockTest = function (args, context)
 	for(i = 0; i < inventoryItems.length; i++)
 	{
 		log.debug(inventoryItems[i]);
-		log.debug(inventoryItems[i].ItemID);
-		if (inventoryItems[i].ItemID == "DoubleGold2" || inventoryItems[i].ItemID == "DoubleGold6")
+		log.debug(inventoryItems[i].ItemId);
+		if (inventoryItems[i].ItemId == "DoubleGold2" || inventoryItems[i].ItemId == "DoubleGold6")
 		{
 			doubleGold = true;
 		}		

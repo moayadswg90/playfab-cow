@@ -16,16 +16,22 @@ handlers.unlockContainer = function (args, context)
 //==============================================================================================================================
 handlers.unlockTest = function (args, context) 
 {
-  var containerID = args.containerID;
-
-  //unlock box
-  var unlockContainerBox = server.UnlockContainerInstance
-  (
-   		{
-  			PlayFabId: currentPlayerId,
-  			ContainerItemInstanceId: containerID
+  var doubleGold = false;
+  	var inventory = server.GetUserInventory
+	(
+		{
+			PlayFabId: currentPlayerId
 		}
-  );
-  //update temp loot for future rerolls
-  return updateTempLoot(unlockContainerBox,currentPlayerId); 
+	);
+	var inventoryItems = inventory.Inventory;
+	for(i = 0; i < inventoryItems.length; i++)
+	{
+		if (inventoryItems[i].ItemID == "DoubleGold2" || inventoryItems[i].ItemID == "DoubleGold6")
+		{
+			doubleGold = true;
+			break;
+		}
+			
+	}
+	return doubleGold;
 }

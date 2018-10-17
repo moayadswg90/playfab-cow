@@ -76,26 +76,25 @@ function updatePlayerCounter(winsIncrement, fieldsIncrement, troopsIncrement, ca
 		throw error;	
   	}
 }
-/*
-function checkDoubleGold(currentPlayerId)
+function doubleGoldCheck(currentPlayerId) 
 {
-	var doubleGold = false;
+  	var doubleGold = false;
   	var inventory = server.GetUserInventory
 	(
 		{
 			PlayFabId: currentPlayerId
 		}
 	);
-	var inventoryItems = inventory.Inventory;
+	inventoryItems = [];
+	inventoryItems = inventory.Inventory;
+	
 	for(i = 0; i < inventoryItems.length; i++)
 	{
-		if (inventoryItems[i].ItemID == "DoubleGold2" || inventoryItems[i].ItemID == "DoubleGold6")
+		if (inventoryItems[i].ItemId == "DoubleGold2" || inventoryItems[i].ItemId == "DoubleGold6")
 		{
 			doubleGold = true;
-			break;
-		}
-			
+		}		
 	}
-	return doubleGold;
+
+	return {test: doubleGold};
 }
-*/

@@ -10,6 +10,7 @@ handlers.endBattle = function (args, context)
   	today = new Date();
   	firstGame = false;
   	firstWin = false;
+  	doubleGold = 0;
   	
 	var playerReadOnlyData = server.GetUserReadOnlyData
     (
@@ -161,13 +162,14 @@ handlers.endBattle = function (args, context)
         	}
         ]
     });
-    
+    if(doubleGoldCheck(currentPlayerId))
+    	doubleGold = totalGoldEarned;
   	totalGoldEarned = goldEarnedFromWin + goldEarnedFromPlay;
     var addGoldResult = server.AddUserVirtualCurrency
     ({
         PlayFabId: currentPlayerId,
         VirtualCurrency: "GL",
-        Amount: totalGoldEarned
+        Amount: totalGoldEarned + doubleGold
     }); 	
-  return {pointsEarned: pointsEarned, goldEarnedFromWin: goldEarnedFromWin, goldEarnedFromPlay: goldEarnedFromPlay, stats: newCounters, rating: glickoResult.ratingResult, rd: glickoResult.rdResult, vol: glickoResult.volResult };
+  return {pointsEarned: pointsEarned, goldEarnedFromWin: goldEarnedFromWin, goldEarnedFromPlay: goldEarnedFromPlay, goldFromDouble: doubleGold,  stats: newCounters, rating: glickoResult.ratingResult, rd: glickoResult.rdResult, vol: glickoResult.volResult };
 }

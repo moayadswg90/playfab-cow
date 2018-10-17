@@ -16,13 +16,14 @@ handlers.unlockContainer = function (args, context)
 //==============================================================================================================================
 handlers.unlockTest = function (args, context) 
 {
-  var doubleGold = false;
+  	var doubleGold = false;
   	var inventory = server.GetUserInventory
 	(
 		{
 			PlayFabId: currentPlayerId
 		}
 	);
+	return inventory;
 /*
 	var inventoryItems = inventory.Inventory;
 	for(i = 0; i < inventoryItems.length; i++)

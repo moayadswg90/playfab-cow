@@ -33,5 +33,5 @@ handlers.unlockTest = function (args, context)
 		}		
 	}
 */
-	return doubleGold;
+	return {test: doubleGold};
 }

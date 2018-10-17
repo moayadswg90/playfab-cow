@@ -8,7 +8,7 @@ handlers.tutorialCompleted = function (args, context)
           }
     );
     var tutorialCompleted = playerReadOnlyData.Data.tutorial.Value;  
-    if (tutorialCompleted == 1)
+    if (tutorialCompleted == 0)
     {   
 	    var addGold = server.AddUserVirtualCurrency
 		({

@@ -17,3 +17,5 @@ const weeklyReward = 250;
 const dailyReward = 150;
 
 const shareReward = 100;
+const tutorialGoldReward =  400;
+const tutorialDMReward = 40;

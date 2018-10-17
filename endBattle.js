@@ -162,9 +162,9 @@ handlers.endBattle = function (args, context)
         	}
         ]
     });
-    if(doubleGoldCheck(currentPlayerId))
-    	doubleGold = totalGoldEarned;
   	totalGoldEarned = goldEarnedFromWin + goldEarnedFromPlay;
+  	if(doubleGoldCheck(currentPlayerId))
+    	doubleGold = totalGoldEarned;
     var addGoldResult = server.AddUserVirtualCurrency
     ({
         PlayFabId: currentPlayerId,

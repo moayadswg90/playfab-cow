@@ -23,7 +23,7 @@ handlers.unlockTest = function (args, context)
 			PlayFabId: currentPlayerId
 		}
 	);
-	return inventory;
+	return inventory.Inventory;
 /*
 	var inventoryItems = inventory.Inventory;
 	for(i = 0; i < inventoryItems.length; i++)

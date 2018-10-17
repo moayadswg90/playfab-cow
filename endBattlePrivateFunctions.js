@@ -90,9 +90,10 @@ function doubleGoldCheck(currentPlayerId)
 	
 	for(i = 0; i < inventoryItems.length; i++)
 	{
-		log.debug(inventoryItems[i].ItemId);
+		
 		if (inventoryItems[i].ItemId == "DoubleGold2" || inventoryItems[i].ItemId == "DoubleGold6")
 		{
+			log.debug(inventoryItems[i].ItemId);
 			doubleGold = true;
 		}		
 	}

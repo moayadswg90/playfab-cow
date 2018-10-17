@@ -8,7 +8,7 @@ handlers.tutorialCompleted = function (args, context)
           }
     );
     var tutorialCompleted = playerReadOnlyData.Data.tutorial.Value;  
-    if (tutorialCompleted)
+    if (tutorialCompleted == 1)
     {   
 	    var addGold = server.AddUserVirtualCurrency
 		({
@@ -37,7 +37,5 @@ handlers.tutorialCompleted = function (args, context)
     else
     {
 	  return {firstTutorial: false, goldReward: 0, dimondReward: 0};  
-    }
-  	
-  	
+    }  	
  }

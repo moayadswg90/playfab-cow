@@ -23,15 +23,15 @@ handlers.unlockTest = function (args, context)
 			PlayFabId: currentPlayerId
 		}
 	);
+/*
 	var inventoryItems = inventory.Inventory;
 	for(i = 0; i < inventoryItems.length; i++)
 	{
 		if (inventoryItems[i].ItemID == "DoubleGold2" || inventoryItems[i].ItemID == "DoubleGold6")
 		{
 			doubleGold = true;
-			break;
-		}
-			
+		}		
 	}
+*/
 	return doubleGold;
 }

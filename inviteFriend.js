@@ -26,8 +26,8 @@ handlers.inviteFriend = function (args, context)
 	    var rewardFriend = server.AddUserVirtualCurrency
 	    ({
 	        PlayFabId: args.friend,
-	        VirtualCurrency: "DM",
-	        Amount: shareReward
+	        VirtualCurrency: "GL",
+	        Amount: invitePlayerReward
 	    });
 	    return true; 
   	}

@@ -148,7 +148,7 @@ handlers.endBattle = function (args, context)
         	},
           	{
 	            "StatisticName": "wins",
-	            "Value": args.isWin
+	            "Value": args.isWon
         	},
           	{
 	            "StatisticName": "cardsPlayed",

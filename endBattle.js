@@ -171,7 +171,7 @@ handlers.endBattle = function (args, context)
         [	
         	{
 	            "StatisticName": "DailyPoints",
-	            "StatisticNames": ["wins", "cardsPlayed", "TroopsRecruited", "duels"]
+	            "StatisticNames": ["wins", "cardsPlayed", "TroopsRecruited", "duels", "ranks"]
         	}
         ]
     });
@@ -184,5 +184,5 @@ handlers.endBattle = function (args, context)
         VirtualCurrency: "GL",
         Amount: totalGoldEarned + doubleGold
     }); 	
-  return {pointsEarned: pointsEarned, goldEarnedFromWin: goldEarnedFromWin, goldEarnedFromPlay: goldEarnedFromPlay, goldFromDouble: doubleGold,  stats: PlayerStats.Statistics, rating: glickoResult.ratingResult, rd: glickoResult.rdResult, vol: glickoResult.volResult };
+  return {pointsEarned: pointsEarned, goldEarnedFromWin: goldEarnedFromWin, goldEarnedFromPlay: goldEarnedFromPlay, goldFromDouble: doubleGold,  Statistics: PlayerStats.Statistics};
 }

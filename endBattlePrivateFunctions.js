@@ -39,43 +39,6 @@ function checkFirstWin(playerReadOnlyData)
     }
   return firstWinFlag;
 }
-function updatePlayerCounter(winsIncrement, fieldsIncrement, troopsIncrement, cardsIncrement, duelsIncrement, playerReadOnlyData)
-{
-	if (winsIncrement == null || fieldsIncrement == null || troopsIncrement == null || cardsIncrement == null || duelsIncrement == null)
-	{
-		var error = new Error("MissingParamaters");
-		error.errorCode = 500;
-		error.error = "missing paramaters";
-		throw error;
-	}
-		 
-	if (playerReadOnlyData.Data.PlayerCounters)
-	{
-	    var previousCounters = JSON.parse(playerReadOnlyData.Data.PlayerCounters.Value);
-	  	var previousWins = parseInt(previousCounters[0].wins);
-	  	var previousFields = parseInt(previousCounters[1].fields);
-	  	var previousTroops = parseInt(previousCounters[2].troops);
-	  	var previousCards = parseInt(previousCounters[3].cards);
-	 	var previousDuels = parseInt(previousCounters[4].duels);
-	 	  // increment counters
-	 	itemsArray = [];
-	 	itemsArray.push({wins:winsIncrement+previousWins});
-	 	itemsArray.push({fields:fieldsIncrement+previousFields});
-	 	itemsArray.push({troops:troopsIncrement+previousTroops});
-	 	itemsArray.push({cards:cardsIncrement+previousCards});
-	 	itemsArray.push({duels:duelsIncrement+previousDuels});
-	  
-	 	var itemsArray = JSON.stringify(itemsArray); 
-	 	return itemsArray;
-  	}
-  	else
-  	{
-	  	var error = new Error("CountersReadError");
-		error.errorCode = 500;
-		error.error = "couldn't read previous counters";
-		throw error;	
-  	}
-}
 function doubleGoldCheck(currentPlayerId) 
 {
   	var doubleGold = false;

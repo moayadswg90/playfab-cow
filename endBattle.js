@@ -19,14 +19,6 @@ handlers.endBattle = function (args, context)
           }
     );
     
-    try
-    {
-	    var newCounters = updatePlayerCounter(args.isWon, args.fields, args.troops, args.cards, args.isDuel, playerReadOnlyData);
-    }
-    catch (e)
-    {
-	    return {code: e.errorCode, error: e.error};
-    }
     	  	
   	firstGame = checkFirstGame(playerReadOnlyData);
   	firstWin = checkFirstWin(playerReadOnlyData);
@@ -51,7 +43,6 @@ handlers.endBattle = function (args, context)
 		  			PlayFabId: currentPlayerId,
 		  			Data: 
 		  			{
-	                  PlayerCounters : newCounters,
                       glicko : glickoItems,
 	                  firstWin : today,
 	                  firstGame : today 
@@ -69,7 +60,6 @@ handlers.endBattle = function (args, context)
 		  			PlayFabId: currentPlayerId,
 		  			Data: 
 		  			{
-	                  PlayerCounters : newCounters,
                       glicko : glickoItems,
 	                  firstWin : today
 	        		}
@@ -85,7 +75,6 @@ handlers.endBattle = function (args, context)
 		  			PlayFabId: currentPlayerId,
 		  			Data: 
 		  			{
-	                  PlayerCounters : newCounters,
                       glicko : glickoItems
 	        		}
 	      		}
@@ -103,7 +92,6 @@ handlers.endBattle = function (args, context)
 		  			PlayFabId: currentPlayerId,
 		  			Data: 
 		  			{
-	                  PlayerCounters : newCounters,
                       glicko : glickoItems,
 	                  firstGame : today 
 	        		}
@@ -118,7 +106,6 @@ handlers.endBattle = function (args, context)
 		  			PlayFabId: currentPlayerId,
 		  			Data: 
 		  			{
-	                  PlayerCounters : newCounters,
                       glicko : glickoItems
 	        		}
 	      		}
@@ -133,7 +120,6 @@ handlers.endBattle = function (args, context)
 		  			PlayFabId: currentPlayerId,
 		  			Data: 
 		  			{
-	                  PlayerCounters : newCounters,
                       glicko : glickoItems
 	        		}
 	      		}
@@ -159,6 +145,33 @@ handlers.endBattle = function (args, context)
           	{
 	            "StatisticName": "ranks",
 	            "Value": parseInt(glickoResult.ratingResult)
+        	},
+          	{
+	            "StatisticName": "wins",
+	            "Value": args.isWin
+        	},
+          	{
+	            "StatisticName": "cardsPlayed",
+	            "Value": args.cards
+        	},
+          	{
+	            "StatisticName": "TroopsRecruited",
+	            "Value": args.troops
+        	},
+          	{
+	            "StatisticName": "duels",
+	            "Value": args.isDuel
+        	}
+        ]
+    });
+    var PlayerStats = server.GetPlayerStatistics
+    ({
+        PlayFabId: currentPlayerId,
+        Statistics: 
+        [	
+        	{
+	            "StatisticName": "DailyPoints",
+	            "StatisticNames": ["wins", "cardsPlayed", "TroopsRecruited", "duels"]
         	}
         ]
     });
@@ -171,5 +184,5 @@ handlers.endBattle = function (args, context)
         VirtualCurrency: "GL",
         Amount: totalGoldEarned + doubleGold
     }); 	
-  return {pointsEarned: pointsEarned, goldEarnedFromWin: goldEarnedFromWin, goldEarnedFromPlay: goldEarnedFromPlay, goldFromDouble: doubleGold,  stats: newCounters, rating: glickoResult.ratingResult, rd: glickoResult.rdResult, vol: glickoResult.volResult };
+  return {pointsEarned: pointsEarned, goldEarnedFromWin: goldEarnedFromWin, goldEarnedFromPlay: goldEarnedFromPlay, goldFromDouble: doubleGold,  stats: PlayerStats.Statistics, rating: glickoResult.ratingResult, rd: glickoResult.rdResult, vol: glickoResult.volResult };
 }

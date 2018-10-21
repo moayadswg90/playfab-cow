@@ -19,7 +19,7 @@ handlers.setDailyOffer = function (args, context)
 	(
 		{
 			Key: "dailyOffer",
-			Value: dailyOffers
+			Value: JSON.stringify(dailyOffers)
 		}
 	);
 }

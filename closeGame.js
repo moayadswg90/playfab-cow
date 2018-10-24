@@ -26,9 +26,11 @@ handlers.closeGame = function (args)
     var playerOneData;
     //var playerTwoData;
     
-    glickoResult = calculateGlicko(playerReadOnlyData, args.isWon);
+    glickoResult = calculateGlicko(playerOneReadOnlyData, args.isWon);
   	glickoItems = [{Rating: glickoResult.ratingResult}, {RD: glickoResult.rdResult}, {Vol: glickoResult.volResult}];
   	glickoItems = JSON.stringify(glickoItems);
+  	
+  	log.debug(glickoItems);
   	
   	playerOneData.glickoItems =  glickoItems;
   	//playerTwoData.glickoItems =  glickoItems;
@@ -41,6 +43,7 @@ handlers.closeGame = function (args)
   	{
 	  	playerOneData.firstWin = today;
   	}
+  	log.debug(playerOneData);
   	var updatePlayerOneData = server.UpdateUserReadOnlyData
 	(
 		{
@@ -51,6 +54,7 @@ handlers.closeGame = function (args)
 	    	}
 	    }
 	);
+	
   	
 /*
   	if(checkFirstGame(playerTwoReadOnlyData))

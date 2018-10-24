@@ -1,5 +1,6 @@
 handlers.closeGame = function (args)
 {
+/*
 	goldEarnedFromPlay = gameReward;
 	pointsEarned = 0;
   	goldEarnedFromWin = 0;	
@@ -7,7 +8,9 @@ handlers.closeGame = function (args)
   	firstGame = false;
   	firstWin = false;
   	doubleGold = 0;
+*/
   	
+/*
   	var playerOne = args.playerOne;
 	var playerOneReadOnlyData = server.GetUserReadOnlyData
     (
@@ -15,6 +18,7 @@ handlers.closeGame = function (args)
               PlayFabId: playerOne.id
           }
     );
+*/
 /*
     var playerTwoReadOnlyData = server.GetUserReadOnlyData
     (
@@ -29,6 +33,7 @@ handlers.closeGame = function (args)
     playerOneData["testTwo"] = "ok";
     log.debug(playerOneData);
     
+/*
     glickoResult = calculateGlicko(playerOneReadOnlyData, args.isWon);
   	glickoItems = [{Rating: glickoResult.ratingResult}, {RD: glickoResult.rdResult}, {Vol: glickoResult.volResult}];
   	glickoItems = JSON.stringify(glickoItems);
@@ -57,6 +62,7 @@ handlers.closeGame = function (args)
 	    	}
 	    }
 	);
+*/
 	
   	
 /*

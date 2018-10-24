@@ -12,11 +12,11 @@ handlers.RoomClosed = function (args)
     server.WriteTitleEvent
 	    (
 		    {
-		        EventName : "room_member_when_closing without parsing inside",
+		        EventName : "room_member_when_closing_without_parsing_inside",
 		        Body: {member: roomMembers}
 		    }
 	    ); 
-/*
+
 	    server.WriteTitleEvent
 	    (
 		    {
@@ -24,7 +24,7 @@ handlers.RoomClosed = function (args)
 		        Body: {member: roomMembers.Members}
 		    }
 	    ); 
-*/
+
 /*
     roomMembers = roomMembers.Members;
     for (i=0; i<roomMembers.length; i++)

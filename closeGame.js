@@ -23,15 +23,15 @@ handlers.closeGame = function (args, context)
 	//update stats
 	
 	//grant gold
-/*
+
 	var addGoldResult = server.AddUserVirtualCurrency
     (
     	{
 	        PlayFabId: playerOne["id"],
 	        VirtualCurrency: "GL",
-	        Amount: playerOne["gold"]["totalGold"];
+	        Amount: playerOne["gold"]["totalGold"]
     	}
     ); 
-*/
-	return playerOne["gold"]["totalGold"];
+
+	return playerOne;
 }

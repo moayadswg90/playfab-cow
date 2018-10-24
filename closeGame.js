@@ -12,6 +12,7 @@ handlers.closeGame = function (args, context)
     playerOne["id"] =  currentPlayerId;
     playerOne["firstGame"] = checkFirstGame(playerOneReadOnlyData)
     playerOne["firstWin"] = checkFirstWin(playerOneReadOnlyData);
+    playerOne["doubleGold"] = doubleGoldCheck(playerOne["id"])
     //playerOne.push({firstGame: checkFirstGame(playerOneReadOnlyData)});
 	//playerOne.push({firstWin: checkFirstWin(playerOneReadOnlyData)});
 	//playerOne.push({doubleGold: doubleGoldCheck(playerOne.id)});

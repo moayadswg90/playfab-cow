@@ -4,13 +4,13 @@ handlers.createGroup = function (args)
     var createGroup = server.CreateSharedGroup
     (
           {
-              SharedGroupId: "rrrrrrrrrr"
+              SharedGroupId: "tttt"
           }
     );
     var addUser = server.AddSharedGroupMembers
     (
           {
-              SharedGroupId: "rrrrrrrrrr",
+              SharedGroupId: "tttt",
               PlayFabIds: [currentPlayerId]
           }
     );

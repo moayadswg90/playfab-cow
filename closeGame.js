@@ -31,7 +31,8 @@ handlers.closeGame = function (args)
     //var playerTwoData;
     playerOneData["testOne"] = 0;
     playerOneData["testTwo"] = "ok";
-    log.debug(playerOneData);
+    log.debug(JSON.parse(playerOneData));
+    log.debug(JSON.stringify(playerOneData));
     
 /*
     glickoResult = calculateGlicko(playerOneReadOnlyData, args.isWon);

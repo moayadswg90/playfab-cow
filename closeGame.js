@@ -35,7 +35,7 @@ handlers.closeGame = function (args, context)
 	updatePlayer(playerOne["id"], playerOne["firstGame"], playerOne["firstWin"], playerOne["glicko"]);
 	
 	//update stats
-	playerOne["stats"] = updateStats(playerOne["id"], args.isWon, parseInt(playerOne["glicko"]["Rating"]))
+	playerOne["stats"] = updateStats(playerOne["id"], args.isWon, parseInt(playerOne["glicko"].Rating))
 	
 	//grant gold
 	var addGoldResult = server.AddUserVirtualCurrency

@@ -27,7 +27,7 @@ handlers.closeGame = function (args)
           }
     );
 */
-    var playerOneData = [];
+    var playerOneData = {};
     //var playerTwoData;
     playerOneData["testOne"] = 0;
     playerOneData["testTwo"] = "ok";

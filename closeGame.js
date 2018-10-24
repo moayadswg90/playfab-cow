@@ -40,7 +40,14 @@ handlers.closeGame = function (args)
   	{
 	  	playerOneData["firstWin"] = new Date();
   	}
-  	log.debug(playerOneData);
+  	
+  	var updatePlayerOneData = server.UpdateUserReadOnlyData
+		  	(
+		  		{
+		  			PlayFabId: playerOne.id,
+		  			Data: playerOneData
+	      		}
+		  	);
 
   	
   	

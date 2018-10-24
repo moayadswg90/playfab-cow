@@ -21,9 +21,9 @@ handlers.closeGame = function (args, context)
 	updatePlayer(playerOne["id"], playerOne["firstGame"], playerOne["firstWin"], glickoItems);
 	
 	//update stats
+	playerOne["stats"] = updateStats(playerOne["id"], args.isWon, parseInt(glickoResult.ratingResult))
 	
 	//grant gold
-
 	var addGoldResult = server.AddUserVirtualCurrency
     (
     	{

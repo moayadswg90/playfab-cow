@@ -13,7 +13,6 @@ function calculateEarnedGold(isWon, firstWin, firstGame, doubleGold)
 	if (isWon == 1)
 	{
 		gold["winGold"] = winReward;
-		gold["points"] = pointsReward;
 		
 		if (firstWin)
 		{
@@ -47,4 +46,52 @@ function updatePlayer(id, firstWin, firstGame, glicko)
 		  Data: data
 	    }
 	);
+}
+function updateStats(id, isWon, rank)
+{
+	pointsEarned = 0;
+	if(isWon == 1)
+	{
+		pointsEarned = pointsReward
+	}
+	var updateStatistics = server.UpdatePlayerStatistics
+    ({
+        PlayFabId: id,
+        Statistics: 
+        [	
+        	{
+	            "StatisticName": "DailyPoints",
+	            "Value": pointsEarned
+        	},
+        	{
+	            "StatisticName": "WeeklyPoints",
+	            "Value": pointsEarned
+        	},
+        	{
+	            "StatisticName": "MonthlyPoints",
+	            "Value": pointsEarned
+        	},
+          	{
+	            "StatisticName": "ranks",
+	            "Value": rank
+        	},
+        	{
+	            "StatisticName": "wins",
+	            "Value": isWon
+        	},
+        ]
+    });
+    
+    var PlayerStats = server.GetPlayerStatistics
+    ({
+        PlayFabId: currentPlayerId,
+        Statistics: 
+        [	
+        	{
+	            "StatisticName": "DailyPoints",
+	            "StatisticNames": ["wins","ranks"]
+        	}
+        ]
+    });
+    return PlayerStats.Statistics;
 }

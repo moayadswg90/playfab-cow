@@ -1,29 +1,25 @@
-handlers.createGroup = function (args)
-{
-
-    var createGroup = server.CreateSharedGroup
-    (
-          {
-              SharedGroupId: "tttt"
-          }
-    );
-    var addUser = server.AddSharedGroupMembers
-    (
-          {
-              SharedGroupId: "tttt",
-              PlayFabIds: [currentPlayerId]
-          }
-    );
-    return { ResultCode : 0, Message: 'Success' };
-}
 handlers.RoomCreated = function (args)
 {
-
+	var photonGameID = args.GameId;
+	var playerID = args.UserId;
     server.WriteTitleEvent
     (
 	    {
 	        EventName : "room_created"
 	    }
+    );
+    var createGroup = server.CreateSharedGroup
+    (
+          {
+              SharedGroupId: photonGameID
+          }
+    );
+    var addRoomCreatorToGroup = server.AddSharedGroupMembers
+    (
+          {
+              SharedGroupId: photonGameID,
+              PlayFabIds: [playerID]
+          }
     );
     return { ResultCode : 0, Message: 'Success' };
 };
@@ -37,16 +33,29 @@ handlers.RoomJoined = function (args)
     );
     return { ResultCode : 0, Message: 'Success' };
 };
-handlers.RoomLeft = function (args) {
+handlers.RoomLeft = function (args) 
+{
     server.WriteTitleEvent({
         EventName : "room_left"
     });
     return { ResultCode : 0, Message: 'Success' };
 };
-handlers.RoomClosed = function (args) {
-    server.WriteTitleEvent({
-        EventName : "room_closed"
-    });
+handlers.RoomClosed = function (args) 
+{
+    var photonGameID = args.GameId;
+    server.DeleteSharedGroup
+    (
+	    {
+	        SharedGroupId: photonGameID
+	    }
+    );
+    
+    server.WriteTitleEvent
+    (
+	    {
+	        EventName : "room_closed"
+	    }
+    );
     return { ResultCode : 0, Message: 'Success' };
 };
 handlers.RoomPropertyUpdated = function (args) {

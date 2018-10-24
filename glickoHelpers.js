@@ -38,7 +38,7 @@ function calculateGlicko(playerOneReadOnlyData, playerTwoReadOnlyData, isWon)
 	var playerOneResult = {ratingResult: p1rating, rdResult: p1rd, volResult: p1vol};
 	var playerTwoResult = {ratingResult: p2rating, rdResult: p2rd, volResult: p2vol};
 	
-  	return result;
+  	return result[playerOneResult,playerTwoResult];
 }
 
 function getGlickoData(playerReadOnlyData)

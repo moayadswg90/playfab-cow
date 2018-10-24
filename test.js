@@ -83,7 +83,7 @@ function updateStats(id, isWon, rank)
     });
     var PlayerStats = server.GetPlayerStatistics
     ({
-        PlayFabId: currentPlayerId,
+        PlayFabId: id,
 	    StatisticNames: ["wins","ranks"]     	        
     });
     return PlayerStats.Statistics;

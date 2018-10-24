@@ -1,55 +1,14 @@
-handlers.closeGame = function (args)
+handlers.closeGame = function (args, context) 
 {
-/*
-	goldEarnedFromPlay = gameReward;
-	pointsEarned = 0;
-  	goldEarnedFromWin = 0;	
-  	today = new Date();
-  	firstGame = false;
-  	firstWin = false;
-  	doubleGold = 0;
-*/
-  	
-
-  	var playerOne = args.playerOne;
 	var playerOneReadOnlyData = server.GetUserReadOnlyData
     (
           {
-              PlayFabId: playerOne.id
+              PlayFabId: currentPlayerId
           }
     );
-
-
-    var playerOneData = {};
+    var playerOneGold = calculateGoldEarned(isWon, checkFirstGame(playerOneReadOnlyData), checkFirstWin(playerOneReadOnlyData), doubleGoldCheck(currentPlayerId));
     
-    
-
-    glickoResult = calculateGlicko(playerOneReadOnlyData, args.isWon);
-  	glickoItems = [{Rating: glickoResult.ratingResult}, {RD: glickoResult.rdResult}, {Vol: glickoResult.volResult}];
-  	glickoItems = JSON.stringify(glickoItems);
   	
   	
-  	playerOneData["glickoItems"] =  glickoItems;
-  	//playerTwoData.glickoItems =  glickoItems;
-  	
-  	if(checkFirstGame(playerOneReadOnlyData))
-  	{
-	  	playerOneData["firstGame"] = new Date();
-  	}
-  	if(checkFirstWin(playerOneReadOnlyData))
-  	{
-	  	playerOneData["firstWin"] = new Date();
-  	}
-  	
-  	var updatePlayerOneData = server.UpdateUserReadOnlyData
-		  	(
-		  		{
-		  			PlayFabId: playerOne.id,
-		  			Data: playerOneData
-	      		}
-		  	);
-
-  	
-  	
-  
- }
+  	return playerOneGold;
+}

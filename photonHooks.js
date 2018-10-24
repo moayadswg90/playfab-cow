@@ -1,3 +1,14 @@
+handlers.createGroup = function (args)
+{
+
+    var createGroup = server.CreateSharedGroup
+    (
+          {
+              SharedGroupId: "room_1"
+          }
+    );
+    return { ResultCode : 0, Message: 'Success' };
+}
 handlers.RoomCreated = function (args)
 {
 	log.debug(args);

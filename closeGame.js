@@ -37,5 +37,5 @@ handlers.closeGame = function (args, context)
   	
   	return playerOneValues;
 */
-	return playerOne;
+	return playerOne.firstGame;
 }

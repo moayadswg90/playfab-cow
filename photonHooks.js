@@ -1,5 +1,6 @@
 handlers.RoomCreated = function (args)
 {
+	log.debug(args);
 	var photonGameID = args.GameId;
 	var playerID = args.UserId;
 	

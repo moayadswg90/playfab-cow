@@ -7,13 +7,19 @@ handlers.closeGame = function (args, context)
               PlayFabId: currentPlayerId
           }
     );
+    var playerTwoReadOnlyData = server.GetUserReadOnlyData
+    (
+          {
+              PlayFabId: args.playerTwoId
+          }
+    );
     playerOne["id"] =  currentPlayerId;
     playerOne["firstGame"] = checkFirstGame(playerOneReadOnlyData)
     playerOne["firstWin"] = checkFirstWin(playerOneReadOnlyData);
     playerOne["gold"] = calculateEarnedGold(args.isWon, playerOne["firstWin"], playerOne["firstGame"], doubleGoldCheck(playerOne["id"]));
     
     //glicko
-    return glickoResult = calculateGlicko(playerOneReadOnlyData, args.isWon);
+    return glickoResult = calculateGlicko(playerOneReadOnlyData, playerTwoReadOnlyData, args.isWon);
 /*
   	playerOne["glicko"] = [{Rating: glickoResult.ratingResult}, {RD: glickoResult.rdResult}, {Vol: glickoResult.volResult}];
   	glickoItems = JSON.stringify(playerOne["glicko"]);

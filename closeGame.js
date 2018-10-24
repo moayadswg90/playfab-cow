@@ -41,11 +41,11 @@ handlers.closeGame = function (args)
   	
   	if(checkFirstGame(playerOneReadOnlyData))
   	{
-	  	playerOneData["firstGame"] = today;
+	  	playerOneData["firstGame"] = new Date();
   	}
   	if(checkFirstWin(playerOneReadOnlyData))
   	{
-	  	playerOneData["firstWin"] = today;
+	  	playerOneData["firstWin"] = new Date();
   	}
   	log.debug(playerOneData);
 /*

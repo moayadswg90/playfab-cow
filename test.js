@@ -8,17 +8,17 @@ function calculateEarnedGold(isWon, firstWin, firstGame, doubleGold)
 	
 	if (firstGame)
 	{
-		values["playGold"] += firstGameReward;
+		gold["playGold"] += firstGameReward;
 	}
 	if (isWon == 1)
 	{
-		values["winGold"] = winReward;
-		values["points"] = pointsReward;
+		gold["winGold"] = winReward;
+		gold["points"] = pointsReward;
 		
 		if (firstWin)
 		{
 			
-			values["winGold"] += firstWinReward;
+			gold["winGold"] += firstWinReward;
 		}	
 	}
 	if (doubleGold)

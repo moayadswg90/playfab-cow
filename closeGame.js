@@ -23,16 +23,9 @@ handlers.closeGame = function (args, context)
      glickoResult = calculateGlicko(playerOneReadOnlyData, playerTwoReadOnlyData, args.isWon);
      playerOne["glicko"] = JSON.stringify(glickoResult[0]);
      playerTwo["glicko"] = JSON.stringify(glickoResult[1]);
-     
 
-
-/*
-  	playerOne["glicko"] = [{Rating: glickoResult.ratingResult}, {RD: glickoResult.rdResult}, {Vol: glickoResult.volResult}];
-  	glickoItems = JSON.stringify(playerOne["glicko"]);
-*/
     
     //update player data
-/*
 	updatePlayer(playerOne["id"], playerOne["firstGame"], playerOne["firstWin"], playerOne["glicko"]);
 	
 	//update stats
@@ -47,7 +40,7 @@ handlers.closeGame = function (args, context)
 	        Amount: playerOne["gold"]["totalGold"]
     	}
     ); 
-*/
+
 
 
 	return playerOne;

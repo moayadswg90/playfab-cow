@@ -6,7 +6,8 @@ handlers.RoomClosed = function (args)
 	var roomMembers = server.GetSharedGroupData
     (
 	    {
-	        SharedGroupId: photonGameID
+	        SharedGroupId: photonGameID,
+	        GetMembers: true
 	    }
     );
     server.WriteTitleEvent

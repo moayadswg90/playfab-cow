@@ -88,7 +88,6 @@ function updateStats(id, isWon, rank)
         Statistics: 
         [	
         	{
-	            "StatisticName": "DailyPoints",
 	            "StatisticNames": ["wins","ranks"]
         	}
         ]

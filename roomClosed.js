@@ -16,6 +16,7 @@ handlers.RoomClosed = function (args)
 		        Body: {member: roomMembers}
 		    }
 	    ); 
+/*
 	    server.WriteTitleEvent
 	    (
 		    {
@@ -23,6 +24,7 @@ handlers.RoomClosed = function (args)
 		        Body: {member: roomMembers.Members}
 		    }
 	    ); 
+*/
 /*
     roomMembers = roomMembers.Members;
     for (i=0; i<roomMembers.length; i++)

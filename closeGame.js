@@ -8,7 +8,7 @@ handlers.closeGame = function (args)
   	firstWin = false;
   	doubleGold = 0;
   	
-  	var playerOne = args.playerOne.id;
+  	var playerOne = args.playerOne;
 	var playerOneReadOnlyData = server.GetUserReadOnlyData
     (
           {

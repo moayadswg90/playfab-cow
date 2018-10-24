@@ -23,6 +23,7 @@ handlers.closeGame = function (args, context)
 	//update stats
 	
 	//grant gold
+/*
 	var addGoldResult = server.AddUserVirtualCurrency
     (
     	{
@@ -31,5 +32,6 @@ handlers.closeGame = function (args, context)
 	        Amount: playerOne["gold"]["totalGold"];
     	}
     ); 
-	return playerOne;
+*/
+	return playerOne["gold"]["totalGold"];
 }

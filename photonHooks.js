@@ -11,10 +11,10 @@ handlers.RoomCreated = function (args)
 	        EventName : "room_created"
 	    }
     );
-    server.CreateSharedGroup
+    var createGroup = server.CreateSharedGroup
     (
           {
-              SharedGroupId: photonGameID
+              SharedGroupId: "room_1"
           }
     );
     return { ResultCode : 0, Message: 'Success' };

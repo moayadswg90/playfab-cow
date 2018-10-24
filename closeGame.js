@@ -13,9 +13,10 @@ handlers.closeGame = function (args, context)
     playerOne["gold"] = calculateEarnedGold(args.isWon, playerOne["firstWin"], playerOne["firstGame"], doubleGoldCheck(playerOne["id"]));
     
     //glicko
-    glickoResult = calculateGlicko(playerOneReadOnlyData, args.isWon);
-  	glickoItems = [{Rating: glickoResult.ratingResult}, {RD: glickoResult.rdResult}, {Vol: glickoResult.volResult}];
-  	glickoItems = JSON.stringify(glickoItems);
+    return glickoResult = calculateGlicko(playerOneReadOnlyData, args.isWon);
+/*
+  	playerOne["glicko"] = [{Rating: glickoResult.ratingResult}, {RD: glickoResult.rdResult}, {Vol: glickoResult.volResult}];
+  	glickoItems = JSON.stringify(playerOne["glicko"]);
     
     //update player data
 	updatePlayer(playerOne["id"], playerOne["firstGame"], playerOne["firstWin"], glickoItems);
@@ -32,6 +33,7 @@ handlers.closeGame = function (args, context)
 	        Amount: playerOne["gold"]["totalGold"]
     	}
     ); 
+*/
 
 	return playerOne;
 }

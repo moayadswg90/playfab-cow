@@ -6,9 +6,9 @@ handlers.closeGame = function (args, context)
               PlayFabId: currentPlayerId
           }
     );
-    var playerOneGold = calculateGoldEarned(args.isWon, checkFirstGame(playerOneReadOnlyData), checkFirstWin(playerOneReadOnlyData), doubleGoldCheck(currentPlayerId));
-    
+    var playerOneValues = calculateEarnedValues(args.isWon, checkFirstGame(playerOneReadOnlyData), checkFirstWin(playerOneReadOnlyData), doubleGoldCheck(currentPlayerId));
+
   	
   	
-  	return JSON.stringify(playerOneGold);
+  	return playerOneValues;
 }

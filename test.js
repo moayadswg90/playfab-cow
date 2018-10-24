@@ -1,29 +1,31 @@
-function calculateGoldEarned(isWon, firstWin, firstGame, doubleGold)
+function calculateEarnedValues(isWon, firstWin, firstGame, doubleGold)
 {
-	var gold = [];
-	gold["game"] = gameReward;
-	gold["win"] = 0;
-	gold["double"] = 0;
-	gold["total"] = 0;
+	var values = {};
+	values["playGold"] = gameReward;
+	values["winGold"] = 0;
+	values["doubleGold"] = 0;
+	values["totalGold"] = 0;
+	values["points"] = 0;
 	
 	if (firstGame)
 	{
-		gold["game"] += firstGameReward;
+		values["game"] += firstGameReward;
 	}
 	if (isWon == 1)
 	{
-		gold["win"] = 	winReward;
+		values["win"] = winReward;
+		values["points"] = pointsReward;
 		
 		if (firstWin)
 		{
 			
-			gold["win"] += firstWinReward;
+			values["win"] += firstWinReward;
 		}	
 	}
 	if (doubleGold)
 	{
-		gold["double"] = gold["game"] + gold["win"];
+		values["double"] = gold["game"] + gold["win"];
 	}
-	gold["total"] = gold["game"] + gold["win"] + gold["double"]
-	return gold;
+	values["total"] = values["game"] + values["win"] + values["double"]
+	return values;
 }

@@ -2,6 +2,13 @@ handlers.RoomCreated = function (args)
 {
 	var photonGameID = args.GameId;
 	var playerID = args.UserId;
+	server.WriteTitleEvent
+    (
+	    {
+	        EventName : "photonGameID",
+	        Body: {photonGameID: photonGameID}
+	    }
+    );
     server.WriteTitleEvent
     (
 	    {
@@ -25,6 +32,14 @@ handlers.RoomCreated = function (args)
 };
 handlers.RoomJoined = function (args) 
 {
+	var playerID = args.UserId;
+	var addRoomCreatorToGroup = server.AddSharedGroupMembers
+    (
+          {
+              SharedGroupId: photonGameID,
+              PlayFabIds: [playerID]
+          }
+    );
     server.WriteTitleEvent
     (
 	    {
@@ -35,9 +50,12 @@ handlers.RoomJoined = function (args)
 };
 handlers.RoomLeft = function (args) 
 {
-    server.WriteTitleEvent({
-        EventName : "room_left"
-    });
+    server.WriteTitleEvent
+    (
+	    {
+	        EventName : "room_left"
+	    }
+    );
     return { ResultCode : 0, Message: 'Success' };
 };
 handlers.RoomClosed = function (args) 

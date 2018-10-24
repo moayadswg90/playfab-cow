@@ -12,7 +12,6 @@ handlers.closeGame = function (args, context)
     );
     playerOne.push({firstGame: checkFirstGame(playerOneReadOnlyData)});
 	playerOne.push({firstWin: checkFirstWin(playerOneReadOnlyData)});
-	playerOne = JSON.parse(playerOne);
 	//playerOne.push({doubleGold: doubleGoldCheck(playerOne.id)});
 	//playerOne.push({gold: calculateEarnedGold(args.isWon, playerOne["firstWin"], playerOne["firstGame"], playerOne["doubleGold"])});
 /*
@@ -38,5 +37,5 @@ handlers.closeGame = function (args, context)
   	
   	return playerOneValues;
 */
-	return playerOne.firstGame;
+	return playerOne["firstGame"];
 }

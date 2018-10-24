@@ -1,6 +1,7 @@
 handlers.closeGame = function (args, context) 
 {
 	var playerOne = {};
+	var playerTwo = {};
 	var playerOneReadOnlyData = server.GetUserReadOnlyData
     (
           {
@@ -20,13 +21,18 @@ handlers.closeGame = function (args, context)
     
     //glicko
      glickoResult = calculateGlicko(playerOneReadOnlyData, playerTwoReadOnlyData, args.isWon);
-     return JSON.stringify(glickoResult[0]);
+     playerOne["glicko"] = JSON.stringify(glickoResult[0]);
+     playerTwo["glicko"] = JSON.stringify(glickoResult[1]);
+     
+
+
 /*
   	playerOne["glicko"] = [{Rating: glickoResult.ratingResult}, {RD: glickoResult.rdResult}, {Vol: glickoResult.volResult}];
   	glickoItems = JSON.stringify(playerOne["glicko"]);
+*/
     
     //update player data
-	updatePlayer(playerOne["id"], playerOne["firstGame"], playerOne["firstWin"], glickoItems);
+	updatePlayer(playerOne["id"], playerOne["firstGame"], playerOne["firstWin"], playerOne["glicko"]);
 	
 	//update stats
 	playerOne["stats"] = updateStats(playerOne["id"], args.isWon, parseInt(glickoResult.ratingResult))
@@ -40,7 +46,7 @@ handlers.closeGame = function (args, context)
 	        Amount: playerOne["gold"]["totalGold"]
     	}
     ); 
-*/
+
 
 	return playerOne;
 }

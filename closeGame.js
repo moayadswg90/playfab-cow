@@ -12,7 +12,8 @@ handlers.closeGame = function (args, context)
     playerOne["id"] =  currentPlayerId;
     playerOne["firstGame"] = checkFirstGame(playerOneReadOnlyData)
     playerOne["firstWin"] = checkFirstWin(playerOneReadOnlyData);
-    playerOne["doubleGold"] = doubleGoldCheck(playerOne["id"])
+    playerOne["doubleGold"] = doubleGoldCheck(playerOne["id"]);
+    playerOne["gold"] = calculateEarnedGold(args.isWon, playerOne["firstWin"], playerOne["firstGame"], playerOne["doubleGold"]);
     //playerOne.push({firstGame: checkFirstGame(playerOneReadOnlyData)});
 	//playerOne.push({firstWin: checkFirstWin(playerOneReadOnlyData)});
 	//playerOne.push({doubleGold: doubleGoldCheck(playerOne.id)});

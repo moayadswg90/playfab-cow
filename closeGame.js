@@ -20,28 +20,16 @@ handlers.closeGame = function (args, context)
     //update player data
 	updatePlayer(playerOne["id"], playerOne["firstGame"], playerOne["firstWin"], glickoItems);
 	
-/*
+	//update stats
 	
-    //get glickoItems to update rank
-    
-	//update player data
-	var updatePlayerData = server.UpdateUserReadOnlyData
-	(
-		{
-		  PlayFabId: currentPlayerId,
-		  Data: 
-		  {
-            glicko : glickoItems,
-	        firstWin : today,
-	        firstGame : today 
-	      }
-	    }
-	);
-	//update player stats
 	//grant gold
-  	
-  	
-  	return playerOneValues;
-*/
+	var addGoldResult = server.AddUserVirtualCurrency
+    (
+    	{
+	        PlayFabId: playerOne["id"],
+	        VirtualCurrency: "GL",
+	        Amount: playerOne["gold"]["totalGold"];
+    	}
+    ); 
 	return playerOne;
 }

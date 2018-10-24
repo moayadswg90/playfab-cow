@@ -25,7 +25,7 @@ handlers.closeGame = function (args, context)
      playerTwo["glicko"] = glickoResult[1];
 
     //update player data
-	updatePlayer(playerOne["id"], playerOne["firstGame"], playerOne["firstWin"], playerOne["glicko"]);
+	updatePlayer(playerOne["id"], playerOne["firstGame"], playerOne["firstWin"], JSON.stringfy(playerOne["glicko"]));
 	
 	//update stats
 	playerOne["stats"] = updateStats(playerOne["id"], args.isWon, parseInt(playerOne["glicko"]["Rating"]))

@@ -32,6 +32,7 @@ handlers.closeGame = function (args, context)
 */
     
     //update player data
+/*
 	updatePlayer(playerOne["id"], playerOne["firstGame"], playerOne["firstWin"], playerOne["glicko"]);
 	
 	//update stats
@@ -46,6 +47,7 @@ handlers.closeGame = function (args, context)
 	        Amount: playerOne["gold"]["totalGold"]
     	}
     ); 
+*/
 
 
 	return playerOne;

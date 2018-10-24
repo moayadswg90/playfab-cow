@@ -25,6 +25,9 @@ handlers.closeGame = function (args)
 */
     var playerOneData;
     //var playerTwoData;
+    playerOneData.testOne = 0;
+    playerOneData.testTwo = "ok";
+    log.debug(playerOneData);
     
     glickoResult = calculateGlicko(playerOneReadOnlyData, args.isWon);
   	glickoItems = [{Rating: glickoResult.ratingResult}, {RD: glickoResult.rdResult}, {Vol: glickoResult.volResult}];

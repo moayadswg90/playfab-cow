@@ -81,16 +81,10 @@ function updateStats(id, isWon, rank)
         	},
         ]
     });
-    
     var PlayerStats = server.GetPlayerStatistics
     ({
         PlayFabId: currentPlayerId,
-        Statistics: 
-        [	
-        	{
-	            "StatisticNames": ["wins","ranks"]
-        	}
-        ]
+	    StatisticNames: ["wins","ranks"]     	        
     });
     return PlayerStats.Statistics;
 }

@@ -1,7 +1,6 @@
 handlers.closeGame = function (args, context) 
 {
-	var playerOne = [];
-	playerOne.push({id: currentPlayerId});
+	var playerOne = {};
 	
 	
 	var playerOneReadOnlyData = server.GetUserReadOnlyData

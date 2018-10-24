@@ -1,6 +1,7 @@
 function checkFirstGame(playerReadOnlyData)
 {
   var firstGameFlag = false;
+  var today = new Date();
   if (playerReadOnlyData.Data.firstGame)
     {
   		var firstGame = playerReadOnlyData.Data.firstGame.Value;
@@ -21,6 +22,7 @@ function checkFirstGame(playerReadOnlyData)
 function checkFirstWin(playerReadOnlyData)
 {
   var firstWinFlag = false;
+  var today = new Date();
   if (playerReadOnlyData.Data.firstWin)
     {
       	

@@ -19,14 +19,7 @@ handlers.closeGame = function (args)
           }
     );
 
-/*
-    var playerTwoReadOnlyData = server.GetUserReadOnlyData
-    (
-          {
-              PlayFabId: playerTwo.id
-          }
-    );
-*/
+
     var playerOneData = {};
     
     
@@ -48,41 +41,7 @@ handlers.closeGame = function (args)
 	  	playerOneData["firstWin"] = new Date();
   	}
   	log.debug(playerOneData);
-/*
-  	var updatePlayerOneData = server.UpdateUserReadOnlyData
-	(
-		{
-			PlayFabId: playerOne.id,
-			Data: 
-			{
-            	playerOneData
-	    	}
-	    }
-	);
-*/
 
-	
-  	
-/*
-  	if(checkFirstGame(playerTwoReadOnlyData))
-  	{
-	  	playerTwoData.firstGame = today;
-  	}
-  	if(checkFirstWin(playerTwoReadOnlyData))
-  	{
-	  	playerTwoData.firstWin = today;
-  	}
-	var updatePlayerTwoData = server.UpdateUserReadOnlyData
-	(
-		{
-			PlayFabId: playerOne.id,
-			Data: 
-			{
-            	playerTwoData
-	    	}
-	    }
-	);
-*/
   	
   	
   

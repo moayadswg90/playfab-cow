@@ -21,7 +21,7 @@ handlers.closeGame = function (args, context)
     
     //glicko
      glickoResult = calculateGlicko(playerOneReadOnlyData, playerTwoReadOnlyData, args.isWon);
-     playerOne["glicko"] = JSON.stringify(glickoResult[0]);
+     playerOne["glicko"] = glickoResult[0];
      playerTwo["glicko"] = JSON.stringify(glickoResult[1]);
 
     return playerOne;

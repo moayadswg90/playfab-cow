@@ -11,33 +11,16 @@ handlers.RoomCreated = function (args)
 	        EventName : "room_created"
 	    }
     );
-    var createGroup = server.CreateSharedGroup
+    server.CreateSharedGroup
     (
           {
               SharedGroupId: photonGameID
-          }
-    );
-    var addRoomCreatorToGroup = server.AddSharedGroupMembers
-    (
-          {
-              SharedGroupId: photonGameID,
-              PlayFabIds: [playerID]
           }
     );
     return { ResultCode : 0, Message: 'Success' };
 };
 handlers.RoomJoined = function (args) 
 {
-	var photonGameID = args.GameId;
-	var playerID = args.UserId;
-	
-	var addPlayerToGroup = server.AddSharedGroupMembers
-    (
-          {
-              SharedGroupId: photonGameID,
-              PlayFabIds: [playerID]
-          }
-    );
     server.WriteTitleEvent
     (
 	    {

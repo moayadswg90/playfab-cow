@@ -1,8 +1,6 @@
 handlers.closeGame = function (args, context) 
 {
 	var playerOne = {};
-	
-	
 	var playerOneReadOnlyData = server.GetUserReadOnlyData
     (
           {
@@ -12,12 +10,16 @@ handlers.closeGame = function (args, context)
     playerOne["id"] =  currentPlayerId;
     playerOne["firstGame"] = checkFirstGame(playerOneReadOnlyData)
     playerOne["firstWin"] = checkFirstWin(playerOneReadOnlyData);
-    playerOne["doubleGold"] = doubleGoldCheck(playerOne["id"]);
-    playerOne["gold"] = calculateEarnedGold(args.isWon, playerOne["firstWin"], playerOne["firstGame"], playerOne["doubleGold"]);
-    //playerOne.push({firstGame: checkFirstGame(playerOneReadOnlyData)});
-	//playerOne.push({firstWin: checkFirstWin(playerOneReadOnlyData)});
-	//playerOne.push({doubleGold: doubleGoldCheck(playerOne.id)});
-	//playerOne.push({gold: calculateEarnedGold(args.isWon, playerOne["firstWin"], playerOne["firstGame"], playerOne["doubleGold"])});
+    playerOne["gold"] = calculateEarnedGold(args.isWon, playerOne["firstWin"], playerOne["firstGame"], doubleGoldCheck(playerOne["id"]));
+    
+    //glicko
+    glickoResult = calculateGlicko(playerOneReadOnlyData, args.isWon);
+  	glickoItems = [{Rating: glickoResult.ratingResult}, {RD: glickoResult.rdResult}, {Vol: glickoResult.volResult}];
+  	glickoItems = JSON.stringify(glickoItems);
+    
+    //update player data
+	updatePlayer(playerOne["id"], playerOne["firstGame"], playerOne["firstWin"], glickoItems);
+	
 /*
 	
     //get glickoItems to update rank

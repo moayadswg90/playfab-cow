@@ -1,6 +1,5 @@
 function calculateEarnedGold(isWon, firstWin, firstGame, doubleGold)
 {
-	log.debug(firstWin);
 	var gold = {};
 	gold["playGold"] = gameReward;
 	gold["winGold"] = 0;
@@ -28,4 +27,24 @@ function calculateEarnedGold(isWon, firstWin, firstGame, doubleGold)
 	}
 	gold["totalGold"] = gold["playGold"] + gold["winGold"] + gold["doubleGold"]
 	return gold;
+}
+function updatePlayer(id, firstWin, firstGame, glicko)
+{
+	var data = {};
+	data["glicko"] = glicko;
+	if (firstWin)
+	{
+		data["firstWin"] = new Date();
+	}
+	if (firstGame)
+	{
+		data["firstGame"] = new Date();
+	}
+	var updatePlayerData = server.UpdateUserReadOnlyData
+	(
+		{
+		  PlayFabId: id,
+		  Data: data
+	    }
+	);
 }

@@ -13,7 +13,7 @@ handlers.closeGame = function (args, context)
     playerOne.push({firstGame: checkFirstGame(playerOneReadOnlyData)});
 	playerOne.push({firstWin: checkFirstWin(playerOneReadOnlyData)});
 	
-	playerOne.push({gold: calculateEarnedGold(args.isWon, playerOne["firstWin"], playerOne["firstGame"], doubleGoldCheck(currentPlayerId))});
+	playerOne.push({gold: calculateEarnedGold(args.isWon, playerOne["firstWin"].value, playerOne["firstGame"].value, doubleGoldCheck(currentPlayerId))});
 /*
 	
     //get glickoItems to update rank

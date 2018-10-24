@@ -1,6 +1,6 @@
 function calculateGoldEarned(isWon, firstWin, firstGame, doubleGold)
 {
-	var gold = {};
+	var gold = [];
 	gold["game"] = gameReward;
 	gold["win"] = 0;
 	gold["double"] = 0;

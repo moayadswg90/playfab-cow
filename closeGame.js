@@ -23,10 +23,10 @@ handlers.closeGame = function (args)
           }
     );
 */
-    var playerOneData;
+    var playerOneData = [];
     //var playerTwoData;
-    playerOneData.testOne = 0;
-    playerOneData.testTwo = "ok";
+    playerOneData["testOne"] = 0;
+    playerOneData["testTwo"] = "ok";
     log.debug(playerOneData);
     
     glickoResult = calculateGlicko(playerOneReadOnlyData, args.isWon);
@@ -35,7 +35,7 @@ handlers.closeGame = function (args)
   	
   	log.debug(glickoItems);
   	
-  	playerOneData.glickoItems =  glickoItems;
+  	playerOneData["glickoItems"] =  glickoItems;
   	//playerTwoData.glickoItems =  glickoItems;
   	
   	if(checkFirstGame(playerOneReadOnlyData))

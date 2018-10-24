@@ -15,12 +15,14 @@ handlers.closeGame = function (args)
               PlayFabId: playerOne.id
           }
     );
+/*
     var playerTwoReadOnlyData = server.GetUserReadOnlyData
     (
           {
               PlayFabId: playerTwo.id
           }
     );
+*/
     var playerOneData;
     //var playerTwoData;
     

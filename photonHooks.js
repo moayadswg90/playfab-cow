@@ -7,26 +7,23 @@ handlers.createGroup = function (args)
               SharedGroupId: "rrrrrrrrrr"
           }
     );
+    var addUser = server.AddSharedGroupMembers
+    (
+          {
+              SharedGroupId: "rrrrrrrrrr",
+              PlayFabIds: [currentPlayerId]
+          }
+    );
     return { ResultCode : 0, Message: 'Success' };
 }
 handlers.RoomCreated = function (args)
 {
-	log.debug(args);
-	var photonGameID = args.GameId;
-	var playerID = args.UserId;
-	log.debug(photonGameID);
-	log.debug(playerID);
+
     server.WriteTitleEvent
     (
 	    {
 	        EventName : "room_created"
 	    }
-    );
-    var createGroup = server.CreateSharedGroup
-    (
-          {
-              SharedGroupId: "room_1"
-          }
     );
     return { ResultCode : 0, Message: 'Success' };
 };

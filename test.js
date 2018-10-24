@@ -1,5 +1,6 @@
 function calculateEarnedGold(isWon, firstWin, firstGame, doubleGold)
 {
+	log.debug(firstWin);
 	var gold = {};
 	gold["playGold"] = gameReward;
 	gold["winGold"] = 0;

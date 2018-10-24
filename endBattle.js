@@ -1,9 +1,5 @@
 handlers.endBattle = function (args, context) 
 {
-/*
-	var doubleGold = checkDoubleGold(currentPlayerId);
-	return doubleGold;
-*/
 	goldEarnedFromPlay = gameReward;
 	pointsEarned = 0;
   	goldEarnedFromWin = 0;	

@@ -10,13 +10,6 @@ handlers.RoomClosed = function (args)
 	        GetMembers: true
 	    }
     );
-    server.WriteTitleEvent
-	    (
-		    {
-		        EventName : "room_member_when_closing_without_parsing_inside",
-		        Body: {member: JSON.stringify(roomMembers)}
-		    }
-	    ); 
 
 	    server.WriteTitleEvent
 	    (

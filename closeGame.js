@@ -10,5 +10,5 @@ handlers.closeGame = function (args, context)
     
   	
   	
-  	return playerOneGold;
+  	return JSON.parse(playerOneGold);
 }

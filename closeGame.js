@@ -12,10 +12,12 @@ handlers.closeGame = function (args, context)
     );
     playerOne.push({firstGame: checkFirstGame(playerOneReadOnlyData)});
 	playerOne.push({firstWin: checkFirstWin(playerOneReadOnlyData)});
+	
+	playerOne.push({gold: calculateEarnedGold(args.isWon, playerOne["firstWin"], playerOne["firstGame"], doubleGoldCheck(currentPlayerId))});
 /*
 	
     //get glickoItems to update rank
-    var playerOneGold = calculateEarnedGold(args.isWon, checkFirstGame(playerOneReadOnlyData), checkFirstWin(playerOneReadOnlyData), doubleGoldCheck(currentPlayerId));
+    
 	//update player data
 	var updatePlayerData = server.UpdateUserReadOnlyData
 	(

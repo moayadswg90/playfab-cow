@@ -9,6 +9,21 @@ handlers.RoomClosed = function (args)
 	        SharedGroupId: photonGameID
 	    }
     );
+    server.WriteTitleEvent
+	    (
+		    {
+		        EventName : "room_member_when_closing without parsing inside",
+		        Body: {member: roomMembers}
+		    }
+	    ); 
+	    server.WriteTitleEvent
+	    (
+		    {
+		        EventName : "room_member_when_closing",
+		        Body: {member: roomMembers.Members}
+		    }
+	    ); 
+/*
     roomMembers = roomMembers.Members;
     for (i=0; i<roomMembers.length; i++)
     {
@@ -20,6 +35,7 @@ handlers.RoomClosed = function (args)
 		    }
 	    ); 
     }
+*/
     
     
 	//get player ranks

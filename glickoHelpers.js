@@ -50,11 +50,6 @@ function getGlickoData(playerReadOnlyData)
   var glickoRating = glickoData["Rating"];
   var glickoRD = glickoData["RD"];
   var glickoVol = glickoData["Vol"];
-  server.WriteTitleEvent
-		(
-	    	{
-	        	EventName : "inGetGlickoDataBeforeResult"
-	    	}
-		);
+
   return {Rating: glickoRating,RD: glickoRD, Vol: glickoVol}; 
 }

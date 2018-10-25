@@ -10,34 +10,6 @@ handlers.RoomClosed = function (args)
 	        GetMembers: true
 	    }
     );
-
-	    server.WriteTitleEvent
-	    (
-		    {
-		        EventName : "room_member_when_closing",
-		        Body: {member: roomMembers.Members}
-		    }
-	    ); 
-
-/*
-    roomMembers = roomMembers.Members;
-    for (i=0; i<roomMembers.length; i++)
-    {
-	   	server.WriteTitleEvent
-	    (
-		    {
-		        EventName : "room_member_when_closing",
-		        Body: {member: roomMembers[i]}
-		    }
-	    ); 
-    }
-*/
-    
-    
-	//get player ranks
-	//end game
-	//delete group
-    
     server.DeleteSharedGroup
     (
 	    {

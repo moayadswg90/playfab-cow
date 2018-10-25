@@ -29,13 +29,14 @@ handlers.RoomEventRaised = function (args)
 		);
 */
 
-/*
+
 		var roomData = server.GetSharedGroupData
 		(
 	    	{
-	        	SharedGroupId: photonGameID,
+	        	SharedGroupId: args.GameId,
 				GetMembers: true
 	    	}
+
 		);
 		for (i = 0; i < roomData.Members; i++)
 		{
@@ -43,13 +44,14 @@ handlers.RoomEventRaised = function (args)
 				playerTwoId = roomData.Members[i];
 		}
 		result = endGameByEvent(args.GameId, args.UserId, playerTwoId, eventData["isWon"], eventData["isDuel"], eventData["troops"], eventData["fields"], eventData["cards"]);
-*/
+
+
 
 		server.WriteTitleEvent
 		(
 	    	{
 	        	EventName : "gameEndedResult",
-	        	Body: {eventData}
+	        	Body: {result}
 	    	}
 		);
 

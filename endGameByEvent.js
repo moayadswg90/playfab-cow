@@ -11,6 +11,13 @@ server.WriteTitleEvent
 	var playerOne = {};
 	var playerTwo = {};
 	
+	server.WriteTitleEvent
+		(
+	    	{
+	        	EventName : "afterObj"
+	    	}
+		);
+	
 	var playerTwoWon = 0;
 	if(args.isWon == 0)
 		playerTwoWon = 1;

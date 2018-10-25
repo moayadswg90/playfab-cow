@@ -1,5 +1,6 @@
 handlers.RoomJoined = function (args) 
 {
+/*
 	var playerID = args.UserId;
 	var addRoomCreatorToGroup = server.AddSharedGroupMembers
     (
@@ -8,6 +9,7 @@ handlers.RoomJoined = function (args)
               PlayFabIds: [playerID]
           }
     );
+*/
     server.WriteTitleEvent
     (
 	    {

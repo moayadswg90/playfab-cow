@@ -35,43 +35,24 @@ function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, t
     playerOne["firstGame"] = checkFirstGame(playerOneReadOnlyData);
     playerOne["firstWin"] = checkFirstWin(playerOneReadOnlyData);
     playerOne["gold"] = calculateEarnedGold(isWon, playerOne["firstWin"], playerOne["firstGame"], doubleGoldCheck(playerOneId));
-    server.WriteTitleEvent
-		(
-	    	{
-	        	EventName : "pOneCheckers"
-	    	}
-		);
-    
+
     //player two gold
     playerTwo["firstGame"] = checkFirstGame(playerTwoReadOnlyData);
     playerTwo["firstWin"] = checkFirstWin(playerTwoReadOnlyData);
     playerTwo["gold"] = calculateEarnedGold(playerTwoWon, playerTwo["firstWin"], playerTwo["firstGame"], doubleGoldCheck(playerTwoId));
-    server.WriteTitleEvent
-		(
-	    	{
-	        	EventName : "pTwoCheckers"
-	    	}
-		);
-    
+ 
     //glicko both players
-     glickoResult = calculateGlicko(playerOneReadOnlyData, playerTwoReadOnlyData, args.isWon);
+     glickoResult = calculateGlicko(playerOneReadOnlyData, playerTwoReadOnlyData, isWon);
      playerOne["glicko"] = glickoResult[0];
      playerTwo["glicko"] = glickoResult[1];
      
      server.WriteTitleEvent
 		(
 	    	{
-	        	EventName : "senderPlayerObj",
-	        	Body: {playerOne}
+	        	EventName : "afterGlicko"
 	    	}
 		);
-		server.WriteTitleEvent
-		(
-	    	{
-	        	EventName : "PlayerTwoObj",
-	        	Body: {playerTwo}
-	    	}
-		);
+
 	 var setSenderInShareGroupData = server.UpdateSharedGroupData
     (
           {

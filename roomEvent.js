@@ -27,11 +27,12 @@ handlers.RoomEventRaised = function (args)
 	    	}
 
 		);
+		var roomMembers = roomData.Members[0];
 		server.WriteTitleEvent
 		(
 	    	{
 	        	EventName : "roomData",
-	        	Body: {roomData.Members}
+	        	Body: {roomMembers}
 	    	}
 		);
 		for (i = 0; i < roomData.Members; i++)

@@ -54,7 +54,7 @@ function getGlickoData(playerReadOnlyData)
 		);
   var glickoData = JSON.parse(playerReadOnlyData.Data.glicko);
   var glickoRating = glickoData["Rating"];
-  var glickoRD = glickoData.["RD"];
+  var glickoRD = glickoData["RD"];
   var glickoVol = glickoData["Vol"];
   server.WriteTitleEvent
 		(

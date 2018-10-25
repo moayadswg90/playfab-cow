@@ -22,12 +22,12 @@ function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, t
     );
     
     //player one gold
-    playerOne["firstGame"] = checkFirstGame(playerOneReadOnlyData)
+    playerOne["firstGame"] = checkFirstGame(playerOneReadOnlyData);
     playerOne["firstWin"] = checkFirstWin(playerOneReadOnlyData);
     playerOne["gold"] = calculateEarnedGold(args.isWon, playerOne["firstWin"], playerOne["firstGame"], doubleGoldCheck(playerOneId));
     
     //player two gold
-    playerTwo["firstGame"] = checkFirstGame(playerTwoReadOnlyData)
+    playerTwo["firstGame"] = checkFirstGame(playerTwoReadOnlyData);
     playerTwo["firstWin"] = checkFirstWin(playerTwoReadOnlyData);
     playerTwo["gold"] = calculateEarnedGold(playerTwoWon, playerTwo["firstWin"], playerTwo["firstGame"], doubleGoldCheck(playerTwoId));
     
@@ -40,9 +40,9 @@ function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, t
     (
           {
               SharedGroupId: photonGameID,
-              Data: {playerOne[id]: playerOne}
+              Data: {playerOneId: playerOne}
           }
     );
-	var result = [playerOne, playerTwo]
+	var result = [playerOne, playerTwo];
 	return result;
 }

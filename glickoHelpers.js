@@ -11,7 +11,7 @@ function calculateGlicko(playerOneReadOnlyData, playerTwoReadOnlyData, isWon)
 	};
 	var glicko = new glicko2.Glicko2(settings);
 	
-	var firstPlayerGlickoData = getGlickoData(playerOneReadOnlyData);
+	return firstPlayerGlickoData = getGlickoData(playerOneReadOnlyData);
   	var p1RD = firstPlayerGlickoData.RD;
 	var p1Rating = firstPlayerGlickoData.Rating;
 	var p1Vol = firstPlayerGlickoData.Vol;

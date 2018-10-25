@@ -1,6 +1,12 @@
 function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, troops, fields, cards)
 {
 
+server.WriteTitleEvent
+		(
+	    	{
+	        	EventName : "endGameByEventStarted"
+	    	}
+		);
 	//update player who sent event data
 	var playerOne = {};
 	var playerTwo = {};

@@ -36,6 +36,20 @@ function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, t
      playerOne["glicko"] = glickoResult[0];
      playerTwo["glicko"] = glickoResult[1];
      
+     server.WriteTitleEvent
+		(
+	    	{
+	        	EventName : "senderPlayerObj",
+	        	Body: {playerOne}
+	    	}
+		);
+		server.WriteTitleEvent
+		(
+	    	{
+	        	EventName : "PlayerTwoObj",
+	        	Body: {playerTwo}
+	    	}
+		);
 	 var setSenderInShareGroupData = server.UpdateSharedGroupData
     (
           {

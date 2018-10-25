@@ -27,6 +27,12 @@ function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, t
 
     //player one gold
     playerOne["firstGame"] = checkFirstGame(playerOneReadOnlyData);
+    server.WriteTitleEvent
+		(
+	    	{
+	        	EventName : "inGetGlickoData", Body: {playerOne["firstGame"]} 
+	    	}
+		);
     playerOne["firstWin"] = checkFirstWin(playerOneReadOnlyData);
     playerOne["gold"] = calculateEarnedGold(isWon, playerOne["firstWin"], playerOne["firstGame"], doubleGoldCheck(playerOneId));
 

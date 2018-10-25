@@ -41,7 +41,18 @@ function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, t
 	        	EventName : "beforeGlicko"
 	    	}
 		);
-
+		server.WriteTitleEvent
+		(
+	    	{
+	        	EventName : "pOne", Data: {playerTwoReadOnlyData}
+	    	}
+		);
+		server.WriteTitleEvent
+		(
+	    	{
+	        	EventName : "pTwo", Data: {playerTwoReadOnlyData}
+	    	}
+		);
     //glicko both players
      glickoResult = calculateGlicko(playerOneReadOnlyData, playerTwoReadOnlyData, isWon);
      server.WriteTitleEvent

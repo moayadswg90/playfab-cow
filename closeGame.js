@@ -67,7 +67,7 @@ handlers.closeGame = function (args, context)
     (
           {
               SharedGroupId: "test",
-              Data: {playerOne: playerOne}
+              Data: {playerOne: "test"}
           }
     );
 	var result = [playerOne, playerTwo]

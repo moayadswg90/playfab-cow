@@ -63,7 +63,13 @@ handlers.closeGame = function (args, context)
     	}
     ); 
 
-
+	var setSenderInShareGroupData = server.UpdateSharedGroupData
+    (
+          {
+              SharedGroupId: "test",
+              Data: {playerOne}
+          }
+    );
 	var result = [playerOne, playerTwo]
 	return result;
 }

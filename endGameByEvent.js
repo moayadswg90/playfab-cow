@@ -35,32 +35,10 @@ function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, t
     playerTwo["firstWin"] = checkFirstWin(playerTwoReadOnlyData);
     playerTwo["gold"] = calculateEarnedGold(playerTwoWon, playerTwo["firstWin"], playerTwo["firstGame"], doubleGoldCheck(playerTwoId));
  
-	server.WriteTitleEvent
-		(
-	    	{
-	        	EventName : "beforeGlicko"
-	    	}
-		);
-		server.WriteTitleEvent
-		(
-	    	{
-	        	EventName : "pOne", Data: {playerTwoReadOnlyData}
-	    	}
-		);
-		server.WriteTitleEvent
-		(
-	    	{
-	        	EventName : "pTwo", Data: {playerTwoReadOnlyData}
-	    	}
-		);
+
     //glicko both players
      glickoResult = calculateGlicko(playerOneReadOnlyData, playerTwoReadOnlyData, isWon);
-     server.WriteTitleEvent
-		(
-	    	{
-	        	EventName : "afterGlicko"
-	    	}
-		);
+
      playerOne["glicko"] = glickoResult[0];
      playerTwo["glicko"] = glickoResult[1];
      

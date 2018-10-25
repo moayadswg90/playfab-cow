@@ -33,7 +33,7 @@ handlers.closeGame = function (args, context)
     playerTwo["gold"] = calculateEarnedGold(playerTwoWon, playerTwo["firstWin"], playerTwo["firstGame"], doubleGoldCheck(playerTwo["id"]));
     
     //glicko both players
-     return calculateGlicko(playerOneReadOnlyData, playerTwoReadOnlyData, args.isWon);
+     glickoResult = calculateGlicko(playerOneReadOnlyData, playerTwoReadOnlyData, args.isWon);
      playerOne["glicko"] = glickoResult[0];
      playerTwo["glicko"] = glickoResult[1];
 

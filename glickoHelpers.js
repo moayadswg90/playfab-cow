@@ -11,7 +11,7 @@ function calculateGlicko(playerOneReadOnlyData, playerTwoReadOnlyData, isWon)
 	};
 	var glicko = new glicko2.Glicko2(settings);
 	
-	return firstPlayerGlickoData = getGlickoData(playerOneReadOnlyData);
+	var firstPlayerGlickoData = getGlickoData(playerOneReadOnlyData);
   	var p1RD = firstPlayerGlickoData.RD;
 	var p1Rating = firstPlayerGlickoData.Rating;
 	var p1Vol = firstPlayerGlickoData.Vol;
@@ -53,7 +53,8 @@ function getGlickoData(playerReadOnlyData)
 	    	}
 		);
   var glickoData = playerReadOnlyData.Data.glicko;
-  return glickoData;
+  log.debug(playerReadOnlyData);
+  log.debug(glickoData);
   var glickoRating = glickoData["Rating"];
   var glickoRD = glickoData["RD"];
   var glickoVol = glickoData["Vol"];

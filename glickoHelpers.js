@@ -52,7 +52,7 @@ function getGlickoData(playerReadOnlyData)
 	        	EventName : "inGetGlickoData"
 	    	}
 		);
-  var glickoData = JSON.parse(playerReadOnlyData.Data.glicko);
+  var glickoData = playerReadOnlyData.Data.glicko;
   return glickoData;
   var glickoRating = glickoData["Rating"];
   var glickoRD = glickoData["RD"];

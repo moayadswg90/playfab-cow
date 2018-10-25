@@ -50,7 +50,8 @@ function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, t
      playerOne["glicko"] = glickoResult[0];
      playerTwo["glicko"] = glickoResult[1];
      
-     var p1 = JSON.parse(playerOne);
+     //problem here
+/*
 	 var setSenderInShareGroupData = server.UpdateSharedGroupData
     (
           {
@@ -58,6 +59,7 @@ function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, t
               Data: {p1}
           }
     );
+*/
 	var result = [playerOne, playerTwo];
 	return result;
 }

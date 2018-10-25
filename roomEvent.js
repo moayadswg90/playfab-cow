@@ -1,3 +1,4 @@
+/*
 handlers.RoomEventRaised = function (args) 
 {
 	var eventName = "";
@@ -50,3 +51,4 @@ handlers.RoomEventRaised = function (args)
     );
     return { ResultCode : 0, Message: 'Success' };
 };
+*/

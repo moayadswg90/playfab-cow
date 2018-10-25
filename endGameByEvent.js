@@ -23,12 +23,6 @@ function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, t
           }
     );
 
-    server.WriteTitleEvent
-		(
-	    	{
-	        	EventName : "pOneReadOnlyPassed"
-	    	}
-		);
     
 
     //player one gold
@@ -41,17 +35,25 @@ function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, t
     playerTwo["firstWin"] = checkFirstWin(playerTwoReadOnlyData);
     playerTwo["gold"] = calculateEarnedGold(playerTwoWon, playerTwo["firstWin"], playerTwo["firstGame"], doubleGoldCheck(playerTwoId));
  
+	server.WriteTitleEvent
+		(
+	    	{
+	        	EventName : "beforeGlicko"
+	    	}
+		);
+
     //glicko both players
      glickoResult = calculateGlicko(playerOneReadOnlyData, playerTwoReadOnlyData, isWon);
-     playerOne["glicko"] = glickoResult[0];
-     playerTwo["glicko"] = glickoResult[1];
-     
      server.WriteTitleEvent
 		(
 	    	{
 	        	EventName : "afterGlicko"
 	    	}
 		);
+     playerOne["glicko"] = glickoResult[0];
+     playerTwo["glicko"] = glickoResult[1];
+     
+     
 
 	 var setSenderInShareGroupData = server.UpdateSharedGroupData
     (

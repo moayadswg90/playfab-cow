@@ -1,5 +1,11 @@
 function calculateGlicko(playerOneReadOnlyData, playerTwoReadOnlyData, isWon)
 {
+	server.WriteTitleEvent
+		(
+	    	{
+	        	EventName : "inGlicko"
+	    	}
+		);
   	var settings = 
 	{
         tau : 0.5,

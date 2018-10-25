@@ -1,12 +1,6 @@
 function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, troops, fields, cards)
 {
-	server.WriteTitleEvent
-		(
-	    	{
-	        	EventName : "endGameByEventStarted",
-	        	Body: {isWon}
-	    	}
-		);
+
 	//update player who sent event data
 	var playerOne = {};
 	var playerTwo = {};
@@ -27,6 +21,20 @@ function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, t
               PlayFabId: playerTwoId
           }
     );
+    server.WriteTitleEvent
+		(
+	    	{
+	        	EventName : "pOneReadOnly",
+	        	Body: {playerOneReadOnlyData}
+	    	}
+		);
+		server.WriteTitleEvent
+		(
+	    	{
+	        	EventName : "pTwoReadOnly",
+	        	Body: {playerTwoReadOnlyData}
+	    	}
+		);
     
     //player one gold
     playerOne["firstGame"] = checkFirstGame(playerOneReadOnlyData);

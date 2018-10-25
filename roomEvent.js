@@ -35,13 +35,13 @@ handlers.RoomEventRaised = function (args)
 		}
 		//result = endGameByEvent(args.GameId, args.UserId, playerTwoId, eventData["isWon"], eventData["isDuel"], eventData["troops"], eventData["fields"], eventData["cards"]);
 
-
+		
 
 		server.WriteTitleEvent
 		(
 	    	{
 	        	EventName : "gameEndedResult",
-	        	Body: {args.UserId, playerTwoId}
+	        	Body: {playerTwoId}
 	    	}
 		);
 

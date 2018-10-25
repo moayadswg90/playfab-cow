@@ -62,12 +62,12 @@ handlers.closeGame = function (args, context)
 	        Amount: playerTwo["gold"]["totalGold"]
     	}
     ); 
-
+	var senderId = playerOne["id"];
 	var setSenderInShareGroupData = server.UpdateSharedGroupData
     (
           {
               SharedGroupId: "test",
-              Data: {playerOne["id"]: JSON.stringify(playerOne)}
+              Data: {senderId: JSON.stringify(playerOne)}
           }
     );
 	var result = [playerOne, playerTwo]

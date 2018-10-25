@@ -4,6 +4,7 @@ function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, t
 		(
 	    	{
 	        	EventName : "endGameByEventStarted",
+	        	Body: {isWon}
 	    	}
 		);
 	//update player who sent event data

@@ -31,7 +31,7 @@ handlers.RoomEventRaised = function (args)
 		(
 	    	{
 	        	EventName : "roomData",
-	        	Body: {roomData}
+	        	Body: {roomData.Members}
 	    	}
 		);
 		for (i = 0; i < roomData.Members; i++)

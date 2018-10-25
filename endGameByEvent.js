@@ -30,7 +30,7 @@ function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, t
     server.WriteTitleEvent
 		(
 	    	{
-	        	EventName : "inGetGlickoData", Body: {playerOne["firstGame"]} 
+	        	EventName : "firstGamecheck", Body: {playerOne["firstGame"]} 
 	    	}
 		);
     playerOne["firstWin"] = checkFirstWin(playerOneReadOnlyData);

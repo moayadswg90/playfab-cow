@@ -18,6 +18,7 @@ handlers.RoomEventRaised = function (args)
 	{
 		eventName = "gameEnded";
 		eventData = args.Data;
+/*
 		server.WriteTitleEvent
 		(
 	    	{
@@ -25,6 +26,7 @@ handlers.RoomEventRaised = function (args)
 	        	Body: {args.Data}
 	    	}
 		);
+*/
 		var roomData = server.GetSharedGroupData
 		(
 	    	{
@@ -38,6 +40,7 @@ handlers.RoomEventRaised = function (args)
 				playerTwoId = roomData.Members[i];
 		}
 		result = endGameByEvent(args.GameId, args.UserId, playerTwoId, eventData["isWon"], eventData["isDuel"], eventData["troops"], eventData["fields"], eventData["cards"]);
+/*
 		server.WriteTitleEvent
 		(
 	    	{
@@ -45,6 +48,7 @@ handlers.RoomEventRaised = function (args)
 	        	Body: {result}
 	    	}
 		);
+*/
 	}
 	else
 	{

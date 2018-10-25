@@ -55,7 +55,7 @@ function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, t
     (
           {
               SharedGroupId: photonGameID,
-              Data: {playerOne}
+              Data: {JSON.parse(playerOne)}
           }
     );
 	var result = [playerOne, playerTwo];

@@ -19,7 +19,7 @@ server.WriteTitleEvent
 		);
 	
 	var playerTwoWon = 0;
-	if(args.isWon == 0)
+	if(isWon == 0)
 		playerTwoWon = 1;
 		
 	server.WriteTitleEvent

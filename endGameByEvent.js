@@ -27,14 +27,6 @@ function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, t
 
     //player one gold
     playerOne["firstGame"] = checkFirstGame(playerOneReadOnlyData);
-/*
-    server.WriteTitleEvent
-		(
-	    	{
-	        	EventName : "firstGamecheck", Body: {playerOne["firstGame"]} 
-	    	}
-		);
-*/
     playerOne["firstWin"] = checkFirstWin(playerOneReadOnlyData);
     playerOne["gold"] = calculateEarnedGold(isWon, playerOne["firstWin"], playerOne["firstGame"], doubleGoldCheck(playerOneId));
 
@@ -51,15 +43,16 @@ function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, t
      playerTwo["glicko"] = glickoResult[1];
      
      //problem here
-/*
+     var dataPayload = {};
+	 var keyString = playerOne["id"]
+	 dataPayload[keyString] = JSON.stringify(playerOne);
 	 var setSenderInShareGroupData = server.UpdateSharedGroupData
-    (
+	 (
           {
               SharedGroupId: photonGameID,
-              Data: {p1}
+              Data: dataPayload
           }
-    );
-*/
+	);
 	var result = [playerOne, playerTwo];
 	return result;
 }

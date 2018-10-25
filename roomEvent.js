@@ -19,17 +19,6 @@ handlers.RoomEventRaised = function (args)
 		eventName = "gameEnded";
 		eventData = args.Data;
 
-/*
-		server.WriteTitleEvent
-		(
-	    	{
-	        	EventName : "gameEndedData",
-	        	Body: {args.Data}
-	    	}
-		);
-*/
-
-
 		var roomData = server.GetSharedGroupData
 		(
 	    	{
@@ -52,7 +41,7 @@ handlers.RoomEventRaised = function (args)
 		(
 	    	{
 	        	EventName : "gameEndedResult",
-	        	Body: {result}
+	        	Body: {args.UserId, playerTwoId}
 	    	}
 		);
 

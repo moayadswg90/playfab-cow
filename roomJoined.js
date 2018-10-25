@@ -5,7 +5,7 @@ handlers.RoomJoined = function (args)
 	server.WriteTitleEvent
     (
 	    {
-	        EventName : "room_joined"
+	        EventName : "room_joined",
 	        Body: {joinerId: playerID}
 	    }
     );

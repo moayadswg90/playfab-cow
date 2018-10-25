@@ -1,34 +1,15 @@
 function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, troops, fields, cards)
 {
 
-server.WriteTitleEvent
-		(
-	    	{
-	        	EventName : "endGameByEventStarted"
-	    	}
-		);
 	//update player who sent event data
 	var playerOne = {};
 	var playerTwo = {};
 	
-	server.WriteTitleEvent
-		(
-	    	{
-	        	EventName : "afterObj"
-	    	}
-		);
 	
 	var playerTwoWon = 0;
 	if(isWon == 0)
 		playerTwoWon = 1;
 		
-	server.WriteTitleEvent
-		(
-	    	{
-	        	EventName : "afterPlayerWon"
-	    	}
-		);
-	
 	var playerOneReadOnlyData = server.GetUserReadOnlyData
     (
           {
@@ -48,26 +29,29 @@ server.WriteTitleEvent
 	        	EventName : "pOneReadOnlyPassed"
 	    	}
 		);
-/*
-		server.WriteTitleEvent
-		(
-	    	{
-	        	EventName : "pTwoReadOnly",
-	        	Body: {playerTwoReadOnlyData}
-	    	}
-		);
-*/
     
 
     //player one gold
     playerOne["firstGame"] = checkFirstGame(playerOneReadOnlyData);
     playerOne["firstWin"] = checkFirstWin(playerOneReadOnlyData);
-    playerOne["gold"] = calculateEarnedGold(args.isWon, playerOne["firstWin"], playerOne["firstGame"], doubleGoldCheck(playerOneId));
+    playerOne["gold"] = calculateEarnedGold(isWon, playerOne["firstWin"], playerOne["firstGame"], doubleGoldCheck(playerOneId));
+    server.WriteTitleEvent
+		(
+	    	{
+	        	EventName : "pOneCheckers"
+	    	}
+		);
     
     //player two gold
     playerTwo["firstGame"] = checkFirstGame(playerTwoReadOnlyData);
     playerTwo["firstWin"] = checkFirstWin(playerTwoReadOnlyData);
     playerTwo["gold"] = calculateEarnedGold(playerTwoWon, playerTwo["firstWin"], playerTwo["firstGame"], doubleGoldCheck(playerTwoId));
+    server.WriteTitleEvent
+		(
+	    	{
+	        	EventName : "pTwoCheckers"
+	    	}
+		);
     
     //glicko both players
      glickoResult = calculateGlicko(playerOneReadOnlyData, playerTwoReadOnlyData, args.isWon);

@@ -28,5 +28,12 @@ handlers.RoomCreated = function (args)
               PlayFabIds: [playerID]
           }
     );
+    var setStartFlag = server.AddSharedGroupMembers
+    (
+          {
+              SharedGroupId: photonGameID,
+              Data: {gameStarted: 0}
+          }
+    );
     return { ResultCode : 0, Message: 'Success' };
 };

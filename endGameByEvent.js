@@ -8,6 +8,13 @@ function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, t
 	var playerTwoWon = 0;
 	if(args.isWon == 0)
 		playerTwoWon = 1;
+		
+	server.WriteTitleEvent
+		(
+	    	{
+	        	EventName : "afterPlayerWon"
+	    	}
+		);
 	
 	var playerOneReadOnlyData = server.GetUserReadOnlyData
     (

@@ -10,11 +10,27 @@ handlers.RoomPropertyUpdated = function (args) {
 };
 handlers.RoomEventRaised = function (args) 
 {
-	//check event code 20 for game is done;
-	//read sharedGroupData property
-	//set player id of winning in sharedGroupData
-    server.WriteTitleEvent({
-        EventName : "room_event_raised"
-    });
+	var eventName = "";
+	if (args.EvCode == 10)
+	{
+		eventName = "gameStarted";
+		var setStartFlag = server.UpdateSharedGroupData
+		(
+          {
+              SharedGroupId: args.GameId,
+              Data: {gameStarted: 1}
+          }
+		);
+	}
+	else if (args.EvCode == 20)
+	{
+		eventName = "gameEnded";
+	}
+    server.WriteTitleEvent
+    (
+    	{
+        	EventName : eventName
+    	}
+    );
     return { ResultCode : 0, Message: 'Success' };
 };

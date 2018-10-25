@@ -27,19 +27,19 @@ handlers.RoomEventRaised = function (args)
 	    	}
 
 		);
-		var roomMembers = roomData.Members[0];
-		server.WriteTitleEvent
-		(
-	    	{
-	        	EventName : "roomData",
-	        	Body: {roomMembers}
-	    	}
-		);
-		for (i = 0; i < roomData.Members; i++)
+		
+		for (i = 0; i < roomData.Members.length; i++)
 		{
 			if(roomData.Members[i] != args.UserId)
 				playerTwoId = roomData.Members[i];
 		}
+		server.WriteTitleEvent
+		(
+	    	{
+	        	EventName : "roomData",
+	        	Body: {playerTwoId}
+	    	}
+		);
 		//result = endGameByEvent(args.GameId, args.UserId, playerTwoId, eventData["isWon"], eventData["isDuel"], eventData["troops"], eventData["fields"], eventData["cards"]);
 	}
 	else

@@ -21,14 +21,14 @@ function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, t
               PlayFabId: playerTwoId
           }
     );
-/*
+
     server.WriteTitleEvent
 		(
 	    	{
-	        	EventName : "pOneReadOnly",
-	        	Body: {playerOneReadOnlyData}
+	        	EventName : "pOneReadOnlyPassed"
 	    	}
 		);
+/*
 		server.WriteTitleEvent
 		(
 	    	{
@@ -36,8 +36,9 @@ function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, t
 	        	Body: {playerTwoReadOnlyData}
 	    	}
 		);
-    
 */
+    
+
     //player one gold
     playerOne["firstGame"] = checkFirstGame(playerOneReadOnlyData);
     playerOne["firstWin"] = checkFirstWin(playerOneReadOnlyData);

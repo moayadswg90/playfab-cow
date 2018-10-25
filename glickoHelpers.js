@@ -59,7 +59,7 @@ function getGlickoData(playerReadOnlyData)
   server.WriteTitleEvent
 		(
 	    	{
-	        	EventName : "inGetGlickoData", Body:{glickoRating}
+	        	EventName : "inGetGlickoDataBeforeResult"
 	    	}
 		);
   return {Rating: glickoRating,RD: glickoRD, Vol: glickoVol}; 

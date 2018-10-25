@@ -64,7 +64,7 @@ handlers.closeGame = function (args, context)
     ); 
 	var dataPayload = {};
 	var keyString = playerOne["id"]
-    dataPayload[keyString] = playerOne;
+    dataPayload[keyString] = JSON.stringify(playerOne);
 	var setSenderInShareGroupData = server.UpdateSharedGroupData
     (
           {

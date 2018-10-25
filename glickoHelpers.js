@@ -46,7 +46,7 @@ function calculateGlicko(playerOneReadOnlyData, playerTwoReadOnlyData, isWon)
 
 function getGlickoData(playerReadOnlyData)
 {
-  var glickoData = playerReadOnlyData.Data.glicko;
+  var glickoData = playerReadOnlyData.Data.glicko.Value;
   var glickoRating = glickoData["Rating"];
   var glickoRD = glickoData["RD"];
   var glickoVol = glickoData["Vol"];

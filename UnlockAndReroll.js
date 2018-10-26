@@ -70,7 +70,7 @@ function checkBalance(currentPlayerId)
      {
         PlayFabId: currentPlayerId,
         VirtualCurrency: "DM",
-  		Amount: 1
+  		Amount: rerollCost
       }
    );
   return true;

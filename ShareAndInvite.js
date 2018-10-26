@@ -11,7 +11,7 @@ handlers.shareGame = function (args, context)
           }
     );
       	
-  	sharedToday = checkSharedToday(playerReadOnlyData, currentPlayerId);
+  	sharedToday = checkSharedToday(playerReadOnlyData);
   	if (sharedToday)
   	{
 	  	var addGoldResult = server.AddUserVirtualCurrency

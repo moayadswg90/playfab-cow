@@ -82,10 +82,7 @@ handlers.setDailyOffer = function (args, context)
 		if (offerTwo != offerOne)
 			break;
 	}
-	log.debug(offerOne);
-	log.debug(offerTwo);
 	var dailyOffers = [offerOne, offerTwo];
-	log.debug(dailyOffers);
 
 	var setPOTWData = server.SetTitleData
 	(

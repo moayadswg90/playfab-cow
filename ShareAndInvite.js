@@ -37,7 +37,7 @@ handlers.shareGame = function (args, context)
   		return {Reward:0} ;
   	
  }
- function checkSharedToday(playerReadOnlyData, currentPlayerId)
+ function checkSharedToday(playerReadOnlyData)
 {
   var sharedToday = false;
   var today = new Date();

@@ -60,8 +60,7 @@ handlers.shareGame = function (args, context)
 }
 handlers.inviteFriend = function (args, context) 
 {
-	var friendPlayFabID = args.friend
-	
+	var friendPlayFabID = args.friend	
   	try
   	{
 		  var addFriend = server.AddFriend

@@ -46,6 +46,7 @@ function updatePlayer(id, firstWin, firstGame, glicko)
 		  Data: data
 	    }
 	);
+	return true;
 }
 function updateStats(id, isWon, rank, troops, fields, cards, duels)
 {
@@ -97,12 +98,7 @@ function updateStats(id, isWon, rank, troops, fields, cards, duels)
         	},
         ]
     });
-    var PlayerStats = server.GetPlayerStatistics
-    ({
-        PlayFabId: id,
-	    StatisticNames: ["wins","ranks"]     	        
-    });
-    return PlayerStats.Statistics;
+    return true;
 }
 //==================== checks
 function checkFirstGame(playerReadOnlyData)

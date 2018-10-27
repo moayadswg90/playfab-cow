@@ -1,14 +1,6 @@
 
 function endGameByRoomClosed(photonGameID, playerOneId, playerTwoId, keys)
 {
-	var roomData = server.GetSharedGroupData
-	(
-	    {
-	        SharedGroupId: photonGameID,
-			GetMembers: true
-	    }
-
-	);
 	if (keys[playerOneId] != null && keys[playerTwoId] != null )
 	{
 		var playerOneData = JSON.parse(keys[playerOneId].Value);

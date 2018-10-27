@@ -9,15 +9,7 @@ handlers.RoomClosed = function (args)
 	    }
 
 	);
-	result = endGameByRoomClosed(args.GameId, roomData.Members[0], roomData.Members[1], roomData.Keys);
-/*
-    server.DeleteSharedGroup
-    (
-	    {
-	        SharedGroupId: photonGameID
-	    }
-    );
-*/  
+	result = endGameByRoomClosed(args.GameId, roomData.Members[0], roomData.Members[1], roomData.Data);
     server.WriteTitleEvent
     (
 	    {

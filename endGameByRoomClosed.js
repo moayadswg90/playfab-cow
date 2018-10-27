@@ -41,8 +41,39 @@ handlers.endGameByRoomClosed = function (args)
 	var keys = roomData.Data;
 	//return keys;
 	var playerOneData = JSON.parse(keys[playerOneId].Value);
-	var playeTwoData = JSON.parse(keys[playerTwoId].Value);
+	var playerTwoData = JSON.parse(keys[playerTwoId].Value);
 	
+	updatePlayer(playerOneId, playerTwoData["firstGame"], playerTwoData["firstWin"], JSON.stringify(playerTwoData["glicko"]));
+	updatePlayer(playerTwoId, playerTwoData["firstGame"], playerTwoData["firstWin"], JSON.stringify(playerTwoData["glicko"]));
+	
+/*
+	//update player data
+	updatePlayer(playerOne["id"], playerOne["firstGame"], playerOne["firstWin"], JSON.stringify(playerOne["glicko"]));
+	updatePlayer(playerTwo["id"], playerTwo["firstGame"], playerTwo["firstWin"], JSON.stringify(playerTwo["glicko"]));
+	//update stats
+	playerOne["stats"] = updateStats(playerOneId, playerOneData["isWon"], parseInt(playerOneData["glicko"]["Rating"]));
+	playerTwo["stats"] = updateStats(playerTwoId, playerTwoData["isWon"], parseInt(playerTwoData["glicko"]["Rating"]));
+*/
+	
+/*
+	//grant gold
+	var addGoldResult = server.AddUserVirtualCurrency
+    (
+    	{
+	        PlayFabId: playerOneId,
+	        VirtualCurrency: "GL",
+	        Amount: playerOne["gold"]["totalGold"]
+    	}
+    ); 
+    var addGoldResult = server.AddUserVirtualCurrency
+    (
+    	{
+	        PlayFabId: playerTwo["id"],
+	        VirtualCurrency: "GL",
+	        Amount: playerTwo["gold"]["totalGold"]
+    	}
+    ); 
+*/
 	
 	return playerOneData;
 };

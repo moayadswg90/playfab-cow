@@ -34,7 +34,7 @@ handlers.RoomEventRaised = function (args)
 				playerTwoId = roomData.Members[i];
 		}
 		
-		result = endGameByEvent(args.GameId, args.UserId, playerTwoId, eventData["isWon"], eventData["isDuel"], eventData["troops"], eventData["fields"], eventData["cards"]);
+		result = endGameByEvent(args.GameId, args.UserId, playerTwoId, eventData["isWon"], eventData["isDuel"], eventData["troops"], eventData["fields"], eventData["cards"], eventData["turns"], eventData["reason"]);
 		
 	}
 	else

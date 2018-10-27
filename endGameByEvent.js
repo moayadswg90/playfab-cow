@@ -1,4 +1,4 @@
-function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, troops, fields, cards)
+function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, troops, fields, cards, turns, reason)
 {
 	var playerOne = {};
 	playerOne["isWon"] = isWon;
@@ -27,6 +27,7 @@ function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, t
      var dataPayload = {};
 	 var keyString = playerOneId;
 	 dataPayload[keyString] = JSON.stringify(playerOne);
+	 dataPayload["gameStats"] = {turns: turns, reason: reason};
 	 var setSenderInShareGroupData = server.UpdateSharedGroupData
 	 (
           {

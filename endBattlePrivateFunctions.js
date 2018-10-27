@@ -90,7 +90,11 @@ function updateStats(id, isWon, rank, troops, fields, cards, duels)
         	{
 	            "StatisticName": "wins",
 	            "Value": isWon
-        	}
+        	},
+        	{
+	            "StatisticName": "ranks",
+	            "Value": rank
+        	},
         ]
     });
     var PlayerStats = server.GetPlayerStatistics

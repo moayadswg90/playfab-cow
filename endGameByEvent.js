@@ -3,13 +3,7 @@ function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, t
 
 	//update player who sent event data
 	var playerOne = {};
-	var playerTwo = {};
-	
-	
-	var playerTwoWon = 0;
-	if(isWon == 0)
-		playerTwoWon = 1;
-		
+	playerOne["isWon"] = isWon;
 	var playerOneReadOnlyData = server.GetUserReadOnlyData
     (
           {
@@ -22,25 +16,21 @@ function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, t
               PlayFabId: playerTwoId
           }
     );
-
-    
-
+	
     //player one gold
     playerOne["firstGame"] = checkFirstGame(playerOneReadOnlyData);
     playerOne["firstWin"] = checkFirstWin(playerOneReadOnlyData);
     playerOne["gold"] = calculateEarnedGold(isWon, playerOne["firstWin"], playerOne["firstGame"], doubleGoldCheck(playerOneId));
 
-    //player two gold
-    playerTwo["firstGame"] = checkFirstGame(playerTwoReadOnlyData);
-    playerTwo["firstWin"] = checkFirstWin(playerTwoReadOnlyData);
-    playerTwo["gold"] = calculateEarnedGold(playerTwoWon, playerTwo["firstWin"], playerTwo["firstGame"], doubleGoldCheck(playerTwoId));
- 
-
     //glicko both players
      glickoResult = calculateGlicko(playerOneReadOnlyData, playerTwoReadOnlyData, isWon);
-
      playerOne["glicko"] = glickoResult[0];
-     playerTwo["glicko"] = glickoResult[1];
+     
+	 
+     playerOne["isDuel"] = isDuel;
+     playerOne["troops"] = troops;
+     playerOne["fields"] = fields;
+	 playerOne["cards"] = cards;
      
      //problem here
      var dataPayload = {};
@@ -53,6 +43,6 @@ function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, t
               Data: dataPayload
           }
 	);
-	var result = [playerOne, playerTwo];
+	var result = [playerOne];
 	return result;
 }

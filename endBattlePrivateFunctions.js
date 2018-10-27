@@ -27,10 +27,14 @@ function calculateEarnedGold(isWon, firstWin, firstGame, doubleGold)
 	gold["totalGold"] = gold["playGold"] + gold["winGold"] + gold["doubleGold"]
 	return gold;
 }
-function updatePlayer(id, firstWin, firstGame, glicko)
+function updatePlayer(id, firstWin, firstGame, glicko, troops, fields, cards, duels)
 {
 	var data = {};
 	data["glicko"] = glicko;
+	data["troops"] = troops;
+	data["fields"] = fields;
+	data["cards"] = cards;
+	data["duels"] = duels;
 	if (firstWin)
 	{
 		data["firstWin"] = new Date();

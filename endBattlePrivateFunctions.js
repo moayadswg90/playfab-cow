@@ -27,14 +27,9 @@ function calculateEarnedGold(isWon, firstWin, firstGame, doubleGold)
 	gold["totalGold"] = gold["playGold"] + gold["winGold"] + gold["doubleGold"]
 	return gold;
 }
-function updatePlayer(id, firstWin, firstGame, glicko, troops, fields, cards, duels)
+function updatePlayer(id, firstWin, firstGame, glicko)
 {
 	var data = {};
-	data["glicko"] = glicko;
-	data["troops"] = troops;
-	data["fields"] = fields;
-	data["cards"] = cards;
-	data["duels"] = duels;
 	if (firstWin)
 	{
 		data["firstWin"] = new Date();
@@ -51,7 +46,7 @@ function updatePlayer(id, firstWin, firstGame, glicko, troops, fields, cards, du
 	    }
 	);
 }
-function updateStats(id, isWon, rank)
+function updateStats(id, isWon, rank, troops, fields, cards, duels)
 {
 	pointsEarned = 0;
 	if(isWon == 1)
@@ -76,13 +71,25 @@ function updateStats(id, isWon, rank)
 	            "Value": pointsEarned
         	},
           	{
-	            "StatisticName": "ranks",
-	            "Value": rank
+	            "StatisticName": "troops",
+	            "Value": troops
+        	},
+        	{
+	            "StatisticName": "fields",
+	            "Value": fields
+        	},
+        	{
+	            "StatisticName": "cards",
+	            "Value": cards
+        	},
+        	{
+	            "StatisticName": "duels",
+	            "Value": duels
         	},
         	{
 	            "StatisticName": "wins",
 	            "Value": isWon
-        	},
+        	}
         ]
     });
     var PlayerStats = server.GetPlayerStatistics

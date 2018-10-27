@@ -43,12 +43,11 @@ handlers.endGameByRoomClosed = function (args)
 	var playerOneData = JSON.parse(keys[playerOneId].Value);
 	var playerTwoData = JSON.parse(keys[playerTwoId].Value);
 	
-	updatePlayer(playerOneId, playerOneData["firstGame"], playerOneData["firstWin"], JSON.stringify(playerOneData["glicko"]), playerOneData["stats"]["troops"], playerOneData["stats"]["fields"], playerOneData["stats"]["cards"], playerOneData["stats"]["isDuel"]);
+	updatePlayer(playerOneId, playerOneData["firstGame"], playerOneData["firstWin"], JSON.stringify(playerOneData["glicko"]));
+	updatePlayer(playerTwoId, playerTwoData["firstGame"], playerTwoData["firstWin"], JSON.stringify(playerTwoData["glicko"]));
 	
-	updatePlayer(playerTwoId, playerTwoData["firstGame"], playerTwoData["firstWin"], JSON.stringify(playerTwoData["glicko"]), playerOneData["stats"]["troops"], playerTwoData["stats"]["fields"], playerTwoData["stats"]["cards"], playerTwoData["stats"]["isDuel"]);
-	
-	updateStats(playerOneId, playerOneData["isWon"], parseInt(playerOneData["glicko"]["Rating"]));
-	updateStats(playerTwoId, playerTwoData["isWon"], parseInt(playerTwoData["glicko"]["Rating"]));
+	updateStats(playerOneId, playerOneData["isWon"], parseInt(playerOneData["glicko"]["Rating"]), playerOneData["stats"]["troops"], playerOneData["stats"]["fields"], playerOneData["stats"]["cards"], playerOneData["stats"]["isDuel"]);
+	updateStats(playerTwoId, playerTwoData["isWon"], parseInt(playerTwoData["glicko"]["Rating"]), playerOneData["stats"]["troops"], playerTwoData["stats"]["fields"], playerTwoData["stats"]["cards"], playerTwoData["stats"]["isDuel"]);
 	
 	//grant gold
 	var addGoldResult = server.AddUserVirtualCurrency

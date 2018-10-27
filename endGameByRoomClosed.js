@@ -66,5 +66,5 @@ handlers.endGameByRoomClosed = function (args)
 	        Amount: playerTwoData["gold"]["totalGold"]
     	}
     ); 	
-	return true;
+	return playerOneData;
 };

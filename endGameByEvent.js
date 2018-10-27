@@ -25,9 +25,10 @@ function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, t
      playerOne["glicko"] = glickoResult[0]; 
 
      var dataPayload = {};
+     var gameStats = {turns: turns, reason: reason};
 	 var keyString = playerOneId;
 	 dataPayload[keyString] = JSON.stringify(playerOne);
-	 dataPayload["gameStats"] = {turns: turns, reason: reason};
+	 dataPayload["gameStats"] = JSON.stringify(gameStats);
 	 var setSenderInShareGroupData = server.UpdateSharedGroupData
 	 (
           {

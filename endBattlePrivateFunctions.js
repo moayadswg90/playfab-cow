@@ -30,6 +30,7 @@ function calculateEarnedGold(isWon, firstWin, firstGame, doubleGold)
 function updatePlayer(id, firstWin, firstGame, glicko)
 {
 	var data = {};
+	data["glicko"] = glicko;
 	if (firstWin)
 	{
 		data["firstWin"] = new Date();

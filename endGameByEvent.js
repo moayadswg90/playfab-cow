@@ -21,11 +21,8 @@ function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, t
 
     //glicko both players
      glickoResult = calculateGlicko(playerOneReadOnlyData, playerTwoReadOnlyData, isWon);
+     playerOne["stats"] = {isDuel: isDuel,troops:troops, fields:fields, cards:cards }
      playerOne["glicko"] = glickoResult[0]; 
-     playerOne["isDuel"] = isDuel;
-     playerOne["troops"] = troops;
-     playerOne["fields"] = fields;
-	 playerOne["cards"] = cards;
 
      var dataPayload = {};
 	 var keyString = playerOneId;

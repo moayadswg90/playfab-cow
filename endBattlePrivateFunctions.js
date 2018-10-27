@@ -79,7 +79,7 @@ function updateStats(id, isWon, rank, troops, fields, cards, duels)
 	            "Value": fields
         	},
         	{
-	            "StatisticName": "cards",
+	            "StatisticName": "cardsPlayed",
 	            "Value": cards
         	},
         	{
@@ -165,4 +165,18 @@ function doubleGoldCheck(currentPlayerId)
 	}
 	
 	return doubleGold;
+}
+function cheater(id)
+{	
+	var updateStatistics = server.UpdatePlayerStatistics
+    ({
+        PlayFabId: id,
+        Statistics: 
+        [	
+        	{
+	            "StatisticName": "cheating",
+	            "Value": 1
+        	}
+        ]
+    });
 }

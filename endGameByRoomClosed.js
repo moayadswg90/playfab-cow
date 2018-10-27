@@ -66,5 +66,9 @@ handlers.endGameByRoomClosed = function (args)
 	        Amount: playerTwoData["gold"]["totalGold"]
     	}
     ); 	
+    if (playerOneData["isWon"] == 1 && playerTwoData["isWon"] == 1)
+    {
+	    
+    }
 	return playerOneData;
 };

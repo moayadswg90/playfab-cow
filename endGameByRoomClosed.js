@@ -38,9 +38,8 @@ handlers.endGameByRoomClosed = function (args)
 	);
 	var playerOneId = roomData.Members[0];
 	var playerTwoId = roomData.Members[1];
-	return roomData;
-	var keys = roomData.Keys
-	return keys;
+	var keys = roomData.Data;
+	//return keys;
 	var playerOneData = keys[playerOneId];
 	var playeTwoData = keys[playerTwoId];
 	

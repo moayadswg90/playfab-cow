@@ -31,7 +31,7 @@ handlers.endGameByRoomClosed = function (args)
 	var roomData = server.GetSharedGroupData
 	(
 	    {
-	        SharedGroupId: args.GameId,
+	        SharedGroupId: photonGameID,
 			GetMembers: true
 	    }
 

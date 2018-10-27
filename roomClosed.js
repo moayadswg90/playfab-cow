@@ -1,16 +1,15 @@
 
 handlers.RoomClosed = function (args) 
 {
-	var photonGameID = args.GameId;
-	//get room members
-	var roomMembers = server.GetSharedGroupData
-    (
+	var roomData = server.GetSharedGroupData
+	(
 	    {
-	        SharedGroupId: photonGameID,
-	        GetMembers: true
+	        SharedGroupId: args.GameId,
+			GetMembers: true
 	    }
-    );
-    // call end game
+
+	);
+	result = endGameByRoomClosed(args.GameId, roomData.Members[0], roomData.Members[1], roomData.Keys);
 /*
     server.DeleteSharedGroup
     (

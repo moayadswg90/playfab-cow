@@ -132,8 +132,6 @@ handlers.endGameByRoomClosed = function (args)
 		updatePlayer(playerOneId, false, false, glickoResult[0]);
 		updateStats(playerOneId, 0, parseInt(glickoResult[0]["Rating"]), 0, 0, 0, 0);
 		
-		return {result: parseInt(glickoResult[0]["Rating"])};
-		
 	}
 	return {code:1};
 };

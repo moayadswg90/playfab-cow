@@ -99,6 +99,8 @@ handlers.endGameByRoomClosed = function (args)
 		glickoResult = calculateGlicko(playerTwoReadOnlyData, playerOneReadOnlyData, 0);
 		updatePlayer(playerTwoId, false, false, JSON.stringify(glickoResult[0]));
 		updateStats(playerTwoId, 0, parseInt(glickoResult[0]["Rating"]), 0, 0, 0, 0);
+		var rating = parseInt(glickoResult[0]["Rating"];
+		return rating;
 		//return {result: parseInt(glickoResult[0]["Rating"]};
 	}
 	else if(keys[playerOneId] == null && keys[playerTwoId] != null )
@@ -131,6 +133,8 @@ handlers.endGameByRoomClosed = function (args)
 		updatePlayer(playerOneId, false, false, glickoResult[0]);
 		//return {result: parseInt(glickoResult[0]["Rating"]};
 		updateStats(playerOneId, 0, parseInt(glickoResult[0]["Rating"]), 0, 0, 0, 0);
+		var rating = parseInt(glickoResult[0]["Rating"];
+		return rating;
 	}
 	return {code:1};
 };

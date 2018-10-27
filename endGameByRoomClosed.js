@@ -46,10 +46,9 @@ handlers.endGameByRoomClosed = function (args)
 	updatePlayer(playerOneId, playerTwoData["firstGame"], playerTwoData["firstWin"], JSON.stringify(playerTwoData["glicko"]));
 	updatePlayer(playerTwoId, playerTwoData["firstGame"], playerTwoData["firstWin"], JSON.stringify(playerTwoData["glicko"]));
 	
+	updateStats(playerOneId, playerOneData["isWon"], parseInt(playerOneData["glicko"]["Rating"]));
+	updateStats(playerTwoId, playerTwoData["isWon"], parseInt(playerTwoData["glicko"]["Rating"]));
 /*
-	//update player data
-	updatePlayer(playerOne["id"], playerOne["firstGame"], playerOne["firstWin"], JSON.stringify(playerOne["glicko"]));
-	updatePlayer(playerTwo["id"], playerTwo["firstGame"], playerTwo["firstWin"], JSON.stringify(playerTwo["glicko"]));
 	//update stats
 	playerOne["stats"] = updateStats(playerOneId, playerOneData["isWon"], parseInt(playerOneData["glicko"]["Rating"]));
 	playerTwo["stats"] = updateStats(playerTwoId, playerTwoData["isWon"], parseInt(playerTwoData["glicko"]["Rating"]));

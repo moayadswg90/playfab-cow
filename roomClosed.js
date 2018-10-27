@@ -10,13 +10,15 @@ handlers.RoomClosed = function (args)
 	        GetMembers: true
 	    }
     );
+    // call end game
+/*
     server.DeleteSharedGroup
     (
 	    {
 	        SharedGroupId: photonGameID
 	    }
     );
-    
+*/  
     server.WriteTitleEvent
     (
 	    {

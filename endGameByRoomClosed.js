@@ -42,5 +42,5 @@ handlers.endGameByRoomClosed = function (args)
 	//return keys;
 	var playerOneData = keys[playerOneId];
 	var playeTwoData = keys[playerTwoId];
-	return playerOneData.Value;
+	return playerOneData.Value["isWon"];
 };

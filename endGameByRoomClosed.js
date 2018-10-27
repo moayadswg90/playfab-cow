@@ -48,31 +48,23 @@ handlers.endGameByRoomClosed = function (args)
 	
 	updateStats(playerOneId, playerOneData["isWon"], parseInt(playerOneData["glicko"]["Rating"]));
 	updateStats(playerTwoId, playerTwoData["isWon"], parseInt(playerTwoData["glicko"]["Rating"]));
-/*
-	//update stats
-	playerOne["stats"] = updateStats(playerOneId, playerOneData["isWon"], parseInt(playerOneData["glicko"]["Rating"]));
-	playerTwo["stats"] = updateStats(playerTwoId, playerTwoData["isWon"], parseInt(playerTwoData["glicko"]["Rating"]));
-*/
 	
-/*
 	//grant gold
 	var addGoldResult = server.AddUserVirtualCurrency
     (
     	{
 	        PlayFabId: playerOneId,
 	        VirtualCurrency: "GL",
-	        Amount: playerOne["gold"]["totalGold"]
+	        Amount: playerOneData["gold"]["totalGold"]
     	}
     ); 
     var addGoldResult = server.AddUserVirtualCurrency
     (
     	{
-	        PlayFabId: playerTwo["id"],
+	        PlayFabId: playerTwoId,
 	        VirtualCurrency: "GL",
-	        Amount: playerTwo["gold"]["totalGold"]
+	        Amount: playerTwoData["gold"]["totalGold"]
     	}
-    ); 
-*/
-	
-	return playerOneData;
+    ); 	
+	return true;
 };

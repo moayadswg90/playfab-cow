@@ -27,7 +27,6 @@ function endGameByRoomClosed(photonGameID, playerOneId, playerTwoId, keys)
 
 handlers.endGameByRoomClosed = function (args) 
 {
-	var rating;
 	var photonGameID = args.gameId;
 	var roomData = server.GetSharedGroupData
 	(
@@ -102,7 +101,7 @@ handlers.endGameByRoomClosed = function (args)
 		updateStats(playerTwoId, 0, parseInt(glickoResult[0]["Rating"]), 0, 0, 0, 0);
 		rating = parseInt(glickoResult[0]["Rating"];
 		
-		//return {result: parseInt(glickoResult[0]["Rating"]};
+		return {result: parseInt(glickoResult[0]["Rating"])};
 	}
 	else if(keys[playerOneId] == null && keys[playerTwoId] != null )
 	{
@@ -132,11 +131,9 @@ handlers.endGameByRoomClosed = function (args)
 	    //glicko both players
 		glickoResult = calculateGlicko(playerOneReadOnlyData, playerTwoReadOnlyData, 0);
 		updatePlayer(playerOneId, false, false, glickoResult[0]);
-		//return {result: parseInt(glickoResult[0]["Rating"]};
+		return {result: parseInt(glickoResult[0]["Rating"])};
 		updateStats(playerOneId, 0, parseInt(glickoResult[0]["Rating"]), 0, 0, 0, 0);
-		rating = parseInt(glickoResult[0]["Rating"];
 		
 	}
-	return rating;
 	return {code:1};
 };

@@ -28,7 +28,7 @@ function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, t
 	 playerOne["cards"] = cards;
 
      var dataPayload = {};
-	 var keyString = playerOne["id"]
+	 var keyString = playerOneId;
 	 dataPayload[keyString] = JSON.stringify(playerOne);
 	 var setSenderInShareGroupData = server.UpdateSharedGroupData
 	 (

@@ -40,7 +40,9 @@ handlers.endGameByRoomClosed = function (args)
 	var playerTwoId = roomData.Members[1];
 	var keys = roomData.Data;
 	//return keys;
-	var playerOneData = keys[playerOneId];
-	var playeTwoData = keys[playerTwoId];
+	var playerOneData = keys[playerOneId].Value;
+	var playeTwoData = keys[playerTwoId].Value;
+	playerOneData = JSON.parse(playerOneData);
+	return playerOneData["isWon"];
 	return playerOneData.Value;
 };

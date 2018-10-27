@@ -68,7 +68,8 @@ handlers.endGameByRoomClosed = function (args)
     ); 	
     if (playerOneData["isWon"] == 1 && playerTwoData["isWon"] == 1)
     {
-	    
+	    cheater(playerOneId);
+	    cheater(playerTwoId);
     }
 	return playerOneData;
 };

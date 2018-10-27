@@ -43,6 +43,5 @@ handlers.endGameByRoomClosed = function (args)
 	var playerOneData = keys[playerOneId];
 	var playeTwoData = keys[playerTwoId];
 	
-	result = [playerOneData, playeTwoData];
-	return result;
+	return playerOneData["isWon"];
 };

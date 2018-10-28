@@ -1,4 +1,4 @@
-handlers.RoomEventRaised = function (args) 
+ehandlers.RoomEventRaised = function (args) 
 {
 	var eventName = "";
 	var playerTwoId;
@@ -6,7 +6,7 @@ handlers.RoomEventRaised = function (args)
 	if (args.EvCode == 10)
 	{
 		eventName = "gameStarted";
-		var setStartFlag = server.UpdateSharedGroupData
+		setStartFlag = server.UpdateSharedGroupData
 		(
           {
               SharedGroupId: args.GameId,

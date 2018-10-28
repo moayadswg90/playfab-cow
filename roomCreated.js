@@ -15,20 +15,20 @@ handlers.RoomCreated = function (args)
 	        EventName : "room_created"
 	    }
     );
-    var createGroup = server.CreateSharedGroup
+    server.CreateSharedGroup
     (
           {
               SharedGroupId: photonGameID
           }
     );
-    var addRoomCreatorToGroup = server.AddSharedGroupMembers
+    server.AddSharedGroupMembers
     (
           {
               SharedGroupId: photonGameID,
               PlayFabIds: [playerID]
           }
     );
-    var setStartFlag = server.UpdateSharedGroupData
+    server.UpdateSharedGroupData
     (
           {
               SharedGroupId: photonGameID,

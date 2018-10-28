@@ -1,7 +1,7 @@
 handlers.RoomJoined = function (args) 
 {
 
-	var addRoomCreatorToGroup = server.AddSharedGroupMembers
+	server.AddSharedGroupMembers
     (
           {
               SharedGroupId: args.GameId,

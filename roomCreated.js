@@ -9,12 +9,6 @@ handlers.RoomCreated = function (args)
 	        Body: {photonGameID: photonGameID}
 	    }
     );
-    server.WriteTitleEvent
-    (
-	    {
-	        EventName : "room_created"
-	    }
-    );
     server.CreateSharedGroup
     (
           {

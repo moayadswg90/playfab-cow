@@ -16,12 +16,6 @@ handlers.RoomEventRaised = function (args)
 	}
 	else if (args.EvCode == 20)
 	{
-		server.WriteTitleEvent
-    (
-    	{
-        	EventName : "startOfGameEnded"
-    	}
-    );
 		eventName = "gameEnded";
 		eventData = args.Data;
 
@@ -33,15 +27,24 @@ handlers.RoomEventRaised = function (args)
 	    	}
 
 		);
-		
 		for (i = 0; i < roomData.Members.length; i++)
 		{
 			if(roomData.Members[i] != args.UserId)
 				playerTwoId = roomData.Members[i];
 		}
-		
+		server.WriteTitleEvent
+	    (
+	    	{
+	        	EventName : "beforeEndGameByEvent"
+	    	}
+	    );
 		result = endGameByEvent(args.GameId, args.UserId, playerTwoId, eventData["isWon"], eventData["isDuel"], eventData["troops"], eventData["fields"], eventData["cards"], eventData["turns"], eventData["reason"]);
-		
+		server.WriteTitleEvent
+	    (
+	    	{
+	        	EventName : "afterEndGameByEvent"
+	    	}
+	    );
 	}
 	else
 	{

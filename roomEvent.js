@@ -16,6 +16,12 @@ handlers.RoomEventRaised = function (args)
 	}
 	else if (args.EvCode == 20)
 	{
+		server.WriteTitleEvent
+    (
+    	{
+        	EventName : "startOfGameEnded"
+    	}
+    );
 		eventName = "gameEnded";
 		eventData = args.Data;
 

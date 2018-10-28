@@ -64,7 +64,7 @@ function endGameByRoomClosed(photonGameID, playerOneId, playerTwoId, keys)
 	else if(keys[playerOneId] == null && keys[playerTwoId] != null )
 	{
 		var playerTwoData = JSON.parse(keys[playerTwoId].Value);
-		updatePlayer(playerTwoId, playerTwoData["firstGame"], playerTwoData["firstWin"], playerTwoData["glicko"]);
+		updatePlayer(playerTwoId, playerTwoData["firstGame"], playerTwoData["firstWin"],JSON.stringify(playerTwoData["glicko"]));
 		updateStats(playerTwoId, playerTwoData["isWon"], parseInt(playerTwoData["glicko"]["Rating"]), playerTwoData["stats"]["troops"], playerTwoData["stats"]["fields"], playerTwoData["stats"]["cards"], playerTwoData["stats"]["isDuel"]);
 		var addGoldResult = server.AddUserVirtualCurrency
 	    (
@@ -87,7 +87,7 @@ function endGameByRoomClosed(photonGameID, playerOneId, playerTwoId, keys)
 	          }
 	    );
 		glickoResult = calculateGlicko(playerOneReadOnlyData, playerTwoReadOnlyData, 0);
-		updatePlayer(playerOneId, false, false, glickoResult[0]);
+		updatePlayer(playerOneId, false, false, JSON.stringify(glickoResult[0]));
 		updateStats(playerOneId, 0, parseInt(glickoResult[0]["Rating"]), 0, 0, 0, 0);
 		
 	}

@@ -1,4 +1,4 @@
-ehandlers.RoomEventRaised = function (args) 
+handlers.RoomEventRaised = function (args) 
 {
 	var eventName = "";
 	var playerTwoId;

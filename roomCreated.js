@@ -1,31 +1,29 @@
 handlers.RoomCreated = function (args)
 {
-	var photonGameID = args.GameId;
-	var playerID = args.UserId;
 	server.WriteTitleEvent
     (
 	    {
 	        EventName : "photonGameID",
-	        Body: {photonGameID: photonGameID}
+	        Body: {photonGameID: args.GameId}
 	    }
     );
     server.CreateSharedGroup
     (
           {
-              SharedGroupId: photonGameID
+              SharedGroupId: args.GameId
           }
     );
     server.AddSharedGroupMembers
     (
           {
-              SharedGroupId: photonGameID,
-              PlayFabIds: [playerID]
+              SharedGroupId: args.GameId,
+              PlayFabIds: [args.UserId]
           }
     );
     server.UpdateSharedGroupData
     (
           {
-              SharedGroupId: photonGameID,
+              SharedGroupId: args.GameId,
               Data: {gameStarted: 0}
           }
     );

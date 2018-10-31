@@ -20,7 +20,7 @@ handlers.unlockContainer = function (args, context)
 handlers.reroll = function(args,context)
 {
   //check balance
-  if (!checkBalance(currentPlayerId))
+  if (!checkBalance(currentPlayerId, args.rerollCost))
   {
     log.debug("insufficient balance");
     return 1052;
@@ -79,7 +79,7 @@ function updateTempLoot(unlockedContainer,currentPlayerId)
    );
   return resultArray;
 }
-function checkBalance(currentPlayerId)
+function checkBalance(currentPlayerId, rerollCost)
 {
   var balanceFlag = true;
    var checkPlayerBalance = server.GetUserInventory

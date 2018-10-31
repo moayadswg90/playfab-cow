@@ -1,8 +1,6 @@
 handlers.unlockContainer = function (args, context) 
 {
-  try
-  {
-	  var unlockContainerBox = server.UnlockContainerItem
+	 var unlockContainerBox = server.UnlockContainerItem
 	  (
 	   		{
 	  			PlayFabId: currentPlayerId,
@@ -11,12 +9,17 @@ handlers.unlockContainer = function (args, context)
 	  );
 	  log.debug(JSON.parse(unlockedContainer.GrantedItems[0]))
 	  return {result: JSON.parse(unlockedContainer.GrantedItems[0])};
+/*
+  try
+  {
+	 
 	  //return updateTempLoot(unlockContainerBox,currentPlayerId);
   }
   catch(e)
   {
 		return {code: e.apiErrorInfo.apiError.errorCode, error: e.apiErrorInfo.apiError.error};
   }
+*/
 }
 handlers.reroll = function(args,context)
 {

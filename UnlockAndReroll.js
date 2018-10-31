@@ -7,8 +7,8 @@ handlers.unlockContainer = function (args, context)
 	  			ContainerItemId: args.containerID
 			}
 	  );
-	  log.debug(unlockContainerBox.GrantedItems[0])
-	  return JSON.parse(unlockContainerBox.GrantedItems[0]);
+	  log.debug(unlockContainerBox.GrantedItems[0]["ItemInstanceId"])
+	  //return JSON.parse(unlockContainerBox.GrantedItems[0]);
 /*
   try
   {

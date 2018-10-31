@@ -1,5 +1,7 @@
 handlers.unlockContainer = function (args, context) 
 {
+  try
+  { 
 	 var unlockContainerBox = server.UnlockContainerItem
 	  (
 	   		{
@@ -7,22 +9,14 @@ handlers.unlockContainer = function (args, context)
 	  			ContainerItemId: args.containerID
 			}
 	  );
-	  log.debug(unlockContainerBox.GrantedItems[0]["ItemId"])
-	  log.debug(unlockContainerBox.GrantedItems[0]["ItemInstanceId"])
+	  return unlockContainerBox;
 	  return updateTempLoot(unlockContainerBox,currentPlayerId);
-	  
-	  //return JSON.parse(unlockContainerBox.GrantedItems[0]);
-/*
-  try
-  {
-	 
-	  //return updateTempLoot(unlockContainerBox,currentPlayerId);
   }
   catch(e)
   {
 		return {code: e.apiErrorInfo.apiError.errorCode, error: e.apiErrorInfo.apiError.error};
   }
-*/
+
 }
 handlers.reroll = function(args,context)
 {
@@ -92,10 +86,15 @@ function updateTempLoot(unlockedContainer,currentPlayerId)
 
   for (i = 0; i < unlockedContainer.GrantedItems.length; i++)
   {
+/*
+	  for(j = 0; j < unlockedContainer.GrantedItems[i]["iiiiiiiincrementedBy"]; j++)
+	  {
+		  
+	  }
+*/
     itemsArray.push(unlockedContainer.GrantedItems[i]["ItemInstanceId"]); 
     resultArray.push(unlockedContainer.GrantedItems[i]["ItemId"]);
   }
-
   var setInTempLoot = server.UpdateUserReadOnlyData
   (
       {

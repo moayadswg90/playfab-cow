@@ -7,7 +7,7 @@ handlers.unlockContainer = function (args, context)
 	  			ContainerItemId: args.containerID
 			}
 	  );
-	  log.debug(JSON.parse(unlockedContainer.GrantedItems[0]))
+	  log.debug(unlockedContainer.GrantedItems[0])
 	  return {result: JSON.parse(unlockedContainer.GrantedItems[0])};
 /*
   try

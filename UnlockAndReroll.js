@@ -96,15 +96,13 @@ function updateTempLoot(unlockedContainer,currentPlayerId)
     resultArray.push(unlockedContainer.GrantedItems[i]["ItemId"]);
   }
 
-  var itemsArray = JSON.stringify(itemsArray);
-  // set cards inside UserData
   var setInTempLoot = server.UpdateUserReadOnlyData
   (
       {
         PlayFabId: currentPlayerId,
         Data: 
         {
-                  TempLootItem : itemsArray
+                  TempLootItem : JSON.stringify(itemsArray)
         }
       }
    );

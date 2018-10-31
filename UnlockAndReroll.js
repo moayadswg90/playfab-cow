@@ -10,7 +10,7 @@ handlers.unlockTest = function (args, context)
   			ContainerItemInstanceId: containerID
 		}
   );
-      log.debug(unlockContainerBox);
+      log.debug(unlockContainerBox.GrantedItems);
   //update temp loot for future rerolls
   return updateTempLoot(unlockContainerBox,currentPlayerId); 
 }

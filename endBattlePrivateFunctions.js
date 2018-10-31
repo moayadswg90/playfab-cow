@@ -29,7 +29,7 @@ function calculateEarnedGold(isWon, firstWin, firstGame, doubleGold)
 	gold["increment"] = gold["playGold"] + gold["winGold"] + gold["doubleGold"]
 	currency["GL"] = gold;
 	result["currency"] = currency;
-	return currency;
+	return result;
 }
 function updatePlayer(id, firstWin, firstGame, glicko)
 {

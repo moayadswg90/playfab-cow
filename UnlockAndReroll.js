@@ -9,7 +9,7 @@ handlers.unlockContainer = function (args, context)
 	  			ContainerItemId: args.containerID
 			}
 	  );
-	  return updateTempLoot(unlockContainerBox,currentPlayerId);
+	  return {reward: {items : updateTempLoot(unlockContainerBox,currentPlayerId)}};
   }
   catch(e)
   {
@@ -52,7 +52,7 @@ handlers.reroll = function(args,context)
 		}
   );
   //update temp loot for future rerolls
-  return updateTempLoot(unlockContainerBox,currentPlayerId); 
+  return {reward: {items : updateTempLoot(unlockContainerBox,currentPlayerId)}};
 }
 function updateTempLoot(unlockedContainer,currentPlayerId)
 {

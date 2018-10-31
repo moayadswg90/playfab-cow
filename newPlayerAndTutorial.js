@@ -61,10 +61,37 @@ handlers.tutorialCompleted = function (args, context)
 	        }
 	      }
 		);
-    	return {firstTutorial: true, goldReward: tutorialGoldReward, dimondReward: tutorialDMReward};
+		var result = reward:
+		{
+			currency:
+			{
+				GL: 
+				{
+					increment: tutorialGoldReward
+				},
+				DM:
+				{
+					increment: tutorialDMReward
+				}
+			}
+		}
+    	return result;
     }
     else
     {
-	  return {firstTutorial: false, goldReward: 0, dimondReward: 0};  
+	  var result = reward:
+		{
+			currency:
+			{
+				GL: 
+				{
+					increment: 0
+				},
+				DM:
+				{
+					increment: 0
+				}
+			}
+		}  
     }  	
  }

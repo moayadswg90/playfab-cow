@@ -9,7 +9,9 @@ handlers.unlockContainer = function (args, context)
 	  			ContainerItemId: args.containerID
 			}
 	  );
-	  return updateTempLoot(unlockContainerBox,currentPlayerId);
+	  log.debug(JSON.parse(unlockedContainer.GrantedItems[0]))
+	  return {result: JSON.parse(unlockedContainer.GrantedItems[0])};
+	  //return updateTempLoot(unlockContainerBox,currentPlayerId);
   }
   catch(e)
   {

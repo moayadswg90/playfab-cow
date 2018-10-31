@@ -14,7 +14,7 @@ function endGameByRoomClosed(photonGameID, playerOneId, playerTwoId, keys)
 	    	{
 		        PlayFabId: playerOneId,
 		        VirtualCurrency: "GL",
-		        Amount: playerOneData["gold"]["totalGold"]
+		        Amount: playerOneData["GL"]["increment"]
 	    	}
 	    ); 
 		var addGoldResult = server.AddUserVirtualCurrency
@@ -22,7 +22,7 @@ function endGameByRoomClosed(photonGameID, playerOneId, playerTwoId, keys)
 	    	{
 		        PlayFabId: playerTwoId,
 		        VirtualCurrency: "GL",
-		        Amount: playerTwoData["gold"]["totalGold"]
+		        Amount: playerTwoData["GL"]["increment"]
 	    	}
 	    ); 
 	    if (playerOneData["isWon"] == 1 && playerTwoData["isWon"] == 1)
@@ -42,7 +42,7 @@ function endGameByRoomClosed(photonGameID, playerOneId, playerTwoId, keys)
 	    	{
 		        PlayFabId: playerOneId,
 		        VirtualCurrency: "GL",
-		        Amount: playerOneData["gold"]["totalGold"]
+		        Amount: playerOneData["GL"]["increment"]
 	    	}
 	    );
 	    var playerOneReadOnlyData = server.GetUserReadOnlyData
@@ -71,7 +71,7 @@ function endGameByRoomClosed(photonGameID, playerOneId, playerTwoId, keys)
 	    	{
 		        PlayFabId: playerOneId,
 		        VirtualCurrency: "GL",
-		        Amount: playerOneData["gold"]["totalGold"]
+		        Amount: playerOneData["GL"]["increment"]
 	    	}
 	    );
 	    var playerOneReadOnlyData = server.GetUserReadOnlyData
@@ -122,7 +122,7 @@ handlers.endGameByRoomClosedTest = function (args)
 	    	{
 		        PlayFabId: playerOneId,
 		        VirtualCurrency: "GL",
-		        Amount: playerOneData["gold"]["totalGold"]
+		        Amount: playerOneData["GL"]["increment"]
 	    	}
 	    ); 
 		var addGoldResult = server.AddUserVirtualCurrency
@@ -150,7 +150,7 @@ handlers.endGameByRoomClosedTest = function (args)
 	    	{
 		        PlayFabId: playerOneId,
 		        VirtualCurrency: "GL",
-		        Amount: playerOneData["gold"]["totalGold"]
+		        Amount: playerOneData["GL"]["increment"]
 	    	}
 	    );
 	    var playerOneReadOnlyData = server.GetUserReadOnlyData
@@ -179,7 +179,7 @@ handlers.endGameByRoomClosedTest = function (args)
 	    	{
 		        PlayFabId: playerOneId,
 		        VirtualCurrency: "GL",
-		        Amount: playerOneData["gold"]["totalGold"]
+		        Amount: playerOneData["GL"]["increment"]
 	    	}
 	    );
 	    var playerOneReadOnlyData = server.GetUserReadOnlyData

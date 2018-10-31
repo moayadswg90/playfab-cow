@@ -89,13 +89,11 @@ function updateTempLoot(unlockedContainer,currentPlayerId)
 {
   itemsArray = [];
   resultArray = [];
-  return JSON.parse(unlockedContainer.GrantedItems[0]);
 
   for (i = 0; i < unlockedContainer.GrantedItems.length; i++)
   {
-    var itemID = Object.values(unlockedContainer.GrantedItems[i])["ItemInstanceId"];
-    itemsArray.push(itemID); 
-    resultArray.push(Object.values(unlockedContainer.GrantedItems[i])["ItemId"]);
+    itemsArray.push(unlockedContainer.GrantedItems[i]["ItemInstanceId"]); 
+    resultArray.push(unlockedContainer.GrantedItems[i]["ItemId"]);
   }
 
   var itemsArray = JSON.stringify(itemsArray);

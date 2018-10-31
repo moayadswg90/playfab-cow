@@ -1,16 +1,13 @@
 handlers.shareGame = function (args, context) 
-{
-	
+{	
   	today = new Date();
   	sharedToday = false;
-  	
 	var playerReadOnlyData = server.GetUserReadOnlyData
     (
           {
               PlayFabId: currentPlayerId
           }
-    );
-      	
+    );   	
   	sharedToday = checkSharedToday(playerReadOnlyData);
   	if (sharedToday)
   	{

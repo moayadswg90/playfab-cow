@@ -3,7 +3,7 @@ handlers.newPlayer = function (args, context)
   	var currentPlayerID = context.playerProfile.PlayerId;
   	glickoItems = {Rating: offset, RD: factor, Vol: vol};
   	var glickoItems = JSON.stringify(glickoItems);
-  	var updatePlayerData = server.UpdateUserReadOnlyData
+  	server.UpdateUserReadOnlyData
 	(
 		{
 			PlayFabId: currentPlayerId,
@@ -15,7 +15,7 @@ handlers.newPlayer = function (args, context)
 	        }
 	     }
 	); 
-  	var grantItems = server.GrantItemsToUser
+  	server.GrantItemsToUser
   	(
    		{
   			PlayFabId: currentPlayerId,
@@ -39,19 +39,19 @@ handlers.tutorialCompleted = function (args, context)
     var tutorialCompleted = playerReadOnlyData.Data.tutorial.Value;  
     if (tutorialCompleted == 0)
     {   
-	    var addGold = server.AddUserVirtualCurrency
+	    server.AddUserVirtualCurrency
 		({
         	PlayFabId: currentPlayerId,
 			VirtualCurrency: "GL",
 			Amount: tutorialGoldReward
     	}); 
-    	var addDimonds = server.AddUserVirtualCurrency
+    	server.AddUserVirtualCurrency
 		({
         	PlayFabId: currentPlayerId,
 			VirtualCurrency: "DM",
 			Amount: tutorialDMReward
     	});
-    	var updateTutorialStatus = server.UpdateUserReadOnlyData
+    	server.UpdateUserReadOnlyData
 		(
 	      {
 	        PlayFabId: currentPlayerId,

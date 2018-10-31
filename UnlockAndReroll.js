@@ -9,7 +9,6 @@ handlers.unlockContainer = function (args, context)
 	  			ContainerItemId: args.containerID
 			}
 	  );
-	  //return unlockContainerBox;
 	  return updateTempLoot(unlockContainerBox,currentPlayerId);
   }
   catch(e)
@@ -55,30 +54,6 @@ handlers.reroll = function(args,context)
   //update temp loot for future rerolls
   return updateTempLoot(unlockContainerBox,currentPlayerId); 
 }
-function checkBalance(currentPlayerId)
-{
-  var balanceFlag = true;
-   var checkPlayerBalance = server.GetUserInventory
-	  (
-		  {
-			  PlayFabId: currentPlayerId
-		  }
-	  );
-  if (checkPlayerBalance.VirtualCurrency["DM"] < rerollCost )
-  {
-    return false;
-  }
-  
-  var deductPrice = server.SubtractUserVirtualCurrency
-  (
-     {
-        PlayFabId: currentPlayerId,
-        VirtualCurrency: "DM",
-  		Amount: rerollCost
-      }
-   );
-  return true;
-}
 function updateTempLoot(unlockedContainer,currentPlayerId)
 {
   itemsArray = [];
@@ -103,6 +78,30 @@ function updateTempLoot(unlockedContainer,currentPlayerId)
       }
    );
   return resultArray;
+}
+function checkBalance(currentPlayerId)
+{
+  var balanceFlag = true;
+   var checkPlayerBalance = server.GetUserInventory
+	  (
+		  {
+			  PlayFabId: currentPlayerId
+		  }
+	  );
+  if (checkPlayerBalance.VirtualCurrency["DM"] < rerollCost )
+  {
+    return false;
+  }
+  
+  var deductPrice = server.SubtractUserVirtualCurrency
+  (
+     {
+        PlayFabId: currentPlayerId,
+        VirtualCurrency: "DM",
+  		Amount: rerollCost
+      }
+   );
+  return true;
 }
 function consumeTempLoot(currentPlayerId)
 {

@@ -7,7 +7,10 @@ handlers.unlockContainer = function (args, context)
 	  			ContainerItemId: args.containerID
 			}
 	  );
+	  log.debug(unlockContainerBox.GrantedItems[0]["ItemId"])
 	  log.debug(unlockContainerBox.GrantedItems[0]["ItemInstanceId"])
+	  return updateTempLoot(unlockContainerBox,currentPlayerId);
+	  
 	  //return JSON.parse(unlockContainerBox.GrantedItems[0]);
 /*
   try
@@ -87,7 +90,7 @@ function updateTempLoot(unlockedContainer,currentPlayerId)
   itemsArray = [];
   resultArray = [];
   return JSON.parse(unlockedContainer.GrantedItems[0]);
-/*
+
   for (i = 0; i < unlockedContainer.GrantedItems.length; i++)
   {
     var itemID = Object.values(unlockedContainer.GrantedItems[i])["ItemInstanceId"];
@@ -107,8 +110,8 @@ function updateTempLoot(unlockedContainer,currentPlayerId)
         }
       }
    );
-*/
-  //return resultArray;
+
+  return resultArray;
 }
 function consumeTempLoot(currentPlayerId)
 {

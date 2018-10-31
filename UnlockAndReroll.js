@@ -81,6 +81,8 @@ function updateTempLoot(unlockedContainer,currentPlayerId)
 {
   itemsArray = [];
   resultArray = [];
+  return unlockedContainer.GrantedItems[0];
+/*
   for (i = 0; i < unlockedContainer.GrantedItems.length; i++)
   {
     var itemID = Object.values(unlockedContainer.GrantedItems[i])["ItemInstanceId"];
@@ -100,7 +102,8 @@ function updateTempLoot(unlockedContainer,currentPlayerId)
         }
       }
    );
-  return resultArray;
+*/
+  //return resultArray;
 }
 function consumeTempLoot(currentPlayerId)
 {

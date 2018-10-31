@@ -7,7 +7,7 @@ handlers.unlockContainer = function (args, context)
 	  			ContainerItemId: args.containerID
 			}
 	  );
-	  log.debug(unlockedContainer.GrantedItems[0])
+	  log.debug(unlockContainerBox.GrantedItems[0])
 	  return {result: 1};
 /*
   try

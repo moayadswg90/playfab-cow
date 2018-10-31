@@ -1,13 +1,12 @@
-handlers.unlockTest = function (args, context) 
+handlers.unlockContainer = function (args, context) 
 {
-  var containerID = args.containerID;
   try
   {
 	  var unlockContainerBox = server.UnlockContainerItem
 	  (
 	   		{
 	  			PlayFabId: currentPlayerId,
-	  			ContainerItemId: containerID
+	  			ContainerItemId: args.containerID
 			}
 	  );
 	  return updateTempLoot(unlockContainerBox,currentPlayerId);
@@ -16,26 +15,9 @@ handlers.unlockTest = function (args, context)
   {
 		return {code: e.apiErrorInfo.apiError.errorCode, error: e.apiErrorInfo.apiError.error};
   }
-   
-}
-handlers.unlockContainer = function (args, context) 
-{
-  var containerID = args.containerID;
-
-  //unlock box
-  var unlockContainerBox = server.UnlockContainerInstance
-  (
-   		{
-  			PlayFabId: currentPlayerId,
-  			ContainerItemInstanceId: containerID
-		}
-  );
-  //update temp loot for future rerolls
-  return updateTempLoot(unlockContainerBox,currentPlayerId); 
 }
 handlers.reroll = function(args,context)
 {
-  var containerID = args.containerID;
   //check balance
   if (!checkBalance(currentPlayerId))
   {
@@ -53,7 +35,7 @@ handlers.reroll = function(args,context)
   			Annotation: "Rerolled box",
   			ItemIds: 
           	[
-    			containerID
+    			args.containerID
   			]
 		}
   	);
@@ -101,9 +83,9 @@ function updateTempLoot(unlockedContainer,currentPlayerId)
   resultArray = [];
   for (i = 0; i < unlockedContainer.GrantedItems.length; i++)
   {
-    var itemID = Object.values(unlockedContainer.GrantedItems[i])[1];
+    var itemID = Object.values(unlockedContainer.GrantedItems[i])["ItemInstanceId"];
     itemsArray.push(itemID); 
-    resultArray.push(Object.values(unlockedContainer.GrantedItems[i])[0]);
+    resultArray.push(Object.values(unlockedContainer.GrantedItems[i])["ItemId"]);
   }
 
   var itemsArray = JSON.stringify(itemsArray);

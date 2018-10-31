@@ -81,7 +81,7 @@ function updateTempLoot(unlockedContainer,currentPlayerId)
 {
   itemsArray = [];
   resultArray = [];
-  return unlockedContainer.GrantedItems[0]["ItemInstanceId"];
+  return JSON.parse(unlockedContainer.GrantedItems[0])["ItemInstanceId"];
 /*
   for (i = 0; i < unlockedContainer.GrantedItems.length; i++)
   {

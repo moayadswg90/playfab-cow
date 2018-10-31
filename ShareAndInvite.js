@@ -30,8 +30,20 @@ handlers.shareGame = function (args, context)
 	        		}
 	      		}
 		  	);
-    	return {Reward:shareReward} ;
-  	
+		var result = 	
+		{
+			reward:
+			{
+				currency:
+				{
+					DM:
+					{
+						increment: shareReward
+					}
+				}
+			}
+		};
+    	return result;
   	}
   	else
   		return {Reward:0} ;

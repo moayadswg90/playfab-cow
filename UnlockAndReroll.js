@@ -3,11 +3,11 @@ handlers.unlockTest = function (args, context)
   var containerID = args.containerID;
 
   //unlock box
-  var unlockContainerBox = server.UnlockContainerInstance
+  var unlockContainerBox = server.UnlockContainerItem
   (
    		{
   			PlayFabId: currentPlayerId,
-  			ContainerItemInstanceId: containerID
+  			ContainerItemId: containerID
 		}
   );
       log.debug(unlockContainerBox.GrantedItems);

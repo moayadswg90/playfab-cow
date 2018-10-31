@@ -1,18 +1,24 @@
 handlers.unlockTest = function (args, context) 
 {
   var containerID = args.containerID;
-
-  //unlock box
-  var unlockContainerBox = server.UnlockContainerItem
-  (
-   		{
-  			PlayFabId: currentPlayerId,
-  			ContainerItemId: containerID
-		}
-  );
-      log.debug(unlockContainerBox);
-  //update temp loot for future rerolls
-  return updateTempLoot(unlockContainerBox,currentPlayerId); 
+  try
+  {
+	  var unlockContainerBox = server.UnlockContainerItem
+	  (
+	   		{
+	  			PlayFabId: currentPlayerId,
+	  			ContainerItemId: containerID
+			}
+	  );
+	  log.debug(unlockContainerBox);
+	  //update temp loot for future rerolls
+	  return updateTempLoot(unlockContainerBox,currentPlayerId);
+  }
+  catch(e)
+  {
+		return {code: e.apiErrorInfo.apiError.errorCode, error: e.apiErrorInfo.apiError.error};
+  }
+   
 }
 handlers.unlockContainer = function (args, context) 
 {

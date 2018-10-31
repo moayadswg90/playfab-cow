@@ -1,5 +1,6 @@
 function calculateEarnedGold(isWon, firstWin, firstGame, doubleGold)
 {
+	var currency = {};
 	var gold = {};
 	gold["playGold"] = gameReward;
 	gold["winGold"] = 0;
@@ -25,7 +26,8 @@ function calculateEarnedGold(isWon, firstWin, firstGame, doubleGold)
 		gold["double"] = gold["playGold"] + gold["winGold"];
 	}
 	gold["increment"] = gold["playGold"] + gold["winGold"] + gold["doubleGold"]
-	return gold;
+	currency["GL"] = gold;
+	return currency;
 }
 function updatePlayer(id, firstWin, firstGame, glicko)
 {

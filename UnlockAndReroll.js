@@ -9,7 +9,7 @@ handlers.unlockContainer = function (args, context)
 	  			ContainerItemId: args.containerID
 			}
 	  );
-	  return unlockContainerBox;
+	  //return unlockContainerBox;
 	  return updateTempLoot(unlockContainerBox,currentPlayerId);
   }
   catch(e)
@@ -86,14 +86,11 @@ function updateTempLoot(unlockedContainer,currentPlayerId)
 
   for (i = 0; i < unlockedContainer.GrantedItems.length; i++)
   {
-/*
-	  for(j = 0; j < unlockedContainer.GrantedItems[i]["iiiiiiiincrementedBy"]; j++)
+	  for(j = 0; j < unlockedContainer.GrantedItems[i]["UsesIncrementedBy"]; j++)
 	  {
-		  
+		  itemsArray.push(unlockedContainer.GrantedItems[i]["ItemInstanceId"]); 
+		  resultArray.push(unlockedContainer.GrantedItems[i]["ItemId"]);
 	  }
-*/
-    itemsArray.push(unlockedContainer.GrantedItems[i]["ItemInstanceId"]); 
-    resultArray.push(unlockedContainer.GrantedItems[i]["ItemId"]);
   }
   var setInTempLoot = server.UpdateUserReadOnlyData
   (
@@ -105,7 +102,6 @@ function updateTempLoot(unlockedContainer,currentPlayerId)
         }
       }
    );
-
   return resultArray;
 }
 function consumeTempLoot(currentPlayerId)

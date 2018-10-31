@@ -8,7 +8,7 @@ handlers.unlockContainer = function (args, context)
 			}
 	  );
 	  log.debug(unlockedContainer.GrantedItems[0])
-	  return {result: JSON.parse(unlockedContainer.GrantedItems[0])};
+	  return {result: 1};
 /*
   try
   {

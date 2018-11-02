@@ -78,6 +78,7 @@ handlers.setDailyOffer = function (args, context)
 
     var data = JSON.stringify
 	(
+		{
 		  StoreId: "mainStore",
 		  Store: 
 		  [
@@ -87,7 +88,8 @@ handlers.setDailyOffer = function (args, context)
 		        "GL": 250
 		      }
 	    	}
-		   ]	
+		   ]
+		}
     );
 
     var url = "https://722F.playfabapi.com/Admin/UpdateStoreItems";

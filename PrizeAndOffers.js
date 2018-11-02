@@ -76,8 +76,7 @@ handlers.setDailyOffer = function (args, context)
         "X-SecretKey": "H3EKWDE95441QE1WI33OUZHJSR48398TBMMU49EWQN57H7FFOR"
     };
 
-    var data = JSON.stringify
-	(
+    var data =
 		{
 		  StoreId: "mainStore",
 		  Store: 
@@ -90,7 +89,6 @@ handlers.setDailyOffer = function (args, context)
 	    	}
 		   ]
 		}
-    );
 
     var url = "https://722F.playfabapi.com/Admin/UpdateStoreItems";
     var content = JSON.stringify(body);

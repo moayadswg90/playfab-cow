@@ -100,7 +100,6 @@ handlers.setDailyOffer = function (args, context)
     var response = http.request(url, httpMethod, content, contentType,
         headers, logRequestAndResponse);
     return { responseContent: response };
-}
 /*
 	var http = new XMLHttpRequest();
 	var url = 'https://722F.playfabapi.com/Admin/UpdateStoreItems';

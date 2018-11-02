@@ -72,6 +72,36 @@ handlers.dailyLeaderboardReward = function (args, context)
 }
 handlers.setDailyOffer = function (args, context) 
 {
+	 var headers = {
+        "X-SecretKey": "H3EKWDE95441QE1WI33OUZHJSR48398TBMMU49EWQN57H7FFOR"
+    };
+
+    var data = JSON.stringify
+	(
+		  StoreId: "mainStore",
+		  Store: 
+		  [
+		    {
+		      ItemId: "BoxOne",
+		      VirtualCurrencyPrices: {
+		        "GL": 250
+		      }
+	    	}
+		   ]	
+    );
+
+    var url = "https://722F.playfabapi.com/Admin/UpdateStoreItems";
+    var content = JSON.stringify(body);
+    var httpMethod = "post";
+    var contentType = "application/json";
+    var logRequestAndResponse = true;
+
+    // The pre-defined http object makes synchronous HTTP requests
+    var response = http.request(url, httpMethod, content, contentType,
+        headers, logRequestAndResponse);
+    return { responseContent: response };
+}
+/*
 	var http = new XMLHttpRequest();
 	var url = 'https://722F.playfabapi.com/Admin/UpdateStoreItems';
 	http.open("POST", url);
@@ -100,6 +130,7 @@ handlers.setDailyOffer = function (args, context)
 	
 	log.debug(http);
 	return http;
+*/
 /*
 	var offers = ["500FreeGold","BoxOne25Off","BoxOne50Off","BoxTwo25Off","BoxTwo50Off","DoubleGold2Container50Off","DoubleGold6Container50Off"];
 	var offerOne = offers[Math.floor(Math.random() * offers.length)];

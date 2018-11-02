@@ -72,6 +72,35 @@ handlers.dailyLeaderboardReward = function (args, context)
 }
 handlers.setDailyOffer = function (args, context) 
 {
+	var http = new XMLHttpRequest();
+	var url = 'https://722F.playfabapi.com/Admin/UpdateStoreItems';
+	http.open("POST", url);
+	http.setRequestHeader('Content-type', 'application/json');
+	http.setRequestHeader('X-SecretKey', 'H3EKWDE95441QE1WI33OUZHJSR48398TBMMU49EWQN57H7FFOR');
+	var data = JSON.stringify
+	(
+		{
+		  "StoreId": "BonusStore",
+		  "Store": 
+		  [
+		    {
+		      "ItemId": "shield_level_5",
+		      "VirtualCurrencyPrices": {
+		        "RM": 180,
+		        "GV": 20
+		      },
+		      "RealCurrencyPrices": {
+		        "GBP": 100
+		      }
+	    	}
+		   ]
+		}
+    );
+	http.send(data);
+	
+	log.debug(http);
+	return http;
+/*
 	var offers = ["500FreeGold","BoxOne25Off","BoxOne50Off","BoxTwo25Off","BoxTwo50Off","DoubleGold2Container50Off","DoubleGold6Container50Off"];
 	var offerOne = offers[Math.floor(Math.random() * offers.length)];
 	
@@ -91,4 +120,5 @@ handlers.setDailyOffer = function (args, context)
 			Value: JSON.stringify(dailyOffers)
 		}
 	);
+*/
 }

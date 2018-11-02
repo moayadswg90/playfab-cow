@@ -76,7 +76,7 @@ handlers.setDailyOffer = function (args, context)
         "X-SecretKey": "H3EKWDE95441QE1WI33OUZHJSR48398TBMMU49EWQN57H7FFOR"
     };
 
-    var data =
+    var body =
 		{
 		  StoreId: "mainStore",
 		  Store: 

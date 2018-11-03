@@ -9,8 +9,3 @@ const factor = 200;
 const offset = 1500;
 const vol = 0.06;
 const tau = 0.5;
-
-//leaderboard rewards
-const potwReward = 350;
-const weeklyReward = 250;
-const dailyReward = 150;

@@ -106,7 +106,7 @@ handlers.tutorialCompleted = function (args, context)
 	    server.GrantItemsToUser
 	  	(
 	   		{
-	  			PlayFabId: args.friend,
+	  			PlayFabId: currentPlayerId,
 	  			ItemIds: 
 	          	[
 	    			"TutorialCompleted"

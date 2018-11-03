@@ -12,6 +12,13 @@ function calculateGlicko(playerOneReadOnlyData, playerTwoReadOnlyData, isWon)
 	var glicko = new glicko2.Glicko2(settings);
 	
 	var firstPlayerGlickoData = getGlickoData(playerOneReadOnlyData);
+	  server.WriteTitleEvent
+    (
+    	{
+        	EventName : "p1glicko",
+        	Body: {firstPlayerGlickoData}
+    	}
+    );
   	var p1RD = firstPlayerGlickoData.RD;
 	var p1Rating = firstPlayerGlickoData.Rating;
 	var p1Vol = firstPlayerGlickoData.Vol;
@@ -20,7 +27,13 @@ function calculateGlicko(playerOneReadOnlyData, playerTwoReadOnlyData, isWon)
   	var p2RD = secondPlayerGlickoData.RD;
 	var p2Rating = secondPlayerGlickoData.Rating;
 	var p2Vol = secondPlayerGlickoData.Vol;
-	
+	  server.WriteTitleEvent
+    (
+    	{
+        	EventName : "p2glicko",
+        	Body: {secondPlayerGlickoData}
+    	}
+    );
     var p1 = glicko.makePlayer(p1Rating, p1RD, p1Vol);
     var p2 = glicko.makePlayer(p2Rating, p2RD, p2Vol);
 	var matches = [];
@@ -46,13 +59,7 @@ function calculateGlicko(playerOneReadOnlyData, playerTwoReadOnlyData, isWon)
 function getGlickoData(playerReadOnlyData)
 {
   var glickoData = playerReadOnlyData.Data.glicko.Value;
-  server.WriteTitleEvent
-    (
-    	{
-        	EventName : "glickoStartReadOnlyP1",
-        	Body: {glickoData}
-    	}
-    );
+
   var glickoRating = glickoData["Rating"];
   var glickoRD = glickoData["RD"];
   var glickoVol = glickoData["Vol"];

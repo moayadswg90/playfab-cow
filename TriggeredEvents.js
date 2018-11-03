@@ -31,44 +31,46 @@ handlers.setPOTW = function (args, context)
 {
 	try
 	{
-		var playerID = context.playerProfile.PlayerId;
-		  var rank = context.playStreamEvent.Rank;
-		  if (rank == 1)
-		  {
-				var setPOTWData = server.SetTitleData
-			  (
-			   		{
-			  			Key: "potw",
-			          	Value: playerID
-					}
-			  );
-			  
-			  var grantReward = server.AddUserVirtualCurrency
-			    ({
-			        PlayFabId: playerID,
-			        VirtualCurrency: "DM",
-			        Amount: potwReward
-			    });
-			    var sendNotification = server.SendPushNotification
-			    ({
-			        Recipient: playerID,
-			        Message: "Congratulations! you are Player Of the Week "
-			    });  
-			}
-			else
-			{
-				 var grantReward = server.AddUserVirtualCurrency
-			    ({
-			        PlayFabId: playerID,
-			        VirtualCurrency: "DM",
-			        Amount: weeklyReward
-			    });
-			    var sendNotification = server.SendPushNotification
-			    ({
-			        Recipient: playerID,
-			        Message: "Congratulations! you Ranked in Top 10 this week"
-			    });
-			}  
+		var rank = context.playStreamEvent.Rank;
+		if (rank == 1)
+		{
+			server.SetTitleData
+			(
+			   {
+			  		Key: "potw",
+			  		Value: context.playerProfile.PlayerId
+				}
+			); 
+			server.GrantItemsToUser
+			(
+				{
+			  		PlayFabId: context.playerProfile.PlayerId,
+			  		ItemIds: 
+			        ["potwReward"]
+				}
+			);
+			server.SendPushNotification
+			({
+			    Recipient: context.playerProfile.PlayerId,
+			    Message: "Congratulations! you are Player Of the Week "
+			});  
+		}
+		else
+		{
+			server.GrantItemsToUser
+			(
+				{
+			  		PlayFabId: context.playerProfile.PlayerId,
+			  		ItemIds: 
+			        ["topTenWeeklyReward"]
+				}
+			);
+			server.SendPushNotification
+			({
+			    Recipient: context.playerProfile.PlayerId,
+			    Message: "Congratulations! you Ranked in Top 10 this week"
+			});
+		}  
 	}
 	catch(e)
 	{
@@ -80,16 +82,17 @@ handlers.dailyLeaderboardReward = function (args, context)
 {
 	try
 	{
-		var playerID = context.playerProfile.PlayerId;
-		 var grantReward = server.AddUserVirtualCurrency
+		server.GrantItemsToUser
+		(
+			{
+			  PlayFabId: context.playerProfile.PlayerId,
+			  ItemIds: 
+			  ["topTenDailyReward"]
+			}
+		);
+	    server.SendPushNotification
 	    ({
-	        PlayFabId: playerID,
-	        VirtualCurrency: "DM",
-	        Amount: dailyReward
-	    });
-	    var sendNotification = server.SendPushNotification
-	    ({
-	        Recipient: playerID,
+	        Recipient: context.playerProfile.PlayerId,
 	        Message: "Congratulations! you Ranked in Top 10 in daily leaderboard"
 	    });
 	}

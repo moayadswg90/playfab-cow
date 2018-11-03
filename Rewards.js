@@ -11,12 +11,16 @@ handlers.shareGame = function (args, context)
   	sharedToday = checkSharedToday(playerReadOnlyData);
   	if (sharedToday)
   	{
-	  	var addGoldResult = server.AddUserVirtualCurrency
-	  	({
-        	PlayFabId: currentPlayerId,
-			VirtualCurrency: "DM",
-			Amount: shareReward
-    	}); 
+	  	var grantShareReward = server.GrantItemsToUser
+	  	(
+	   		{
+	  			PlayFabId: currentPlayerId,
+	  			ItemIds: 
+	          	[
+	    			"ShareReward"
+	  			]
+			}
+		);
     	var updatePlayerData = server.UpdateUserReadOnlyData
 		  	(
 		  		{
@@ -31,11 +35,11 @@ handlers.shareGame = function (args, context)
 		{
 			reward:
 			{
-				currency:
+				items:
 				{
-					DM:
+					ShareReward:
 					{
-						increment: shareReward
+						qty: 1
 					}
 				}
 			}
@@ -43,7 +47,7 @@ handlers.shareGame = function (args, context)
     	return result;
   	}
   	else
-  		return {Reward:0} ;
+  		return {reward:0} ;
   	
  }
  handlers.inviteFriend = function (args, context) 

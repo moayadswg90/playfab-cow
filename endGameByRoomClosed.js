@@ -69,7 +69,7 @@ function endGameByRoomClosed(photonGameID, playerOneId, playerTwoId, keys)
 		var addGoldResult = server.AddUserVirtualCurrency
 	    (
 	    	{
-		        PlayFabId: playerOneId,
+		        PlayFabId: playerTwoId,
 		        VirtualCurrency: "GL",
 		        Amount: playerTwoData["reward"]["currency"]["GL"]["increment"]
 	    	}

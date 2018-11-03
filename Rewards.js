@@ -82,6 +82,8 @@ handlers.shareGame = function (args, context)
   	}
   	catch(e)
   	{
+	  	if (e.apiErrorInfo.apiError.errorCode  == 1094)
+	  		return true;
 	  	return {code: e.apiErrorInfo.apiError.errorCode, error: e.apiErrorInfo.apiError.error};
   	}   	
  }

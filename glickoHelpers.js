@@ -1,19 +1,6 @@
 function calculateGlicko(playerOneReadOnlyData, playerTwoReadOnlyData, isWon)
 {
-	server.WriteTitleEvent
-    (
-    	{
-        	EventName : "glickoStartReadOnlyP1",
-        	Body: {playerOneReadOnlyData}
-    	}
-    );
-    server.WriteTitleEvent
-    (
-    	{
-        	EventName : "glickoStartReadOnlyP2",
-        	Body: {playerTwoReadOnlyData}
-    	}
-    );
+	
   	var settings = 
 	{
         tau : 0.5,
@@ -59,6 +46,13 @@ function calculateGlicko(playerOneReadOnlyData, playerTwoReadOnlyData, isWon)
 function getGlickoData(playerReadOnlyData)
 {
   var glickoData = playerReadOnlyData.Data.glicko.Value;
+  server.WriteTitleEvent
+    (
+    	{
+        	EventName : "glickoStartReadOnlyP1",
+        	Body: {glickoData}
+    	}
+    );
   var glickoRating = glickoData["Rating"];
   var glickoRD = glickoData["RD"];
   var glickoVol = glickoData["Vol"];

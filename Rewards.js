@@ -72,19 +72,13 @@ handlers.shareGame = function (args, context)
 	  			]
 			}
 		);
-		try
-		{
-			server.SendPushNotification
-		    ({
-		        Recipient: args.friend,
-		        Message: "Your friend has joined the game"
-		    });
-		    return true; 
-		}
-		catch (e)
-		{
-			 return true; 
-		}	   
+	    server.SendPushNotification
+	    ({
+	        Recipient: args.friend,
+	        Message: "Your friend has joined the game"
+	    });
+	    
+	    return true; 
   	}
   	catch(e)
   	{

@@ -108,9 +108,7 @@ handlers.tutorialCompleted = function (args, context)
 	   		{
 	  			PlayFabId: currentPlayerId,
 	  			ItemIds: 
-	          	[
-	    			"TutorialCompleted"
-	  			]
+	          	["TutorialCompleted"]
 			}
 		);
     	server.UpdateUserReadOnlyData
@@ -127,13 +125,7 @@ handlers.tutorialCompleted = function (args, context)
 		{
 			reward:
 			{
-				items:
-				{
-					TutorialCompleted:
-					{
-						qty: 1
-					}
-				}
+				items: ["TutorialCompleted"]
 			}
 		};
     	return result;

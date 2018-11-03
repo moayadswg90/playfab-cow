@@ -71,7 +71,7 @@ function endGameByRoomClosed(photonGameID, playerOneId, playerTwoId, keys)
 	    	{
 		        PlayFabId: playerOneId,
 		        VirtualCurrency: "GL",
-		        Amount: playerOneData["reward"]["currency"]["GL"]["increment"]
+		        Amount: playerTwoData["reward"]["currency"]["GL"]["increment"]
 	    	}
 	    );
 	    var playerOneReadOnlyData = server.GetUserReadOnlyData

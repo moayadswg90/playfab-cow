@@ -76,3 +76,26 @@ handlers.setPOTW = function (args, context)
 	}
     
 }
+handlers.dailyLeaderboardReward = function (args, context) 
+{
+	try
+	{
+		var playerID = context.playerProfile.PlayerId;
+		 var grantReward = server.AddUserVirtualCurrency
+	    ({
+	        PlayFabId: playerID,
+	        VirtualCurrency: "DM",
+	        Amount: dailyReward
+	    });
+	    var sendNotification = server.SendPushNotification
+	    ({
+	        Recipient: playerID,
+	        Message: "Congratulations! you Ranked in Top 10 in daily leaderboard"
+	    });
+	}
+  		
+	catch(e)
+	{
+		return {code: e.apiErrorInfo.apiError.errorCode, error: e.apiErrorInfo.apiError.error};
+	}   
+}

@@ -62,11 +62,6 @@ handlers.shareGame = function (args, context)
 	              FriendPlayFabId: currentPlayerId
 	          }
 	    );
-	    server.SendPushNotification
-	    ({
-	        Recipient: args.friend,
-	        Message: "Your friend has joined the game"
-	    });
 	    server.GrantItemsToUser
 	  	(
 	   		{
@@ -77,6 +72,12 @@ handlers.shareGame = function (args, context)
 	  			]
 			}
 		);
+	    server.SendPushNotification
+	    ({
+	        Recipient: args.friend,
+	        Message: "Your friend has joined the game"
+	    });
+	    
 	    return true; 
   	}
   	catch(e)

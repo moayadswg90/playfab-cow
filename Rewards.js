@@ -11,7 +11,7 @@ handlers.shareGame = function (args, context)
   	sharedToday = checkSharedToday(playerReadOnlyData);
   	if (sharedToday)
   	{
-	  	var grantShareReward = server.GrantItemsToUser
+	  	grantShareReward = server.GrantItemsToUser
 	  	(
 	   		{
 	  			PlayFabId: currentPlayerId,
@@ -21,7 +21,7 @@ handlers.shareGame = function (args, context)
 	  			]
 			}
 		);
-    	var updatePlayerData = server.UpdateUserReadOnlyData
+    	server.UpdateUserReadOnlyData
 		  	(
 		  		{
 		  			PlayFabId: currentPlayerId,
@@ -52,34 +52,37 @@ handlers.shareGame = function (args, context)
  }
  handlers.inviteFriend = function (args, context) 
 {
-	var friendPlayFabID = args.friend	
   	try
   	{
-		  var addFriend = server.AddFriend
+		  server.AddFriend
 		  (
 	          {
 	              PlayFabId: currentPlayerId,
 	              FriendPlayFabId: args.friend
 	          }
 		  );
-	    var addPlayerToFriend = server.AddFriend
+	    server.AddFriend
 	    (
 	          {
 	              PlayFabId: args.friend,
 	              FriendPlayFabId: currentPlayerId
 	          }
 	    );
-	     var sendNotification = server.SendPushNotification
+	    server.SendPushNotification
 	    ({
 	        Recipient: args.friend,
 	        Message: "Your friend has joined the game"
 	    });
-	    var rewardFriend = server.AddUserVirtualCurrency
-	    ({
-	        PlayFabId: args.friend,
-	        VirtualCurrency: "GL",
-	        Amount: invitePlayerReward
-	    });
+	    server.GrantItemsToUser
+	  	(
+	   		{
+	  			PlayFabId: args.friend,
+	  			ItemIds: 
+	          	[
+	    			"InviteReward"
+	  			]
+			}
+		);
 	    return true; 
   	}
   	catch(e)
@@ -90,7 +93,7 @@ handlers.shareGame = function (args, context)
  
 handlers.tutorialCompleted = function (args, context) 
 {
-	
+
 	var playerReadOnlyData = server.GetUserReadOnlyData
     (
           {
@@ -100,18 +103,16 @@ handlers.tutorialCompleted = function (args, context)
     var tutorialCompleted = playerReadOnlyData.Data.tutorial.Value;  
     if (tutorialCompleted == 0)
     {   
-	    server.AddUserVirtualCurrency
-		({
-        	PlayFabId: currentPlayerId,
-			VirtualCurrency: "GL",
-			Amount: tutorialGoldReward
-    	}); 
-    	server.AddUserVirtualCurrency
-		({
-        	PlayFabId: currentPlayerId,
-			VirtualCurrency: "DM",
-			Amount: tutorialDMReward
-    	});
+	    server.GrantItemsToUser
+	  	(
+	   		{
+	  			PlayFabId: args.friend,
+	  			ItemIds: 
+	          	[
+	    			"TutorialCompleted"
+	  			]
+			}
+		);
     	server.UpdateUserReadOnlyData
 		(
 	      {
@@ -126,15 +127,11 @@ handlers.tutorialCompleted = function (args, context)
 		{
 			reward:
 			{
-				currency:
+				items:
 				{
-					GL: 
+					TutorialCompleted:
 					{
-						increment: tutorialGoldReward
-					},
-					DM:
-					{
-						increment: tutorialDMReward
+						qty: 1
 					}
 				}
 			}
@@ -145,20 +142,7 @@ handlers.tutorialCompleted = function (args, context)
     {
 	  var result = 	
 		{
-			reward:
-			{
-				currency:
-				{
-					GL: 
-					{
-						increment: 0
-					},
-					DM:
-					{
-						increment: 0
-					}
-				}
-			}
+			reward:0
 		};
 		return result;
     }  	

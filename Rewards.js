@@ -72,18 +72,18 @@ handlers.shareGame = function (args, context)
 	  			]
 			}
 		);
+/*
 	    server.SendPushNotification
 	    ({
 	        Recipient: args.friend,
 	        Message: "Your friend has joined the game"
 	    });
+*/
 	    
 	    return true; 
   	}
   	catch(e)
   	{
-	  	if (e.apiErrorInfo.apiError.errorCode  == 1094)
-	  		return true;
 	  	return {code: e.apiErrorInfo.apiError.errorCode, error: e.apiErrorInfo.apiError.error};
   	}   	
  }

@@ -35,13 +35,7 @@ handlers.shareGame = function (args, context)
 		{
 			reward:
 			{
-				items:
-				{
-					ShareReward:
-					{
-						qty: 1
-					}
-				}
+					items: ["ShareReward"]
 			}
 		};
     	return result;

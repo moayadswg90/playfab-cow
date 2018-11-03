@@ -52,7 +52,7 @@ function updatePlayer(id, firstWin, firstGame, glicko)
 	);
 	return true;
 }
-function updateStats(id, isWon, rank, troops, fields, cards, duels)
+function updateStats(id, isWon, rank, troops, fields, cards, duels, disconnect)
 {
 	pointsEarned = 0;
 	if(isWon == 1)
@@ -100,6 +100,10 @@ function updateStats(id, isWon, rank, troops, fields, cards, duels)
 	            "StatisticName": "ranks",
 	            "Value": rank
         	},
+        	{
+	            "StatisticName": "disconnect",
+	            "Value": disconnect
+        	}
         ]
     });
     return true;

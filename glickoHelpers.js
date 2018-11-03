@@ -40,7 +40,13 @@ function calculateGlicko(playerOneReadOnlyData, playerTwoReadOnlyData, isWon)
 	var playerTwoResult = {Rating: p2rating, RD: p2rd, Vol: p2vol};
 	result.push(playerOneResult);
 	result.push(playerTwoResult);
-	
+	 server.WriteTitleEvent
+    (
+    	{
+        	EventName : "glickoEnded",
+        	Body: {result}
+    	}
+    );
   	return result;
 }
 

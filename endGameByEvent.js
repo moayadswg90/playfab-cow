@@ -1,7 +1,6 @@
 function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, troops, fields, cards, turns, reason)
 {
 	var playerOne = {};
-	playerOne["isWon"] = isWon;
 	var playerOneReadOnlyData = server.GetUserReadOnlyData
     (
           {

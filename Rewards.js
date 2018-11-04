@@ -70,11 +70,20 @@ handlers.shareGame = function (args, context)
 		        FriendPlayFabId: currentPlayerId
 		    }
 		);
-		server.SendPushNotification
-	    ({
-	        Recipient: args.friend,
-	        Message: "Your friend has joined the game"
-	    });
+		try
+		{
+			server.SendPushNotification
+		    ({
+		        Recipient: args.friend,
+		        Message: "Your friend has joined the game"
+		    });
+		}
+		catch (e)
+		{
+			if (e.apiErrorInfo.apiError.errorCode == 1094)
+	  			return {result: true};
+	  		return {code: e.apiErrorInfo.apiError.errorCode, error: e.apiErrorInfo.apiError.error};
+		}	
 	}
 	
 /*

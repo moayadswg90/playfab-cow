@@ -53,7 +53,8 @@ handlers.shareGame = function (args, context)
 	        PlayFabId: currentPlayerId
 	    }
 	);
-	//friendsList = JSON.parse(friendsList.Friends);
+	friendsList = friendsList.Friends;
+	return friendsList;
 	for (i = 0; i < friendsList.Friend.length; i++)
 	{
 		if (friendsList[i]["FriendPlayFabId"] == args.friend)

@@ -106,7 +106,7 @@ handlers.shareGame = function (args, context)
 			}
 		);
 	}
-	return {result: true;}
+	return {result: true};
  }
  
 handlers.tutorialCompleted = function (args, context) 

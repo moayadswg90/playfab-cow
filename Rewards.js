@@ -54,8 +54,7 @@ handlers.shareGame = function (args, context)
 	    }
 	);
 	friendsList = friendsList.Friends;
-	return friendsList;
-	for (i = 0; i < friendsList.Friend.length; i++)
+	for (i = 0; i < friendsList.length; i++)
 	{
 		if (friendsList[i]["FriendPlayFabId"] == args.friend)
 			isFriend = true;

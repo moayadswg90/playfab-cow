@@ -59,11 +59,8 @@ handlers.shareGame = function (args, context)
 		if (friendsList[i]["FriendPlayFabId"] == args.friend)
 			isFriend = true;
 	}
-	return {result: isFriend};
-
-/*
-  	try
-  	{
+	if (!isFriend)
+	{
 		server.AddFriend
 		(
 	          {
@@ -71,40 +68,44 @@ handlers.shareGame = function (args, context)
 	              FriendPlayFabId: args.friend
 	          }
 		);
-	    server.AddFriend
-	    (
+		server.GrantItemsToUser
+	  	(
+	   		{
+	  			PlayFabId: currentPlayerId,
+	  			ItemIds: ["InviteReward"]
+			}
+		);
+	}
+	isFriend = false;
+	friendsList = server.GetFriendsList
+	(
+	    {
+	        PlayFabId: args.friend
+	    }
+	);
+	friendsList = friendsList.Friends;
+	for (i = 0; i < friendsList.length; i++)
+	{
+		if (friendsList[i]["FriendPlayFabId"] == currentPlayerId)
+			isFriend = true;
+	}
+	if (!isFriend)
+	{
+		server.AddFriend
+		(
 	          {
 	              PlayFabId: args.friend,
 	              FriendPlayFabId: currentPlayerId
 	          }
-	    );
-	    server.GrantItemsToUser
+		);
+		server.GrantItemsToUser
 	  	(
 	   		{
 	  			PlayFabId: args.friend,
-	  			ItemIds: 
-	          	[
-	    			"InviteReward"
-	  			]
+	  			ItemIds: ["InviteReward"]
 			}
 		);
-
-	    server.SendPushNotification
-	    ({
-	        Recipient: args.friend,
-	        Message: "Your friend has joined the game"
-	    });
-
-	    
-	    return {result: true}; 
-  	}
-  	catch(e)
-  	{
-	  	if (e.apiErrorInfo.apiError.errorCode == 1094)
-	  		return {result: true};
-	  	return {code: e.apiErrorInfo.apiError.errorCode, error: e.apiErrorInfo.apiError.error};
-  	}  
-*/ 	
+	}
  }
  
 handlers.tutorialCompleted = function (args, context) 

@@ -46,15 +46,24 @@ handlers.shareGame = function (args, context)
  }
  handlers.inviteFriend = function (args, context) 
 {
+	var result = server.AddFriend
+	(
+	    {
+	        PlayFabId: currentPlayerId,
+	        FriendPlayFabId: args.friend
+	    }
+	);
+	return result;
+/*
   	try
   	{
-		  server.AddFriend
-		  (
+		server.AddFriend
+		(
 	          {
 	              PlayFabId: currentPlayerId,
 	              FriendPlayFabId: args.friend
 	          }
-		  );
+		);
 	    server.AddFriend
 	    (
 	          {
@@ -87,7 +96,8 @@ handlers.shareGame = function (args, context)
 	  	if (e.apiErrorInfo.apiError.errorCode == 1094)
 	  		return {result: true};
 	  	return {code: e.apiErrorInfo.apiError.errorCode, error: e.apiErrorInfo.apiError.error};
-  	}   	
+  	}  
+*/ 	
  }
  
 handlers.tutorialCompleted = function (args, context) 

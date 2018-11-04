@@ -55,11 +55,26 @@ handlers.shareGame = function (args, context)
 		        FriendPlayFabId: args.friend
 		    }
 		);
-	return {result: result};
+		return {result: true};
 	}
 	catch (e)
 	{
 		return {code: e.apiErrorInfo.apiError.errorCode, error: e.apiErrorInfo.apiError.error};
+	}
+	finally
+	{
+		var result = server.AddFriend
+		(
+		    {
+		        PlayFabId: args.friend,
+		        FriendPlayFabId: currentPlayerId
+		    }
+		);
+		server.SendPushNotification
+	    ({
+	        Recipient: args.friend,
+	        Message: "Your friend has joined the game"
+	    });
 	}
 	
 /*

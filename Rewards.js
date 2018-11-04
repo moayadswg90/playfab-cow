@@ -46,14 +46,22 @@ handlers.shareGame = function (args, context)
  }
  handlers.inviteFriend = function (args, context) 
 {
-	var result = server.AddFriend
-	(
-	    {
-	        PlayFabId: currentPlayerId,
-	        FriendPlayFabId: args.friend
-	    }
-	);
-	return result;
+	try
+	{
+		var result = server.AddFriend
+		(
+		    {
+		        PlayFabId: currentPlayerId,
+		        FriendPlayFabId: args.friend
+		    }
+		);
+	return {result: result};
+	}
+	catch (e)
+	{
+		return {code: e.apiErrorInfo.apiError.errorCode, error: e.apiErrorInfo.apiError.error};
+	}
+	
 /*
   	try
   	{

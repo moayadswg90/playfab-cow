@@ -178,3 +178,19 @@ handlers.tutorialCompleted = function (args, context)
     }
   return sharedToday;
 }
+handlers.testPush = function (args, context) 
+{
+	try
+	{
+	    server.SendPushNotification
+	    ({
+	        Recipient: currentPlayerId,
+	        Message: "test push working"
+	    });
+	}
+  		
+	catch(e)
+	{
+		return {code: e.apiErrorInfo.apiError.errorCode, error: e.apiErrorInfo.apiError.error};
+	}   
+}

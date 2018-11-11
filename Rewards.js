@@ -31,6 +31,17 @@ handlers.shareGame = function (args, context)
 	        		}
 	      		}
 		  	);
+		updateStatistics = server.UpdatePlayerStatistics
+		({
+		   	PlayFabId: currentPlayerId,
+		    Statistics: 
+		    [	
+		    	{
+			    	"StatisticName": "shares",
+					"Value": 1
+		       	}
+			]
+		});
 		var result = 	
 		{
 			reward:
@@ -105,6 +116,17 @@ handlers.shareGame = function (args, context)
 	  			ItemIds: ["InviteReward"]
 			}
 		);
+		updateStatistics = server.UpdatePlayerStatistics
+		({
+		   	PlayFabId: args.friend,
+		    Statistics: 
+		    [	
+		    	{
+			    	"StatisticName": "invites",
+					"Value": 1
+		       	}
+			]
+		});
 	}
 	return {result: true};
  }

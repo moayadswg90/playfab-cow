@@ -81,7 +81,7 @@ function updateStats(id, isWon, rank, troops, fields, cards, duels, disconnect)
 	            "Value": fields
         	},
         	{
-	            "StatisticName": "cardsPlayed",
+	            "StatisticName": "cards",
 	            "Value": cards
         	},
         	{
@@ -101,7 +101,7 @@ function updateStats(id, isWon, rank, troops, fields, cards, duels, disconnect)
 	            "Value": disconnect
         	},
         	{
-	            "StatisticName": "gamesPlayed",
+	            "StatisticName": "games",
 	            "Value": 1
         	}
         ]

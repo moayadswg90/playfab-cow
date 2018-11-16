@@ -59,7 +59,7 @@ function updateStats(id, isWon, rank, troops, fields, cards, duels, disconnect)
 	{
 		pointsEarned = pointsReward
 	}
-	var updateStatistics = server.UpdatePlayerStatistics
+	updateStatistics = server.UpdatePlayerStatistics
     ({
         PlayFabId: id,
         Statistics: 
@@ -70,10 +70,6 @@ function updateStats(id, isWon, rank, troops, fields, cards, duels, disconnect)
         	},
         	{
 	            "StatisticName": "WeeklyPoints",
-	            "Value": pointsEarned
-        	},
-        	{
-	            "StatisticName": "MonthlyPoints",
 	            "Value": pointsEarned
         	},
           	{
@@ -103,6 +99,10 @@ function updateStats(id, isWon, rank, troops, fields, cards, duels, disconnect)
         	{
 	            "StatisticName": "disconnect",
 	            "Value": disconnect
+        	},
+        	{
+	            "StatisticName": "gamesPlayed",
+	            "Value": 1
         	}
         ]
     });

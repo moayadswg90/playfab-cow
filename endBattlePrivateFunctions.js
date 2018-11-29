@@ -64,14 +64,6 @@ function updateStats(id, isWon, rank, troops, fields, cards, duels, disconnect)
         PlayFabId: id,
         Statistics: 
         [	
-        	{
-	            "StatisticName": "DailyPoints",
-	            "Value": pointsEarned
-        	},
-        	{
-	            "StatisticName": "WeeklyPoints",
-	            "Value": pointsEarned
-        	},
           	{
 	            "StatisticName": "troops",
 	            "Value": troops
@@ -93,16 +85,31 @@ function updateStats(id, isWon, rank, troops, fields, cards, duels, disconnect)
 	            "Value": isWon
         	},
         	{
-	            "StatisticName": "ranks",
-	            "Value": rank
-        	},
-        	{
 	            "StatisticName": "disconnect",
 	            "Value": disconnect
         	},
         	{
 	            "StatisticName": "games",
 	            "Value": 1
+        	}
+        ]
+    });
+    updateStatistics = server.UpdatePlayerStatistics
+    ({
+        PlayFabId: id,
+        Statistics: 
+        [	
+        	{
+	            "StatisticName": "DailyPoints",
+	            "Value": pointsEarned
+        	},
+        	{
+	            "StatisticName": "WeeklyPoints",
+	            "Value": pointsEarned
+        	},
+        	{
+	            "StatisticName": "ranks",
+	            "Value": rank
         	}
         ]
     });

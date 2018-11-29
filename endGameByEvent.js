@@ -21,7 +21,10 @@ function endGameByEvent(photonGameID, playerOneId, playerTwoId, isWon, isDuel, t
 
     //glicko both players
      glickoResult = calculateGlicko(playerOneReadOnlyData, playerTwoReadOnlyData, isWon);
-     playerOne["stats"] = {isDuel: isDuel,troops:troops, fields:fields, cards:cards }
+     pointsEarned = 0;
+     if (isWon == 1)
+     	pointsEarned = 10;
+     playerOne["stats"] = {isDuel: isDuel,troops:troops, fields:fields, cards:cards, WeeklyPoints: pointsEarned,DailyPoints: pointsEarned, ranks:glickoResult[0]["Rating"]}
      playerOne["glicko"] = glickoResult[0]; 
 
      var dataPayload = {};

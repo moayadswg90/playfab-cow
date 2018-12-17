@@ -172,7 +172,7 @@ handlers.tutorialCompleted = function (args, context)
 	    (
 		    {
 		        EventName : "first_tutorial_completed",
-		        Data: {playerID: currentPlayerId}
+		        Body: {playerID: currentPlayerId}
 		    }
 	    );
     	return result;
@@ -187,7 +187,7 @@ handlers.tutorialCompleted = function (args, context)
 	    (
 		    {
 		        EventName : "tutorial_completed_again",
-		        Data: {playerID: currentPlayerId}
+		        Body: {playerID: currentPlayerId}
 		    }
 	    );
 		return result;

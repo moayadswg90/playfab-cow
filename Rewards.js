@@ -171,7 +171,8 @@ handlers.tutorialCompleted = function (args, context)
 		server.WriteTitleEvent
 	    (
 		    {
-		        EventName : "first_tutorial_completed"
+		        EventName : "first_tutorial_completed",
+		        Data: {playerID: currentPlayerId}
 		    }
 	    );
     	return result;
@@ -185,7 +186,8 @@ handlers.tutorialCompleted = function (args, context)
 		server.WriteTitleEvent
 	    (
 		    {
-		        EventName : "tutorial_completed_again"
+		        EventName : "tutorial_completed_again",
+		        Data: {playerID: currentPlayerId}
 		    }
 	    );
 		return result;

@@ -168,6 +168,12 @@ handlers.tutorialCompleted = function (args, context)
 				items: ["TutorialCompleted"]
 			}
 		};
+		server.WriteTitleEvent
+	    (
+		    {
+		        EventName : "first_tutorial_completed"
+		    }
+	    );
     	return result;
     }
     else
@@ -176,6 +182,12 @@ handlers.tutorialCompleted = function (args, context)
 		{
 			reward:0
 		};
+		server.WriteTitleEvent
+	    (
+		    {
+		        EventName : "tutorial_completed_again"
+		    }
+	    );
 		return result;
     }  	
  }
